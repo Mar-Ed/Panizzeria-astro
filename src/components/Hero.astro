@@ -1,30 +1,41 @@
-<section class="home section" id="home">
-            <div class="home__container container grid">
-               <div class="home__data">
-                  <h1 class="home__title">La Panizzería</h1>
-                  <p class="home__description">
-                     Pide las mejores pizzas para saciar tu hambre
-                     y hacer tus momentos familiares más
-                     memorables. Haz tu pedido ahora.
-                  </p>
+<style>
+  section {
+    padding: 4rem 1rem;
+    background: linear-gradient(to right, #fef2f2, #fff7ed); /* from-red-50 to-orange-50 */
+  }
 
-                  <a href="#products" class="button">Ordena tu pizza ahora</a>
+  .container {
+    max-width: 64rem; /* similar a max-w-4xl */
+    margin: 0 auto;
+    text-align: center;
+  }
 
-                  <img src="assets/img/sticker-pizza.svg" alt="image" class="home__sticker-1">
-                  <img src="assets/img/sticker-leaf.svg" alt="image" class="home__sticker-2">
-               </div>
+  h1 {
+    font-size: 2.25rem; /* text-4xl */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #1f2937; /* text-gray-900 */
+  }
 
-               <div class="home__images">
-                  <img src="assets/img/home-pizza.png" alt="image" class="home__pizza">
-                  <img src="assets/img/home-board.png" alt="image" class="home__board">
-                  
-                  <!--details-->
-                  <img src="assets/img/home-leaf-1.png" alt="image" class="home__ingredient home__leaf-1">
-                  <img src="assets/img/home-leaf-2.png" alt="image" class="home__ingredient home__leaf-2">
-                  <img src="assets/img/home-pepperoni.png" alt="image" class="home__ingredient home__pepperoni">
-                  <img src="assets/img/home-mushroom.png" alt="image" class="home__ingredient home__mushroom">
-                  <img src="assets/img/home-olive.png" alt="image" class="home__ingredient home__olive">
-                  <img src="assets/img/home-tomato.png" alt="image" class="home__ingredient home__tomato">
-               </div>
-            </div>
-         </section>
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem; /* md:text-5xl */
+    }
+  }
+
+  p {
+    font-size: 1.25rem; /* text-xl */
+    color: #4b5563;     /* text-gray-600 */
+    line-height: 1.75;
+  }
+</style>
+
+<section>
+  <div class="container">
+    <h1>Nuestra Historia</h1>
+    <p class="home__description">
+        Pide las mejores pizzas para saciar tu hambre y hacer tus momentos familiares más memorables. Haz tu pedido ahora.
+    </p>
+    <img src="img/foto_principal.jpg" alt="image" class="home__pizza">
+  </div>
+</section>
