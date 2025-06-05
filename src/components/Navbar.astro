@@ -1,0 +1,101 @@
+---
+import CartShopping from '../components/svg/cartShopping.astro'
+
+type Props={
+    type:string
+}
+
+const links=[
+    {name:'Home',url:'/'},
+    {name:'Nosotros ',url:'/Nosotros'},
+    {name:'Menu',url:'/Servicios'},
+]
+---
+<header class="navbar">
+    <nav class="nav-container">
+            <div class="text-logo">
+                <span>LA</span><span> PANIZZERIA</span>
+            </div>
+            <div class="container-links">
+                {
+                    links.map(link=>(
+                        <a href={link.url} >
+                            <span>{link.name}</span>
+                            <div class="hover-transition">
+
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
+            <div class="shop-container">
+                <div class="button-shop">
+                    <CartShopping/>
+                    <span>S/</span><span> 0.00</span>
+                </div>
+            </div>
+    </nav>
+</header>
+<style>
+    .nav-container .text-logo span:nth-child(1){
+        color: var(--title-color);
+    }
+    .nav-container .text-logo span:nth-child(2){
+        color:var(--body-color)
+    }
+    .navbar{
+        display: flex;
+        width: 100%;
+        height: 100px;
+        justify-content: center;
+        background: var(--nav-color);
+    }
+
+    .nav-container{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+     .img-link img{
+        width: 200px;
+        position: relative;
+        top: 5px;
+        
+     }
+     
+     .container-links{
+        display: flex;
+        gap: 3rem;
+     }
+
+     .container-links a {
+        text-decoration: none;
+        color: var(--body-color);  
+     }
+
+     .button-shop{
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+     }
+
+     .shop-container{
+        background-color: var(--body-color);
+        padding: .5rem 1rem;
+        border-radius: 2rem;
+     }
+
+     .hover-transition{
+        background-color: antiquewhite;
+        width: 0px;
+        height: 0.10rem;
+        transition: all 0.3s ease-in-out;
+     }
+
+     .container-links a:hover .hover-transition{
+        width: 100%;
+     }
+</style>
