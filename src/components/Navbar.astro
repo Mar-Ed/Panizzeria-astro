@@ -1,5 +1,6 @@
 ---
 import CartShopping from '../components/svg/CartShopping.astro'
+import Pizza from './svg/Pizza.astro'
 
 type Props={
     type:string
@@ -14,7 +15,17 @@ const links=[
 <header class="navbar">
     <nav class="nav-container">
             <div class="text-logo">
-                <span>LA</span><span> PANIZZERIA</span>
+                <Pizza/>
+                <div class="text-panizzeria">
+                    <span>LA</span>
+                    <span> PANIZZERIA</span>
+                    <div class="bar-navbar">
+
+                    </div>
+                    <div class="subtitle-panizzeria">
+                        <span>PIZZAS Y PANES ARTESANALES</span>
+                    </div>
+                </div>
             </div>
             <div class="container-links">
                 {
@@ -37,6 +48,30 @@ const links=[
     </nav>
 </header>
 <style>
+    .text-logo{
+        display: flex;
+        align-items: center;
+        gap: 0.50rem;
+    }
+    .text-panizzeria{
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+    .bar-navbar{
+        width: 100%;
+        height: 1px;
+        background-color: var(--body-color);
+    }
+    .subtitle-panizzeria span{
+        font-size:0.74rem;
+        font-weight: bold;
+    }
+
+    .nav-container .text-logo span{
+        font-weight: bold;
+    }
+
     .nav-container .text-logo span:nth-child(1){
         color: var(--title-color);
     }
