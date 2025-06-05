@@ -17,8 +17,8 @@ const links=[
             <div class="text-logo">
                 <Pizza/>
                 <div class="text-panizzeria">
-                    <span>LA</span>
-                    <span> PANIZZERIA</span>
+                    <span class="title">LA</span>
+                    <span class="title"> PANIZZERIA</span>
                     <div class="bar-navbar">
 
                     </div>
@@ -68,16 +68,16 @@ const links=[
         font-weight: bold;
     }
 
-    .nav-container .text-logo span{
-        font-weight: bold;
+    .subtitle-panizzeria span,.title{
+        color: var(--body-color);
     }
 
-    .nav-container .text-logo span:nth-child(1){
-        color: var(--title-color);
+    .title{
+        font-weight: bold;
+        letter-spacing: 5px;
     }
-    .nav-container .text-logo span:nth-child(2){
-        color:var(--body-color)
-    }
+
+
     .navbar{
         display: flex;
         width: 100%;
