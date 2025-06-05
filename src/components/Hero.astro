@@ -3,334 +3,325 @@
   <div class="hero-content">
     <h1 class="hero-title">Nuestra Historia</h1>
     <p class="hero-subtitle">
-      Pide las mejores pizzas para saciar tu hambre y hacer tus momentos
-      familiares más memorables. Haz tu pedido ahora.
+        Pide las mejores pizzas para saciar tu hambre y hacer tus momentos familiares más memorables. Haz tu pedido ahora.
     </p>
-    <img src="img/foto_principal_2.jpg" alt="image" class="home__pizza" />
+    <img src="img/foto_principal_2.jpg" alt="image" class="home__pizza">
     <div class="hero-buttons">
       <a href="/menu" class="btn btn-primary">Ver Menú</a>
       <a href="/about" class="btn btn-outline">Conoce Nuestra Historia</a>
-      <div></div>
-    </div>
-
-    <section class="features-section">
-      <div class="container">
-        <h2 class="section-title">¿Por qué elegir La Panizzeria?</h2>
-        <div class="features-grid">
-          <div class="card text-center">
-            <div class="icon-circle"><span class="icon-clock"></span></div>
-            <h3 class="card-title">Entrega Rápida</h3>
-            <p>Entregamos tu pizza caliente en 30 minutos o menos</p>
-          </div>
-          <div class="card text-center">
-            <div class="icon-circle"><span class="icon-star"></span></div>
-            <h3 class="card-title">Ingredientes Premium</h3>
-            <p>Solo usamos los mejores ingredientes frescos y naturales</p>
-          </div>
-          <div class="card text-center">
-            <div class="icon-circle"><span class="icon-pin"></span></div>
-            <h3 class="card-title">Ubicación Conveniente</h3>
-            <p>Estamos en el corazón de la ciudad para servirte mejor</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <style>
-      body {
-        margin: 0;
-        font-family: sans-serif;
-        color: #333;
-      }
-      @media (min-width: 768px) {
-        h1 {
-          font-size: 3rem; /* md:text-5xl */
-        }
-      }
-
-      /* Hero */
-      .hero-section {
-        position: relative;
-        height: 600px;
-        background: linear-gradient(to right, #dc2626, #f97316);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .home__pizza {
-        width: 600px;
-        z-index: 2;
-      }
-
-      .hero-overlay {
-        position: absolute;
-        inset: 0;
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-
-      .hero-content {
-        position: relative;
-        z-index: 10;
-        text-align: center;
-        color: white;
-        padding: 1rem;
-      }
-
-      .hero-title {
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 2rem;
-      }
-
-      .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        justify-content: center;
-      }
-
-      @media (min-width: 640px) {
-        .hero-buttons {
-          flex-direction: row;
-        }
-      }
-
-      /* Buttons */
-      .btn {
-        padding: 0.75rem 1.5rem;
-        font-weight: bold;
-        border: none;
-        text-decoration: none;
-        cursor: pointer;
-        border-radius: 8px;
-        display: inline-block;
-      }
-
-      .btn-primary {
-        background: white;
-        color: #dc2626;
-      }
-
-      .btn-primary:hover {
-        background: #f3f3f3;
-      }
-
-      .btn-outline {
-        border: 2px solid white;
-        background: transparent;
-        color: white;
-      }
-
-      .btn-outline:hover {
-        background: white;
-        color: #dc2626;
-      }
-
-      .btn-small {
-        padding: 0.5rem 1rem;
-        background: #dc2626;
-        color: white;
-        border-radius: 6px;
-        border: none;
-      }
-
-      .btn-small:hover {
-        background: #b91c1c;
-      }
-
-      /* Sections */
-      .features-section,
-      .pizzas-section,
-      .contact-section {
-        padding: 4rem 1rem;
-      }
-
-      .features-section {
-        background-color: #f9fafb;
-      }
-
-      .contact-section {
-        background-color: #dc2626;
-        color: white;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2rem;
-        font-weight: bold;
-        margin-bottom: 3rem;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: auto;
-      }
-
-      /* Cards */
-      .features-grid,
-      .pizzas-grid {
-        display: grid;
-        gap: 2rem;
-      }
-
-      @media (min-width: 768px) {
-        .features-grid,
-        .pizzas-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-
-      .card {
-        background: white;
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      }
-
-      .card-title {
-        font-size: 1.25rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .card-body {
-        padding: 1rem 0 0 0;
-      }
-
-      .pizza-image {
-        width: 100%;
-        height: 12rem;
-        object-fit: cover;
-        border-radius: 12px 12px 0 0;
-      }
-
-      .price-order {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1rem;
-      }
-
-      .price {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #dc2626;
-      }
-
-      /* Icons (puedes usar un font-icon como Font Awesome o agregar SVGs aquí) */
-      .icon-circle {
-        width: 64px;
-        height: 64px;
-        background: #fee2e2;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: auto;
-        margin-bottom: 1rem;
-      }
-
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        margin-top: 2rem;
-      }
-
-      @media (min-width: 640px) {
-        .contact-info {
-          flex-direction: row;
-          justify-content: center;
-        }
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-    </style>
-    <!-- Popular Pizzas Section -->
-    <section class="pizzas-section">
-      <div class="container">
-        <h2 class="section-title">Nuestras Pizzas Más Populares</h2>
-        <div class="pizzas-grid">
-          <div class="card">
-            <img
-              src="/placeholder.svg?height=250&width=400"
-              alt="Pizza Margherita"
-              class="pizza-image"
-            />
-            <div class="card-body">
-              <h3 class="card-title">Margherita Clásica</h3>
-              <p>Tomate, mozzarella fresca, albahaca y aceite de oliva</p>
-              <div class="price-order">
-                <span class="price">$18.990</span>
-                <button class="btn btn-small">Ordenar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="/placeholder.svg?height=250&width=400"
-              alt="Pizza Pepperoni"
-              class="pizza-image"
-            />
-            <div class="card-body">
-              <h3 class="card-title">Pepperoni Suprema</h3>
-              <p>Pepperoni premium, mozzarella y salsa especial</p>
-              <div class="price-order">
-                <span class="price">$22.990</span>
-                <button class="btn btn-small">Ordenar</button>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              src="/placeholder.svg?height=250&width=400"
-              alt="Pizza Quattro Stagioni"
-              class="pizza-image"
-            />
-            <div class="card-body">
-              <h3 class="card-title">Quattro Stagioni</h3>
-              <p>Jamón, champiñones, alcachofas y aceitunas</p>
-              <div class="price-order">
-                <span class="price">$25.990</span>
-                <button class="btn btn-small">Ordenar</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="text-center">
-          <a href="/menu" class="btn btn-primary">Ver Menú Completo</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section">
-      <div class="container text-center">
-        <h2 class="section-title">¡Ordena Ahora!</h2>
-        <p>
-          Llámanos o visita nuestra tienda para disfrutar de nuestras deliciosas
-          pizzas
-        </p>
-        <div class="contact-info">
-          <div class="contact-item">
-            <span class="icon-phone"></span>
-            <span>+57 300 123 4567</span>
-          </div>
-          <div class="contact-item">
-            <span class="icon-pin"></span>
-            <span>Calle 123 #45-67, Bogotá</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div>
   </div>
 </section>
+
+<section class="features-section">
+        <div class="container">
+          <h2 class="section-title">¿Por qué elegir La Panizzeria?</h2>
+          <div class="features-grid">
+            <div class="card text-center">
+              <div class="icon-circle"><span class="icon-clock"></span></div>
+              <h3 class="card-title">Entrega Rápida</h3>
+              <p>Entregamos tu pizza caliente en 30 minutos o menos</p>
+            </div>
+            <div class="card text-center">
+              <div class="icon-circle"><span class="icon-star"></span></div>
+              <h3 class="card-title">Ingredientes Premium</h3>
+              <p>Solo usamos los mejores ingredientes frescos y naturales</p>
+            </div>
+            <div class="card text-center">
+              <div class="icon-circle"><span class="icon-pin"></span></div>
+              <h3 class="card-title">Ubicación Conveniente</h3>
+              <p>Estamos en el corazón de la ciudad para servirte mejor</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+<style>
+
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #333;
+}
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3rem; /* md:text-5xl */
+    }
+  }
+
+/* Hero */
+.hero-section {
+  position: relative;
+  height: 600px;
+  background: linear-gradient(to right, #dc2626, #f97316);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home__pizza {
+  width: 600px;
+  z-index: 2;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .hero-buttons {
+    flex-direction: row;
+  }
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: white;
+  color: #dc2626;
+}
+
+.btn-primary:hover {
+  background: #f3f3f3;
+}
+
+.btn-outline {
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+}
+
+.btn-outline:hover {
+  background: white;
+  color: #dc2626;
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  background: #dc2626;
+  color: white;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn-small:hover {
+  background: #b91c1c;
+}
+
+/* Sections */
+.features-section,
+.pizzas-section,
+.contact-section {
+  padding: 4rem 1rem;
+}
+
+.features-section {
+  background-color: #f9fafb;
+}
+
+.contact-section {
+  background-color: #dc2626;
+  color: white;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Cards */
+.features-grid,
+.pizzas-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .features-grid,
+  .pizzas-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  padding: 1rem 0 0 0;
+}
+
+.pizza-image {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.price-order {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #dc2626;
+}
+
+/* Icons (puedes usar un font-icon como Font Awesome o agregar SVGs aquí) */
+.icon-circle {
+  width: 64px;
+  height: 64px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1rem;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .contact-info {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+</style>
+      <!-- Popular Pizzas Section -->
+      <section class="pizzas-section">
+        <div class="container">
+          <h2 class="section-title">Nuestras Pizzas Más Populares</h2>
+          <div class="pizzas-grid">
+            <div class="card">
+              <img src="/placeholder.svg?height=250&width=400" alt="Pizza Margherita" class="pizza-image" />
+              <div class="card-body">
+                <h3 class="card-title">Margherita Clásica</h3>
+                <p>Tomate, mozzarella fresca, albahaca y aceite de oliva</p>
+                <div class="price-order">
+                  <span class="price">$18.990</span>
+                  <button class="btn btn-small">Ordenar</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="/placeholder.svg?height=250&width=400" alt="Pizza Pepperoni" class="pizza-image" />
+              <div class="card-body">
+                <h3 class="card-title">Pepperoni Suprema</h3>
+                <p>Pepperoni premium, mozzarella y salsa especial</p>
+                <div class="price-order">
+                  <span class="price">$22.990</span>
+                  <button class="btn btn-small">Ordenar</button>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <img src="/placeholder.svg?height=250&width=400" alt="Pizza Quattro Stagioni" class="pizza-image" />
+              <div class="card-body">
+                <h3 class="card-title">Quattro Stagioni</h3>
+                <p>Jamón, champiñones, alcachofas y aceitunas</p>
+                <div class="price-order">
+                  <span class="price">$25.990</span>
+                  <button class="btn btn-small">Ordenar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <a href="/menu" class="btn btn-primary">Ver Menú Completo</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact-section">
+        <div class="container text-center">
+          <h2 class="section-title">¡Ordena Ahora!</h2>
+          <p>Llámanos o visita nuestra tienda para disfrutar de nuestras deliciosas pizzas</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="icon-phone"></span>
+              <span>+57 300 123 4567</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon-pin"></span>
+              <span>Calle 123 #45-67, Bogotá</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+---
+type Props={
+    type:string
+}
+const links=[
+    {name:'Home',url:'/'},
+    {name:'Nosotros ',url:'/Nosotros'},
+    {name:'Menu',url:'/Servicios'},
+]
+---
+<header>
+    <nav>
+        <div>
+            <a href=""><img src="" alt=""></a>
+            <div>
+                {
+                    links.map(link=>(
+                        <a href={link.url}>
+                            <span></span>
+                        </a>
+                    ))
+                }
+            </div>
+        </div>
+    </nav>
+</header>
