@@ -14,7 +14,7 @@
   --text-color: hsl(353, 16%, 32%);
   --text-color-light: hsl(353, 16%, 48%);
   --white-color: hsl(24, 86%, 90%);
-  --body-color: hsl(24, 86%, 88%);
+  --body-color: hsl(45, 26%, 87%);
   --container-color: hsl(24, 86%, 92%);
   --shadow-small-img: drop-shadow(0 4px 16px hsla(353, 100%, 8%, 0.2));
   --shadow-big-img: drop-shadow(0 8px 24px hsla(353, 100%, 8%, 0.2));
@@ -36,4 +36,13 @@
   --font-regular: 400;
   --font-medium: 500;
   --font-semi-bold: 600;
+}
+*,*::after,*::before{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+body{
+  font-family: var(--body-font);
+  background-color: var(--body-color);
 }
