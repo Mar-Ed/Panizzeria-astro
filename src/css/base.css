@@ -46,3 +46,30 @@ body{
   font-family: var(--body-font);
   background-color: var(--body-color);
 }
+.wrapper {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.section {
+  padding-block: 5rem 1rem;
+}
+.section-title {
+  text-align: center;
+  font-size: var(--bigger-font-size);
+  margin-bottom: 2rem;
+}
+
+.main {
+  overflow: hidden;
+}

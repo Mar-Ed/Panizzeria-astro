@@ -1,0 +1,207 @@
+---
+// Astro imports
+import EmailIcon from "./svg/EmailIcon.astro";
+import FacebookIcon from "./svg/FacebookIcon.astro";
+import WhatsappIcon from "./svg/WhatsappIcon.astro";
+---
+
+<section class="contact-section wrapper">
+  <div class="contact-container">
+    <div class="contact-data">
+      <h2 class="section-title">Contáctanos</h2>
+      <div class="contact-info">
+        <div>
+          <h3 class="contact-title">Escríbenos</h3>
+          <div class="contact-social">
+            <a href="https://api.whatsapp.com/send?phone=989286683&text=Hola, quisiera hacer un pedido de una Pizza familiar!" target="_blank" class="contact-social-link">
+              <div class="svg-container"><WhatsappIcon /></div>
+            </a>
+            <a href="https://m.me/bedimcode" target="_blank" class="contact-social-link">
+              <div class="svg-container"><FacebookIcon /></div>
+            </a>
+            <a href="https://t.me/telegram" target="_blank" class="contact-social-link">
+              <div class="svg-container"><EmailIcon /></div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="contact-title">Delivery</h3>
+          <address class="contact-address">
+            +00-987-7654-321 <br />
+            +11-012345
+          </address>
+        </div>
+
+        <div>
+          <h3 class="contact-title">Ubicación</h3>
+          <address class="contact-address">
+            Lima - Lurin - Peru <br />
+            Av. Moon #4321
+          </address>
+          <a href="https://maps.app.goo.gl/MAmMDxUBFXBSUzLH7" target="_blank" class="contact-map">
+            <i class="ri-map-pin-fill"></i>
+            <span>Ver en el Mapa</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-image">
+      <img src="/img/contact-img.png" alt="image" class="contact-img" />
+    </div>
+
+    <img src="/img/sticker-tomato.svg" alt="image" class="contact-sticker-1" />
+    <img src="/img/sticker-mushroom.svg" alt="image" class="contact-sticker-2" />
+    <img src="/img/sticker-onion.svg" alt="image" class="contact-sticker-3" />
+  </div>
+</section>
+
+<style>
+  .contact-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  .contact-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    background-color: var(--first-color-dark);
+    padding: 3rem 2rem;
+    border-radius: 2rem;
+    max-width: 1200px;
+    width: 100%;
+  }
+
+  .contact-data {
+    flex: 1 1 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .section-title,
+  .contact-title,
+  .contact-address {
+    color: var(--white-color);
+    text-align: center;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .contact-social {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .contact-social-link {
+    font-size: 1.5rem;
+    color: var(--first-color);
+    transition: transform 0.4s;
+  }
+
+  .contact-social-link:hover {
+    transform: translateY(-0.25rem);
+  }
+
+  .contact-address {
+    font-style: normal;
+  }
+
+  .contact-map {
+    color: var(--first-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .contact-map span {
+    font-size: var(--small-font-size);
+    font-weight: var(--font-semi-bold);
+  }
+
+  .contact-image {
+    flex: 1 1 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contact-img {
+    max-width: 100%;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+
+  .svg-container {
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: var(--first-color);
+  }
+
+  .contact-sticker-1,
+  .contact-sticker-2,
+  .contact-sticker-3 {
+    width: 3rem;
+    position: absolute;
+    opacity: 0.7;
+    pointer-events: none;
+  }
+
+  .contact-sticker-1 {
+    top: 2rem;
+    left: 1rem;
+  }
+
+  .contact-sticker-2 {
+    right: 1rem;
+    bottom: 18rem;
+  }
+
+  .contact-sticker-3 {
+    left: 2rem;
+    bottom: 4rem;
+  }
+
+  /* 🔽 Media Queries */
+  @media screen and (max-width: 768px) {
+    .contact-container {
+      flex-direction: column;
+      padding: 2rem 1rem;
+    }
+
+    .contact-image {
+      order: -1;
+    }
+
+    .contact-info {
+      text-align: center;
+    }
+
+    .contact-img {
+      max-width: 90%;
+    }
+
+    .contact-sticker-2 {
+      bottom: 12rem;
+    }
+  }
+</style>
