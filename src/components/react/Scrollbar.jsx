@@ -21,15 +21,15 @@ export default function App() {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        <SwiperSlide>Slide 5</SwiperSlide>
-        <SwiperSlide>Slide 6</SwiperSlide>
-        <SwiperSlide>Slide 7</SwiperSlide>
-        <SwiperSlide>Slide 8</SwiperSlide>
-        <SwiperSlide>Slide 9</SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Americana.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Burger.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Campesina.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Suprema.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Pepperoni.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Cuatro-quesos.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Especial.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Fourseasons.jpg' class="slider-plato"></img></SwiperSlide>
+        <SwiperSlide><img src='/img/platos/Hawaiana.jpg' class="slider-plato"></img></SwiperSlide>
       </Swiper>
     </>
   );
