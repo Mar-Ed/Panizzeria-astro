@@ -3,6 +3,8 @@
 import EmailIcon from "./svg/EmailIcon.astro";
 import FacebookIcon from "./svg/FacebookIcon.astro";
 import WhatsappIcon from "./svg/WhatsappIcon.astro";
+import UbicIcon from "./svg/UbicIcon.astro";
+import InstagramIcon from "./svg/InstagramIcon.astro";
 ---
 
 <section class="contact-section wrapper">
@@ -13,14 +15,17 @@ import WhatsappIcon from "./svg/WhatsappIcon.astro";
         <div>
           <h3 class="contact-title">Escríbenos</h3>
           <div class="contact-social">
-            <a href="https://api.whatsapp.com/send?phone=989286683&text=Hola, quisiera hacer un pedido de una Pizza familiar!" target="_blank" class="contact-social-link">
+            <a href="https://api.whatsapp.com/send/?phone=51989286683&text&type=phone_number&app_absent=0" target="_blank" class="contact-social-link">
               <div class="svg-container"><WhatsappIcon /></div>
             </a>
-            <a href="https://m.me/bedimcode" target="_blank" class="contact-social-link">
+            <a href="https://www.facebook.com/LaPanizzeriadejose/" target="_blank" class="contact-social-link">
               <div class="svg-container"><FacebookIcon /></div>
             </a>
-            <a href="https://t.me/telegram" target="_blank" class="contact-social-link">
+            <a href="mailto:lapanizzeriadejose@gmail.com" target="_blank" class="contact-social-link">
               <div class="svg-container"><EmailIcon /></div>
+            </a>
+            <a href="https://www.instagram.com/lapanizzeriaj/tagged/?hl=es-la" target="_blank" class="contact-social-link">
+              <div class="svg-container"><InstagramIcon /></div>
             </a>
           </div>
         </div>
@@ -28,19 +33,20 @@ import WhatsappIcon from "./svg/WhatsappIcon.astro";
         <div>
           <h3 class="contact-title">Delivery</h3>
           <address class="contact-address">
-            +00-987-7654-321 <br />
-            +11-012345
+            +51-989-286-683 <br />
           </address>
         </div>
 
-        <div>
+        <div class="contact-location">
           <h3 class="contact-title">Ubicación</h3>
           <address class="contact-address">
             Lima - Lurin - Peru <br />
-            Av. Moon #4321
+            Los Suspiros Mz.B Lt.8
           </address>
-          <a href="https://maps.app.goo.gl/MAmMDxUBFXBSUzLH7" target="_blank" class="contact-map">
-            <i class="ri-map-pin-fill"></i>
+          <a href="https://maps.app.goo.gl/KFhgjWUEVmteBoUz9" target="_blank" class="contact-map">
+            <div class="svg-container">
+              <UbicIcon /> 
+            </div>
             <span>Ver en el Mapa</span>
           </a>
         </div>
@@ -122,8 +128,9 @@ import WhatsappIcon from "./svg/WhatsappIcon.astro";
 
   .contact-map {
     color: var(--first-color);
-    display: inline-flex;
+    display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     margin-top: 0.5rem;
     font-size: 1rem;
@@ -202,6 +209,12 @@ import WhatsappIcon from "./svg/WhatsappIcon.astro";
 
     .contact-sticker-2 {
       bottom: 12rem;
+    }
+    .contact-location {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>
