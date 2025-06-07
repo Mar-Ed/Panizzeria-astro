@@ -4,21 +4,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
+import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 
 import '../../css/styleSwiper.css';
 
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { FreeMode, Pagination } from 'swiper/modules';
 
 export default function App() {
   return (
     <>
       <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        freeMode={true}
         pagination={{
-          dynamicBullets: true,
+          clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[FreeMode, Pagination]}
         className="mySwiper"
       >
         <SwiperSlide><img src='/img/platos/Americana.jpg' class="slider-plato"></img></SwiperSlide>

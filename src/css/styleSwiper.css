@@ -36,13 +36,11 @@ body {
   align-items: center;
 }
 
-.swiper-slide img {
+
+
+.swiper-slide .slider-plato {
   display: block;
   width: 20%;
   height: 20%;
   object-fit: cover;
-}
-.slider-plato{
-  width: 200px;
-  height: 200px;
 }
