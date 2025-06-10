@@ -1,7 +1,7 @@
 ---
 import CartShopping from '../svg/CartShopping.astro'
 import Pizza from '../svg/Pizza.astro'
-
+import Bar from '../svg/Bar.astro'
 type Props={
     type:string
 }
@@ -9,7 +9,7 @@ type Props={
 const links=[
     {name:'Home',url:'/'},
     {name:'Nosotros ',url:'/Nosotros'},
-    {name:'Menu',url:'/Servicios'},
+    {name:'Menu',url:'/Menu'},
 ]
 ---
 <header class="navbar">
@@ -45,9 +45,27 @@ const links=[
                     <span>S/</span><span> 0.00</span>
                 </div>
             </div>
+            <div class="side-bar">
+                <div class="bar-sidebar">
+                    <Bar class="qwe"></Bar>
+                </div>
+                {
+                    links.map(link=>(
+                        <a href={link.url} >
+                            <span>{link.name}</span>
+                            <div class="hover-transition">
+
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
     </nav>
 </header>
 <style>
+    .bar-sidebar{
+        rotate: deg;
+    }
     .text-logo{
         display: flex;
         align-items: center;
@@ -115,6 +133,7 @@ const links=[
         display: flex;
         align-items: center;
         gap: .5rem;
+        color: var(--nav-color);
      }
 
      .shop-container{
@@ -132,5 +151,11 @@ const links=[
 
      .container-links a:hover .hover-transition{
         width: 100%;
+     }
+     @media screen and (max-width: 720px) {
+        .container-links,.shop-container {
+            display: none;
+        }
+        
      }
 </style>

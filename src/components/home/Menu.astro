@@ -1,0 +1,218 @@
+---
+import path from 'node:path'
+import fs from 'node:fs'
+
+let files:string[] = [];
+try {
+    const imgPizzas=path.resolve(process.cwd(),'public','img','platos')
+    files = fs.readdirSync(imgPizzas);
+    console.log(process.cwd())
+} catch (error) {
+    console.error("Error reading directory:", error);
+}
+---
+
+<section class="principal-container">
+    <div class="select-menus">
+        <div class="container-selects">
+            <div class="button-select">
+                <a href="#pizzasPersonales">Pizzas personales</a>
+            </div>
+            <div class="button-select">
+                <a href="#pizzasGrandes">Pizzas grandes</a>
+            </div>
+            <div class="button-select">
+                <a href="pizzasPersonales">Cocteles</a>
+            </div>
+        </div>
+    </div>
+    <div class="section-menu">
+        <div class="subsection personal-section">
+            <h2 id="pizzasPersonales">
+            Pizzas personales
+            </h2>
+            <div class="grid">
+                {files.map(file => {
+                    return (
+                        <div class="slider-plato">
+                            <div class="info-plato">
+                                <img src={`/img/platos/${file}`} alt={file} />
+                                <div class="info">
+                                    <h3>{file.split('.')[0]}</h3>
+                                    <p>Descripción de la pizza {file.split('.')[0]}</p>
+                                    <span>S/ 25.00</span>
+                                </div>
+                            </div>
+                            <div class="button-compra">
+                                <a href="">Ordena aqui</a>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+        <div class="subsection big-section">
+            <h2 id="pizzasGrandes">
+                    Pizzas grandes
+            </h2>
+            <div class="grid">
+                {files.map(file => {
+                    return (
+                        <div class="slider-plato">
+                            <div class="info-plato">
+                                <img src={`/img/platos/${file}`} alt={file} />
+                                <div class="info">
+                                    <h3>{file.split('.')[0]}</h3>
+                                    <p>Descripción de la pizza {file.split('.')[0]}</p>
+                                    <span>S/ 25.00</span>
+                                </div>
+                            </div>
+                            <div class="button-compra">
+                                <a href="">Ordena aqui</a>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+        <div class="subsection cocteles-section">
+            <h2>
+                Cocteles
+
+            </h2>
+            <div class="grid">
+                <div class="slider-plato">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .principal-container{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .select-menus{
+        width: 100%;
+        height: 100px;
+        padding-top: 20px;
+    }
+
+    .container-selects{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    .button-select{
+        display: flex;
+        text-align: center;
+        padding: .6rem .7rem;
+        background: var(--nav-color);
+        border-radius: 2rem;
+    }
+
+    .button-select a{
+        text-decoration: none ;
+        font-weight: bold;
+        color: var(--white-color);
+    }
+
+    .section-menu{
+        padding-left: 2rem;
+        padding-right: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .subsection{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .slider-plato {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: transform 0.3s ease;
+    }
+
+    .slider-plato:hover {
+        transform: translateY(-5px);
+    }
+
+    .info-plato {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1.8rem;
+        padding: 1rem;
+    }
+
+    .info-plato img {
+        width: 135px;
+        height: 135px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding-top: 1rem;
+    }
+
+    .info h3 {
+        font-size: 1.2rem;
+        margin: 0;
+        color: var(--primary-color, #e63946);
+    }
+
+    .info p {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    }
+
+    .info span {
+    font-weight: bold;
+    color: #333;
+    }
+
+    .button-compra {
+    padding: 1rem;
+    text-align: center;
+    }
+
+    .button-compra a {
+        text-decoration: none;
+        color: #fff;
+        background-color: var(--nav-color, #e63946);
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+    }
+
+    .button-compra a:hover {
+    background-color: #c92f3d;
+    }
+</style>

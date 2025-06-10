@@ -28,31 +28,31 @@ export default function App() {
           class="wrapper"
         >
           <SwiperSlide>
-            <img src="/img/platos/Americana.png" class="slider-plato"></img>
+            <img src="/img/platos/Americana.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Burger.png" class="slider-plato"></img>
+            <img src="/img/platos/Burger.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Campesina.png" class="slider-plato"></img>
+            <img src="/img/platos/Campesina.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Suprema.png" class="slider-plato"></img>
+            <img src="/img/platos/Suprema.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Pepperoni.png" class="slider-plato"></img>
+            <img src="/img/platos/Pepperoni.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Cuatro-quesos.png" class="slider-plato"></img>
+            <img src="/img/platos/Cuatro-quesos.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Especial.png" class="slider-plato"></img>
+            <img src="/img/platos/Especial.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Fourseasons.png" class="slider-plato"></img>
+            <img src="/img/platos/Fourseasons.png" className="slider-plato"></img>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="/img/platos/Hawaiana.png" class="slider-plato"></img>
+            <img src="/img/platos/Hawaiana.png" className="slider-plato"></img>
           </SwiperSlide>
         </Swiper>
       </div>
