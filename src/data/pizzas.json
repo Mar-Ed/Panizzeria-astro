@@ -1,65 +1,6 @@
 [
   {
-    "nombre": "Pizza Margarita",
-    "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate artesanal",
-      "Queso mozzarella",
-      "Albahaca fresca"
-    ],
-    "precios": {
-      "Personal 30CM": 31,
-      "Grande 35CM": 43,
-      "Familiar 40CM": 55
-    }
-  },
-  {
-    "nombre": "Pizza Pepperoni",
-    "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Pepperoni"
-    ],
-    "precios": {
-      "Personal 30CM": 31,
-      "Grande 35CM": 43,
-      "Familiar 40CM": 55
-    }
-  },
-  {
-    "nombre": "Pizza Hawaiana",
-    "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Jamón",
-      "Piña"
-    ],
-    "precios": {
-      "Personal 30CM": 31,
-      "Grande 35CM": 43,
-      "Familiar 40CM": 55
-    }
-  },
-  {
-    "nombre": "Campesina",
-    "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Alcachofa",
-      "Salami"
-    ],
-    "precios": {
-      "Personal 30CM": 31,
-      "Grande 35CM": 43,
-      "Familiar 40CM": 55
-    }
-  },
-  {
     "nombre": "Pizza Americana",
-    "tipo": "Pizzas Clásicas",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -71,131 +12,11 @@
       "Personal 30CM": 31,
       "Grande 35CM": 43,
       "Familiar 40CM": 55
-    }
-  },
-  {
-    "nombre": "Pizza Capresse",
-    "tipo": "Pizzas Veggies",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Tomates cherry",
-      "Albahaca fresca",
-      "Aceite de oliva"
-    ],
-    "precios": {
-      "Personal 30CM": 31,
-      "Grande 35CM": 43,
-      "Familiar 40CM": 55
-    }
-  },
-  {
-    "nombre": "Fourseasons",
-    "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Tocino ahumado",
-      "Champiñones",
-      "Pimientos"
-    ],
-    "precios": {
-      "Personal 30CM": 31,
-      "Grande 35CM": 43,
-      "Familiar 40CM": 55
-    }
-  },
-  {
-    "nombre": "Pizza Fugazzeta",
-    "tipo": "Pizzas Blancas",
-    "ingredientes": [
-      "Queso mozzarella",
-      "Cebolla caramelizada",
-      "Orégano",
-      "aceitunas negras"
-    ],
-    "precios": {
-      "Personal 30CM": 38,
-      "Grande 35CM": 47,
-      "Familiar 40CM": 59
-    }
-  },
-  {
-    "nombre": "Pizza Pesto",
-    "tipo": "Pizzas Blancas",
-    "ingredientes": [
-      "Queso mozzarella",
-      "Salsa pesto",
-      "Tomates cherry"
-    ],
-    "precios": {
-      "Personal 30CM": 38,
-      "Grande 35CM": 47,
-      "Familiar 40CM": 59
-    }
-  },
-  {
-    "nombre": "Pizza Cuatro Quesos",
-    "tipo": "Pizzas Blancas",
-    "ingredientes": [
-      "Mozzarella",
-      "Parmesano",
-      "Gorgonzola",
-      "Azul"
-    ],
-    "precios": {
-      "Personal 30CM": 38,
-      "Grande 35CM": 47,
-      "Familiar 40CM": 59
-    }
-  },
-  {
-    "nombre": "Pizza Zucchini",
-    "tipo": "Pizzas Veggies",
-    "ingredientes": [
-      "Queso mozzarella",
-      "Zucchini en láminas",
-      "Aceite de oliva",
-      "Orégano"
-    ],
-    "precios": {
-      "Personal 30CM": 38,
-      "Grande 35CM": 47,
-      "Familiar 40CM": 59
-    }
-  },
-  {
-    "nombre": "Pizza Caprina",
-    "tipo": "Pizzas Veggies",
-    "ingredientes": [
-      "Queso de cabra",
-      "Cebolla caramelizada",
-      "Mozzarella"
-     ],
-    "precios": {
-      "Personal 30CM": 38,
-      "Grande 35CM": 47,
-      "Familiar 40CM": 59
-    }
-  },
-  {
-    "nombre": "Pizza Tribeca",
-    "tipo": "Pizzas Veggies",
-    "ingredientes": [
-      "Queso mozzarella",
-      "Arúgula fresca",
-      "Tomates confitados",
-      "Aceite de trufa"
-    ],
-    "precios": {
-      "Personal 30CM": 38,
-      "Grande 35CM": 47,
-      "Familiar 40CM": 59
-    }
+    },
+    "img": "img/platos/Americana.png"
   },
   {
     "nombre": "Pizza Burger",
-    "tipo": "Pizzas Carnívoras",
     "ingredientes": [
       "Queso mozzarella",
       "Carne de hamburguesa",
@@ -207,11 +28,221 @@
       "Personal 30CM": 38,
       "Grande 35CM": 47,
       "Familiar 40CM": 59
-    }
+    },
+    "img": "img/platos/Burger.png"
+  },
+  {
+    "nombre": "Pizza Calabresa",
+    "ingredientes": [
+      "Queso mozzarella",
+      "Calabresa",
+      "Cebolla",
+      "Orégano",
+      "Aceitunas verdes"
+    ],
+    "precios": {
+      "Personal 30CM": 41,
+      "Grande 35CM": 48,
+      "Familiar 40CM": 61
+    },
+    "img": "img/platos/Calabresa.png"
+  },
+  {
+    "nombre": "Campesina",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Alcachofa",
+      "Salami"
+    ],
+    "precios": {
+      "Personal 30CM": 31,
+      "Grande 35CM": 43,
+      "Familiar 40CM": 55
+    },
+    "img": "img/platos/Campesina.png"
+  },
+  {
+    "nombre": "Pizza Capresse",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Tomates cherry",
+      "Albahaca fresca",
+      "Aceite de oliva"
+    ],
+    "precios": {
+      "Personal 30CM": 31,
+      "Grande 35CM": 43,
+      "Familiar 40CM": 55
+    },
+    "img": "img/platos/Capresse.png"
+  },
+  {
+    "nombre": "Pizza Caprina",
+    "ingredientes": [
+      "Queso de cabra",
+      "Cebolla caramelizada",
+      "Mozzarella"
+    ],
+    "precios": {
+      "Personal 30CM": 38,
+      "Grande 35CM": 47,
+      "Familiar 40CM": 59
+    },
+    "img": "img/platos/Caprina.png"
+  },
+  {
+    "nombre": "Pizza Cuatro Quesos",
+    "ingredientes": [
+      "Mozzarella",
+      "Parmesano",
+      "Gorgonzola",
+      "Azul"
+    ],
+    "precios": {
+      "Personal 30CM": 38,
+      "Grande 35CM": 47,
+      "Familiar 40CM": 59
+    },
+    "img": "img/platos/Cuatro-quesos.png"
+  },
+  {
+    "nombre": "Pizza Peruana Especial",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Chorizo peruano",
+      "Ají amarillo",
+      "Cebolla"
+    ],
+    "precios": {
+      "Personal 30CM": 36,
+      "Grande 35CM": 49,
+      "Familiar 40CM": 61
+    },
+    "img": "img/platos/Especial.png"
+  },
+  {
+    "nombre": "Fourseasons",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Tocino ahumado",
+      "Champiñones",
+      "Pimientos"
+    ],
+    "precios": {
+      "Personal 30CM": 31,
+      "Grande 35CM": 43,
+      "Familiar 40CM": 55
+    },
+    "img": "img/platos/Fourseasons.png"
+  },
+  {
+    "nombre": "Pizza Fugazzeta",
+    "ingredientes": [
+      "Queso mozzarella",
+      "Cebolla caramelizada",
+      "Orégano",
+      "aceitunas negras"
+    ],
+    "precios": {
+      "Personal 30CM": 38,
+      "Grande 35CM": 47,
+      "Familiar 40CM": 59
+    },
+    "img": "img/platos/Fugazzeta.png"
+  },
+  {
+    "nombre": "Pizza Hawaiana",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Jamón",
+      "Piña"
+    ],
+    "precios": {
+      "Personal 30CM": 31,
+      "Grande 35CM": 43,
+      "Familiar 40CM": 55
+    },
+    "img": "img/platos/Hawaiana.png"
+  },
+  {
+    "nombre": "Pizza Jamon y Champiñones",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Jamon",
+      "Champiñones"
+    ],
+    "precios": {
+      "Personal 30CM": 38,
+      "Grande 35CM": 47,
+      "Familiar 40CM": 59
+    },
+    "img": "img/platos/Jamon-champinones.png"
+  },
+  {
+    "nombre": "Pizza Lomo",
+    "ingredientes": [
+      "Queso mozzarella",
+      "Lomo saltado",
+      "Cebolla",
+      "Ají amarillo"
+    ],
+    "precios": {
+      "Personal 30CM": 45,
+      "Grande 35CM": 50,
+      "Familiar 40CM": 68
+    },
+    "img": "img/platos/Lomo.png"
+  },
+  {
+    "nombre": "Pizza Margarita",
+    "ingredientes": [
+      "Salsa de tomate artesanal",
+      "Queso mozzarella",
+      "Albahaca fresca"
+    ],
+    "precios": {
+      "Personal 30CM": 31,
+      "Grande 35CM": 43,
+      "Familiar 40CM": 55
+    },
+    "img": "img/platos/Margarita.png"
+  },
+  {
+    "nombre": "Pizza Pepperoni",
+    "ingredientes": [
+      "Salsa de tomate",
+      "Queso mozzarella",
+      "Pepperoni"
+    ],
+    "precios": {
+      "Personal 30CM": 31,
+      "Grande 35CM": 43,
+      "Familiar 40CM": 55
+    },
+    "img": "img/platos/Pepperoni.png"
+  },
+  {
+    "nombre": "Pizza Pesto",
+    "ingredientes": [
+      "Queso mozzarella",
+      "Salsa pesto",
+      "Tomates cherry"
+    ],
+    "precios": {
+      "Personal 30CM": 38,
+      "Grande 35CM": 47,
+      "Familiar 40CM": 59
+    },
+    "img": "img/platos/Pizza-Pesto.png"
   },
   {
     "nombre": "Pizza Suprema",
-    "tipo": "Pizzas Carnívoras",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -225,68 +256,37 @@
       "Personal 30CM": 38,
       "Grande 35CM": 47,
       "Familiar 40CM": 59
-    }
+    },
+    "img": "img/platos/Suprema.png"
   },
   {
-    "nombre": "Pizza Calabresa",
-    "tipo": "Pizzas Gourmet",
+    "nombre": "Pizza Tribeca",
     "ingredientes": [
       "Queso mozzarella",
-      "Calabresa",
-      "Cebolla",
-      "Orégano", 
-      "Aceitunas verdes"
-    ],
-    "precios": {
-      "Personal 30CM": 41,
-      "Grande 35CM": 48,
-      "Familiar 40CM": 61
-    }
-  },
-  {
-    "nombre": "Pizza Artichoke",
-    "tipo": "Pizzas Gourmet",
-    "ingredientes": [
-      "Mozzarella",
-      "Alcachofas",
-      "Aceite de oliva",
-      "Ajo",
-      "Parmesano"
-    ],
-    "precios": {
-      "Personal 30CM": 41,
-      "Grande 35CM": 48,
-      "Familiar 40CM": 61
-    }
-  },
-  {
-    "nombre": "Pizza Lomo",
-    "tipo": "Pizzas Carnívoras",
-    "ingredientes": [
-      "Queso mozzarella",
-      "Lomo saltado",
-      "Cebolla",
-      "Ají amarillo"
-    ],
-    "precios": {
-      "Personal 30CM": 45,
-      "Grande 35CM": 50,
-      "Familiar 40CM": 68
-    }
-  },
-  {
-    "nombre": "Pizza Jamon y Champiñones",
-    "tipo": "Pizzas Carnívoras",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Jamon",
-      "Champiñones"
+      "Arúgula fresca",
+      "Tomates confitados",
+      "Aceite de trufa"
     ],
     "precios": {
       "Personal 30CM": 38,
       "Grande 35CM": 47,
       "Familiar 40CM": 59
-    }
+    },
+    "img": "img/platos/Tribeca.png"
+  },
+  {
+    "nombre": "Pizza Zucchini",
+    "ingredientes": [
+      "Queso mozzarella",
+      "Zucchini en láminas",
+      "Aceite de oliva",
+      "Orégano"
+    ],
+    "precios": {
+      "Personal 30CM": 38,
+      "Grande 35CM": 47,
+      "Familiar 40CM": 59
+    },
+    "img": "img/platos/Zucchini.png"
   }
 ]
