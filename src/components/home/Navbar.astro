@@ -17,57 +17,77 @@ const links=[
 const cost:string="0.00"
 ---
 <header class="navbar">
-    <nav class="nav-container wrapper">
-            <div class="text-logo">
-                <Pizza/>
-                <div class="text-panizzeria">
-                    <span class="title">LA</span>
-                    <span class="title"> PANIZZERIA</span>
-                    <div class="bar-navbar">
+  <nav class="nav-container wrapper">
+    <div class="text-logo">
+      <Pizza />
+      <div class="text-panizzeria">
+        <span class="title">LA</span>
+        <span class="title">PANIZZERIA</span>
+        <div class="bar-navbar"></div>
+        <div class="subtitle-panizzeria">
+          <span>PIZZAS Y PANES ARTESANALES</span>
+        </div>
+      </div>
+    </div>
 
-                    </div>
-                    <div class="subtitle-panizzeria">
-                        <span>PIZZAS Y PANES ARTESANALES</span>
-                    </div>
-                </div>
-            </div>
-            <div class="container-links">
-                {
-                    links.map(link=>(
-                        <a href={link.url} >
-                            <span>{link.name}</span>
-                            <div class="hover-transition">
+    <div class="container-links">
+      {
+        links.map(link => (
+          <a href={link.url}>
+            <span>{link.name}</span>
+            <div class="hover-transition"></div>
+          </a>
+        ))
+      }
+    </div>
 
-                            </div>
-                        </a>
-                    ))
-                }
-            </div>
-            <div class="shop-container">
-                <div class="button-shop">
-                    <CartShopping/>
-                    <CostShop costShop={cost}/>
-                </div>
-            </div>
-            <div class="side-bar">
-                <div class="bar-sidebar">
-                    <Bar class="qwe"></Bar>
-                </div>
-                <div class="links-sidebar">
-                    {
-                        links.map(link=>(
-                            <a href={link.url} >
-                                <span>{link.name}</span>
-                                <div class="hover-transition">
-                                
-                                </div>
-                            </a>
-                        ))
-                    }
-                </div>
-            </div>
-    </nav>
+    <div class="shop-container">
+      <div class="button-shop">
+        <CartShopping />
+        <CostShop costShop={cost} />
+      </div>
+    </div>
+
+    <!-- Sidebar Mobile -->
+    <div class="side-bar" id="menu-btn">
+      <div class="bar-sidebar">
+        <Bar />
+      </div>
+      <div class="links-sidebar" id="mobile-menu">
+        {
+          links.map(link => (
+            <a href={link.url}>
+              <span>{link.name}</span>
+              <div class="hover-transition"></div>
+            </a>
+          ))
+        }
+      </div>
+      <div class="overlay" id="overlay"></div>
+    </div>
+  </nav>
 </header>
+<script is:inline>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.remove('active');
+        }
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('active');
+        });
+      });
+    }
+  </script>
 <style>
     .links-sidebar a{
         text-decoration: none;
@@ -75,23 +95,63 @@ const cost:string="0.00"
     }
 
     .side-bar{
-        height: 100%;
-        display: flex;
-        justify-content: center;
+        display: none;
+        width: 100%;
         padding-top: 0.75rem;
         padding-right: 1.5rem;
+        justify-content: end;
+        position: relative;
     }
-    .links-sidebar{
-        position: absolute;
-        right: 0;
-        top: 7rem;
-        right: 1rem;
-        background-color: var(--body-color);
-        padding: 1rem;
-        border-radius: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem   ;
+    .links-sidebar {
+  position: fixed;
+  top: 100px;
+  right: -300px; /* Empieza oculto */
+  width: 0;
+  max-width: 300px;
+  height: calc(100vh - 100px);
+  background-color: var(--body-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 999;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.links-sidebar.active {
+  right: 0;
+  width: 100%;
+}
+.overlay {
+  position: fixed;
+  top: 100px;
+  left: 0;
+  width: 0;
+  height: calc(100vh - 100px);
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 9;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.overlay.active {
+  width: calc(100vw - 300px); /* Ajuste para que no cubra el sidebar */
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+    .links-sidebar.active::after {
+        content: '';
+        position: fixed;
+        top: 100px; /* Alineado con la altura del navbar */
+        left: 0;
+        width: calc(100vw - 300px); /* Evita cubrir el sidebar */
+        height: calc(100vh - 100px); /* Evita cubrir el navbar */
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 9;
     }
     .bar-sidebar{
         rotate: deg;
@@ -187,6 +247,15 @@ const cost:string="0.00"
         .container-links,.shop-container {
             display: none;
         }
-        
+        .subtitle-panizzeria span{
+            font-size: 0.5rem;
+        }
+        .side-bar {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+        }
+
      }
 </style>
