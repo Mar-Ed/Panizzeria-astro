@@ -1,6 +1,7 @@
 [
   {
     "nombre": "Pizza Americana",
+    "tipo": "Pizzas Clásicas",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -17,6 +18,7 @@
   },
   {
     "nombre": "Pizza Burger",
+    "tipo": "Pizzas Carnívoras",
     "ingredientes": [
       "Queso mozzarella",
       "Carne de hamburguesa",
@@ -33,6 +35,7 @@
   },
   {
     "nombre": "Pizza Calabresa",
+    "tipo": "Pizzas Gourmet",
     "ingredientes": [
       "Queso mozzarella",
       "Calabresa",
@@ -49,6 +52,7 @@
   },
   {
     "nombre": "Campesina",
+    "tipo": "Pizzas Clásicas",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -64,6 +68,7 @@
   },
   {
     "nombre": "Pizza Capresse",
+    "tipo": "Pizzas Veggies",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -80,6 +85,7 @@
   },
   {
     "nombre": "Pizza Caprina",
+    "tipo": "Pizzas Veggies",
     "ingredientes": [
       "Queso de cabra",
       "Cebolla caramelizada",
@@ -94,6 +100,7 @@
   },
   {
     "nombre": "Pizza Cuatro Quesos",
+    "tipo": "Pizzas Blancas",
     "ingredientes": [
       "Mozzarella",
       "Parmesano",
@@ -109,6 +116,7 @@
   },
   {
     "nombre": "Pizza Peruana Especial",
+    "tipo": "Pizzas Especiales",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -125,6 +133,7 @@
   },
   {
     "nombre": "Fourseasons",
+    "tipo": "Pizzas Especiales",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -141,6 +150,7 @@
   },
   {
     "nombre": "Pizza Fugazzeta",
+    "tipo": "Pizzas Blancas",
     "ingredientes": [
       "Queso mozzarella",
       "Cebolla caramelizada",
@@ -156,6 +166,7 @@
   },
   {
     "nombre": "Pizza Hawaiana",
+    "tipo": "Pizzas Clásicas",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -171,6 +182,7 @@
   },
   {
     "nombre": "Pizza Jamon y Champiñones",
+    "tipo": "Pizzas Carnívoras",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -186,6 +198,7 @@
   },
   {
     "nombre": "Pizza Lomo",
+    "tipo": "Pizzas Carnívoras",
     "ingredientes": [
       "Queso mozzarella",
       "Lomo saltado",
@@ -201,6 +214,7 @@
   },
   {
     "nombre": "Pizza Margarita",
+    "tipo": "Pizzas Clásicas",
     "ingredientes": [
       "Salsa de tomate artesanal",
       "Queso mozzarella",
@@ -215,6 +229,7 @@
   },
   {
     "nombre": "Pizza Pepperoni",
+    "tipo": "Pizzas Clásicas",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -229,6 +244,7 @@
   },
   {
     "nombre": "Pizza Pesto",
+    "tipo": "Pizzas Veggies",
     "ingredientes": [
       "Queso mozzarella",
       "Salsa pesto",
@@ -243,6 +259,7 @@
   },
   {
     "nombre": "Pizza Suprema",
+    "tipo": "Pizzas Carnívoras",
     "ingredientes": [
       "Salsa de tomate",
       "Queso mozzarella",
@@ -261,6 +278,7 @@
   },
   {
     "nombre": "Pizza Tribeca",
+    "tipo": "Pizzas Gourmet",
     "ingredientes": [
       "Queso mozzarella",
       "Arúgula fresca",
@@ -276,6 +294,7 @@
   },
   {
     "nombre": "Pizza Zucchini",
+    "tipo": "Pizzas Veggies",
     "ingredientes": [
       "Queso mozzarella",
       "Zucchini en láminas",
