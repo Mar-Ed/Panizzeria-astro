@@ -1,0 +1,204 @@
+---
+import PizzaBox from "../svg/PizzaBox.astro";
+---
+
+<section>
+  <div class="about-container wrapper">
+    <div class="order-container">
+      <h1 class="order-title">¡Ordena tu pizza favorita!</h1>
+      <a href="#popular" class="button">Ordena aquí</a>
+    </div>
+    <div class="box">
+      <div class="top-container">
+        <div class="sticker-pizza">
+          <PizzaBox />
+        </div>
+        <div class="title-container">
+          <h1 class="title">
+            Nuestra historia comienza con la obsesión de encontrar la masa
+            perfecta
+          </h1>
+        </div>
+      </div>
+      <div class="first-box">
+        <div class="img-container">
+          <img
+            class="img-box"
+            src="/img/dueños.jpg"
+            alt="Imagen de la pizzería"
+          />
+        </div>
+        <div class="container-text">
+          <h1 class="title-2">NUESTRA HISTORIA</h1>
+          <h3 class="subtitle">
+            En La Panizzería combinamos el arte del pan artesanal con la pasión por la auténtica pizza italiana. Fundada en 2017 por una pareja de italianos, Giulia Bianchi y Marco Rossi, nuestra pizzería nace con el sueño de compartir el verdadero sabor de Italia en las playas de Pulpos, Perú.
+          </h3>
+        </div>
+      </div>
+      <div class="first-box">
+        <div class="container-text-2">
+          <h1 class="title">LA CLAVE DE NUESTRO ÉXITO</h1>
+          <h3 class="subtitle">
+            El secreto del éxito reside en los mejores ingredientes para
+            elaborar una pizza excepcional. Hoy buscamos la perfección, tal como
+            lo hemos hecho durante 15 años, cuando abrimos la pizzería en Lima,
+            Perú.
+          </h3>
+        </div>
+        <div class="img-container">
+          <img
+            class="img-box"
+            src="/img/plato-principal.jpg"
+            alt="Imagen de la pizzería"
+          />
+        </div>
+      </div>
+      <div class="first-box">
+        <div class="img-container">
+          <img
+            class="img-box"
+            src="/img/sala.jpg"
+            alt="Imagen de la pizzería"
+          />
+        </div>
+        <div class="container-text">
+          <h1 class="title-2">MISIÓN</h1>
+          <h3 class="subtitle">
+            Nuestra misión es ofrecer una experiencia gastronómica cercana y memorable, donde cada cliente se sienta en casa. Creemos en la cocina de corazón, en la calidez del servicio y en el compromiso con la comunidad local de Pulpos. Por eso trabajamos con productores de la región para que cada ingrediente llegue fresco a tu mesa.
+          </h3>
+        </div>
+      </div>
+      <div class="first-box">
+        <div class="container-text-2">
+          <h1 class="title">VISIÓN</h1>
+          <h3 class="subtitle">
+            Nuestra visión es ser el punto de encuentro para los amantes del pan y la pizza, innovando siempre con nuevas combinaciones de sabores y adaptándonos a las tendencias sin perder la esencia artesanal. Queremos que La Panizzería sea sinónimo de calidad, cercanía y creatividad.
+          </h3>
+        </div>
+        <div class="img-container">
+          <img
+            class="img-box"
+            src="/img/promos.jpg"
+            alt="Imagen de la pizzería"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+  }
+  .order-container {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .about-container {
+    text-align: center;
+  }
+  .top-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    background-color: var(--nav-color);
+  }
+  .sticker-pizza {
+    height: 8rem;
+    width: 8rem;
+    display: flex;
+  }
+  .title-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+    width: calc(66.6667%);
+    flex-direction: column;
+  }
+  .title {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 48px;
+    line-height: 56px;
+    color: var(--body-color);
+  }
+  .title-2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 48px;
+    line-height: 56px;
+    color: var(--nav-color);
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+
+  .button {
+    background-color: #ff6347;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .button:hover {
+    background-color: #e55347;
+  }
+
+  .about__sticker {
+    fill: var(#eba824);
+  }
+
+  .first-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .img-container {
+    box-sizing: border-box;
+    max-width: 50%;
+    vertical-align: bottom;
+    display: block;
+  }
+  .img-box {
+    width: auto;
+    height: auto;
+    max-width: 100%; /* Adjust as needed */
+  }
+  .container-text {
+    box-sizing: border-box;
+    background-color: var(--container-color);
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-text-2 {
+    box-sizing: border-box;
+    background-color: var(--nav-color);
+    color: var(--body-color);
+    max-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
