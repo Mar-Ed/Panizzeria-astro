@@ -1,25 +1,12 @@
 ---
-import path from 'node:path'
-import fs from 'node:fs'
-
-let files:string[] = [];
-try {
-    const imgPizzas=path.resolve(process.cwd(),'public','img','platos')
-    files = fs.readdirSync(imgPizzas);
-    console.log(process.cwd())
-} catch (error) {
-    console.error("Error reading directory:", error);
-}
+import pizzasInfo from '../../data/pizzas.json'
 ---
 
 <section class="principal-container">
     <div class="select-menus">
         <div class="container-selects">
             <div class="button-select">
-                <a href="#pizzasPersonales">Pizzas personales</a>
-            </div>
-            <div class="button-select">
-                <a href="#pizzasGrandes">Pizzas grandes</a>
+                <a href="#pizzasPersonales">Pizzas</a>
             </div>
             <div class="button-select">
                 <a href="pizzasPersonales">Cocteles</a>
@@ -32,47 +19,23 @@ try {
             Pizzas personales
             </h2>
             <div class="grid">
-                {files.map(file => {
-                    return (
+                {
+                    pizzasInfo.map(pizza=>(
                         <div class="slider-plato">
                             <div class="info-plato">
-                                <img src={`/img/platos/${file}`} alt={file} />
+                                <img src={pizza.img} alt={pizza.tipo} />
                                 <div class="info">
-                                    <h3>{file.split('.')[0]}</h3>
-                                    <p>Descripción de la pizza {file.split('.')[0]}</p>
-                                    <span>S/ 25.00</span>
+                                    <h3>{pizza.nombre}</h3>
+                                    <p>{pizza.ingredientes.join(', ')}</p>
+                                    <span>$/{pizza.precios["Personal 30CM"]}</span>
                                 </div>
                             </div>
                             <div class="button-compra">
                                 <a href="">Ordena aqui</a>
                             </div>
                         </div>
-                    );
-                })}
-            </div>
-        </div>
-        <div class="subsection big-section">
-            <h2 id="pizzasGrandes">
-                    Pizzas grandes
-            </h2>
-            <div class="grid">
-                {files.map(file => {
-                    return (
-                        <div class="slider-plato">
-                            <div class="info-plato">
-                                <img src={`/img/platos/${file}`} alt={file} />
-                                <div class="info">
-                                    <h3>{file.split('.')[0]}</h3>
-                                    <p>Descripción de la pizza {file.split('.')[0]}</p>
-                                    <span>S/ 25.00</span>
-                                </div>
-                            </div>
-                            <div class="button-compra">
-                                <a href="">Ordena aqui</a>
-                            </div>
-                        </div>
-                    );
-                })}
+                    ))
+                }
             </div>
         </div>
         <div class="subsection cocteles-section">
@@ -186,7 +149,7 @@ try {
     }
 
     .info p {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #555;
     margin: 0;
     }
