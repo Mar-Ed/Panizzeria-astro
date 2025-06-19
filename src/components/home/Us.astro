@@ -29,7 +29,7 @@ import PizzaBox from "../svg/PizzaBox.astro";
           />
         </div>
         <div class="container-text">
-          <h1 class="title-2">NUESTRA HISTORIA</h1>
+          <h1 class="title-2">EL COMIENZO</h1>
           <h3 class="subtitle">
             En La Panizzería combinamos el arte del pan artesanal con la pasión por la auténtica pizza italiana. Fundada en 2017 por una pareja de italianos, Giulia Bianchi y Marco Rossi, nuestra pizzería nace con el sueño de compartir el verdadero sabor de Italia en las playas de Pulpos, Perú.
           </h3>
@@ -128,6 +128,7 @@ import PizzaBox from "../svg/PizzaBox.astro";
     justify-content: left;
     width: calc(66.6667%);
     flex-direction: column;
+    font-family: var(--second-font);
   }
   .title {
     margin-top: 40px;
@@ -145,8 +146,11 @@ import PizzaBox from "../svg/PizzaBox.astro";
   }
 
   .subtitle {
-    font-size: 1.2rem;
+    font-size: var(--normal-font-size);
+    font-family: var(--body-font);
+    font-weight: 500;
     margin-bottom: 30px;
+    text-align: justify;
   }
 
   .button {
@@ -190,6 +194,7 @@ import PizzaBox from "../svg/PizzaBox.astro";
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
   }
   .container-text-2 {
     box-sizing: border-box;
@@ -200,5 +205,6 @@ import PizzaBox from "../svg/PizzaBox.astro";
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 3rem;
   }
 </style>

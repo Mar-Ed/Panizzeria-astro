@@ -1,6 +1,103 @@
+---
+import AmexIcon from "../svg/AmexIcon.astro";
+import FacebookIcon from "../svg/FacebookIcon.astro";
+import InstagramIcon from "../svg/InstagramIcon.astro";
+import MastercadIcon from "../svg/MastercadIcon.astro";
+import Pizza from "../svg/Pizza.astro";
+import VisaIcon from "../svg/VisaIcon.astro";
+import WhatsappIcon from "../svg/WhatsappIcon.astro";
+---
+
 <footer>
-    <h1>Este es el footer</h1>
+  <div class="wrapper">
+    <div class="footer-header">
+      <div class="text-logo">
+        <div class="svg-container">
+          <Pizza />
+        </div>
+        <div class="text-panizzeria">
+          <span class="title">LA</span>
+          <span class="title">PANIZZERIA</span>
+          <div class="bar-footer"></div>
+          <div class="subtitle-panizzeria">
+            <span>PIZZAS Y PANES ARTESANALES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-menu">
+      <div class="footer-sponsor-container">
+        <h2 class="footer-menu-title">Subscribirse</h2>
+        <h3>
+          ¿Quieres ser el primero en enterarte de nuestras promos?
+          <br />
+          ¡Claro que las quieres!
+        </h3>
+        <div class="input-container">
+          <input
+            type="email"
+            placeholder="Ingresa tu correo electrónico"
+            class="footer-sponsor-input"
+          />
+          <a href="#" class="footer-sponsor-btn">Registrate</a>
+        </div>
+      </div>
+      <div class="footer-column-section">
+        <h2 class="footer-menu-title">Social</h2>
+        <div class="footer-box-container">
+          <a
+            href="https://www.facebook.com/LaPanizzeriadejose/"
+            class="footer-social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="svg-container-social">
+              <FacebookIcon />
+            </div>
+          </a>
+          <a
+            href="https://www.instagram.com/lapanizzeriadejose/?hl=es-la"
+            class="footer-social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="svg-container-social">
+              <InstagramIcon />
+            </div>
+          </a>
+          <a
+            href="https://api.whatsapp.com/send/?phone=51989286683&text&type=phone_number&app_absent=0"
+            class="footer-social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="svg-container-social">
+              <WhatsappIcon />
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="footer-column-section">
+        <h2 class="footer-menu-title">Métodos de Pago</h2>
+        <div class="footer-box-container">
+          <div class="svg-container">
+            <VisaIcon />
+          </div>
+          <div class="svg-container">
+            <MastercadIcon />
+          </div>
+          <div class="svg-container">
+            <AmexIcon />
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="footer-copyright">
+      © La Panizzeria. Todos los derechos reservados
+    </p>
+  </div>
 </footer>
+
 <style>
   footer {
     width: 100%;
@@ -9,5 +106,106 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--first-color-dark);
+  }
+  .wrapper {
+    padding-top: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+  .footer-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  .title{
+    color: var(--first-color);
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: 1.5rem;
+  }
+  .text-logo {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    height: 60%;
+    width: 60%;
+  }
+  .bar-footer {
+    display: flex;
+    height: 40%;
+    width: 40%;
+  }
+  .text-panizzeria {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+  .bar-footer {
+    width: 100%;
+    height: 1px;
+    background-color: var(--first-color);
+  }
+  .subtitle-panizzeria span {
+    font-size: 0.74rem;
+    font-weight: bold;
+    
+  }
+  .footer-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8rem;
+  }
+
+  .svg-container {
+    width: 50px;
+    height: 50px;
+  }
+  .svg-container-social {
+    width: 30px;
+    height: 30px;
+    fill: var(--first-color);
+  }
+  .footer-column-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .footer-box-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .footer-sponsor-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 50%;
+  }
+  h3 {
+    color: var(--first-color-dark);
+    text-align: left;
+    font-size: small;
+  }
+  .footer-copyright {
+    text-align: left;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer-menu-title {
+    color: var(--first-color-dark);
+    font-weight: 100;
+    font-size: var(--h2-font-size);
+    font-family: var(--second-font);
   }
 </style>

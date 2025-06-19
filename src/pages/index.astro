@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/home/Navbar.astro'
 import Contact from '../components/home/Contact.astro';
 import ScrollBar from '../components/react/Scrollbar'
+import Footer from '../components/home/Footer.astro';
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -14,5 +15,6 @@ import ScrollBar from '../components/react/Scrollbar'
     <Hero/>
     <ScrollBar client:load/>
     <Contact/>
+    <Footer/>
   </main>
 </Layout>
