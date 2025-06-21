@@ -8,17 +8,51 @@ import VisaIcon from "../svg/VisaIcon.astro";
 import WhatsappIcon from "../svg/WhatsappIcon.astro";
 ---
 
+<style>
+  .footer-sponsor-input {
+    border: none;
+    background: transparent;
+  }
+
+  .footer-sponsor-input:focus {
+    outline: none;
+  }
+
+  .footer-sponsor-input::placeholder {
+    font-weight: bold;
+  }
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background-color: var(--container-color);
+    border-radius: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-input {
+    background-color: var(--first-color);
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 2rem;
+    color: var(--white-color);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px hsla(353, 93%, 50%, 0.8);
+  }
+
+  .btn-input a {
+    text-decoration: none;
+    color: var(--white-color);
+  }
+</style>
 <footer>
   <div class="wrapper">
     <div class="footer-header">
       <div class="text-logo">
-        <div class="svg-container">
-          <Pizza />
-        </div>
         <div class="text-panizzeria">
-          <span class="title">LA</span>
-          <span class="title">PANIZZERIA</span>
-          <div class="bar-footer"></div>
+          <span class="title title-center">LA</span>
+          <span class="title title-line">PANIZZERIA</span>
           <div class="subtitle-panizzeria">
             <span>PIZZAS Y PANES ARTESANALES</span>
           </div>
@@ -26,22 +60,6 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
       </div>
     </div>
     <div class="footer-menu">
-      <div class="footer-sponsor-container">
-        <h2 class="footer-menu-title">Subscribirse</h2>
-        <h3>
-          ¿Quieres ser el primero en enterarte de nuestras promos?
-          <br />
-          ¡Claro que las quieres!
-        </h3>
-        <div class="input-container">
-          <input
-            type="email"
-            placeholder="Ingresa tu correo electrónico"
-            class="footer-sponsor-input"
-          />
-          <a href="#" class="footer-sponsor-btn">Registrate</a>
-        </div>
-      </div>
       <div class="footer-column-section">
         <h2 class="footer-menu-title">Social</h2>
         <div class="footer-box-container">
@@ -77,6 +95,23 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
           </a>
         </div>
       </div>
+      <div class="footer-sponsor-container">
+        <h2 class="footer-menu-title">Subscribirse</h2>
+        <div class="footer-sponsor-text">
+          <span>Recibe las últimas novedades y ofertas</span>
+          <span>en tu correo electrónico</span>
+        </div>
+        <div class="input-container">
+          <input
+            type="email"
+            placeholder="Email"
+            class="footer-sponsor-input"
+          />
+          <button class="btn-input">
+            <a href="#" class="footer-sponsor-btn">Suscribirse</a>
+          </button>
+        </div>
+      </div>
       <div class="footer-column-section">
         <h2 class="footer-menu-title">Métodos de Pago</h2>
         <div class="footer-box-container">
@@ -102,20 +137,22 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
   footer {
     width: 100%;
     height: 100px;
+    padding-top: 12rem;
     background-color: var(--color-footer);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--first-color-dark);
   }
+
   .wrapper {
-    padding-top: 250px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
   }
+
   .footer-header {
     position: relative;
     display: flex;
@@ -123,39 +160,56 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     flex-direction: column;
     width: 100%;
   }
-  .title{
+
+  .title {
     color: var(--first-color);
     font-weight: bold;
     letter-spacing: 5px;
     font-size: 1.5rem;
   }
+
+  .title-line {
+    text-decoration-line: underline;
+    text-underline-offset: 5px;
+  }
+
+  .title-center {
+    text-align: center;
+    padding-right: 1rem;
+  }
+
   .text-logo {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     height: 60%;
     width: 60%;
   }
+
   .bar-footer {
     display: flex;
     height: 40%;
     width: 40%;
   }
+
   .text-panizzeria {
     display: flex;
     flex-direction: column;
     gap: 1px;
   }
+
   .bar-footer {
     width: 100%;
     height: 1px;
     background-color: var(--first-color);
   }
+
   .subtitle-panizzeria span {
     font-size: 0.74rem;
     font-weight: bold;
-    
   }
+
   .footer-menu {
     display: flex;
     flex-direction: row;
@@ -168,22 +222,26 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     width: 50px;
     height: 50px;
   }
+
   .svg-container-social {
     width: 30px;
     height: 30px;
     fill: var(--first-color);
   }
+
   .footer-column-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
+
   .footer-box-container {
     display: flex;
     align-items: center;
     gap: 2rem;
   }
+
   .footer-sponsor-container {
     display: flex;
     flex-direction: column;
@@ -192,20 +250,54 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     gap: 1rem;
     width: 50%;
   }
-  h3 {
-    color: var(--first-color-dark);
-    text-align: left;
-    font-size: small;
+
+  .footer-social-text {
+    text-decoration: none;
+    color: var(--first-color);
   }
+
+  .footer-sponsor-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--first-color-dark);
+  }
+
+  .footer-sponsor-text span:nth-child(1) {
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+
+  .footer-sponsor-text span:nth-child(2) {
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
   .footer-copyright {
     text-align: left;
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
   }
+
   .footer-menu-title {
     color: var(--first-color-dark);
     font-weight: 100;
     font-size: var(--h2-font-size);
     font-family: var(--second-font);
+  }
+
+  @media screen and (max-width: 816px) {
+    footer {
+      padding-top: 24rem;
+    }
+    .footer-menu {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
+    .footer-sponsor-text {
+      text-align: center;
+    }
   }
 </style>

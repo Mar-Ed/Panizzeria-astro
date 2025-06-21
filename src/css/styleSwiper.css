@@ -5,7 +5,7 @@ body {
   position: relative;
   height: 100%;
   background: var(--body-color);
-  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+
   font-size: 14px;
   color: var(--white-color);
 }
@@ -33,7 +33,7 @@ body {
   object-fit: cover;
   background-color: var(--body-color);
 }
-.slider-container{
+.slider-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +59,6 @@ body {
   font-size: 3rem;
   font-weight: var(--biggest-font-size);
   color: var(--title-color);
-  font-family: var(--second-font);
 }
 .text-container {
   display: flex;
@@ -68,9 +67,9 @@ body {
   justify-content: center;
   align-items: center;
   padding-top: 1rem;
-  color:var(--first-color-dark);
+  color: var(--first-color-dark);
 }
-.slider-title{
+.slider-title {
   font-family: var(--second-font);
   font-size: var(--h1-font-size);
   font-weight: 200;

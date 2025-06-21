@@ -19,27 +19,41 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
           <div class="writewe">
             <h3 class="contact-title">Escríbenos</h3>
             <div class="contact-social">
-              <a href="https://api.whatsapp.com/send/?phone=51989286683&text&type=phone_number&app_absent=0" target="_blank" class="contact-social-link">
+              <a
+                href="https://api.whatsapp.com/send/?phone=51989286683&text&type=phone_number&app_absent=0"
+                target="_blank"
+                class="contact-social-link"
+              >
                 <div class="svg-container"><WhatsappIcon /></div>
               </a>
-              <a href="https://www.facebook.com/LaPanizzeriadejose/" target="_blank" class="contact-social-link">
+              <a
+                href="https://www.facebook.com/LaPanizzeriadejose/"
+                target="_blank"
+                class="contact-social-link"
+              >
                 <div class="svg-container"><FacebookIcon /></div>
               </a>
-              <a href="mailto:lapanizzeriadejose@gmail.com" target="_blank" class="contact-social-link">
+              <a
+                href="mailto:lapanizzeriadejose@gmail.com"
+                target="_blank"
+                class="contact-social-link"
+              >
                 <div class="svg-container"><EmailIcon /></div>
               </a>
-              <a href="https://www.instagram.com/lapanizzeriaj/tagged/?hl=es-la" target="_blank" class="contact-social-link">
+              <a
+                href="https://www.instagram.com/lapanizzeriaj/tagged/?hl=es-la"
+                target="_blank"
+                class="contact-social-link"
+              >
                 <div class="svg-container"><InstagramIcon /></div>
               </a>
+            </div>
           </div>
-        </div>
 
-        <div class="delivery-container">
-          <h3 class="contact-title">Delivery</h3>
-          <address class="contact-address">
-            +51-989-286-683
-          </address>
-        </div>
+          <div class="delivery-container">
+            <h3 class="contact-title">Delivery</h3>
+            <address class="contact-address">+51-989-286-683</address>
+          </div>
         </div>
 
         <div class="contact-location">
@@ -48,9 +62,13 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
             <span>LiMA - LURIN - PERU</span>
             <span>Peru Los Suspiros Mz.B Lt.8</span>
           </div>
-          <a href="https://maps.app.goo.gl/KFhgjWUEVmteBoUz9" target="_blank" class="contact-map">
+          <a
+            href="https://maps.app.goo.gl/KFhgjWUEVmteBoUz9"
+            target="_blank"
+            class="contact-map"
+          >
             <div class="svg-container">
-              <UbicIcon /> 
+              <UbicIcon />
             </div>
             <span>Ver en el Mapa</span>
           </a>
@@ -58,9 +76,12 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
       </div>
     </div>
 
-
     <img src="/img/sticker-tomato.svg" alt="image" class="contact-sticker-1" />
-    <img src="/img/sticker-mushroom.svg" alt="image" class="contact-sticker-2" />
+    <img
+      src="/img/sticker-mushroom.svg"
+      alt="image"
+      class="contact-sticker-2"
+    />
     <img src="/img/sticker-onion.svg" alt="image" class="contact-sticker-3" />
   </div>
 </section>
@@ -82,20 +103,23 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
     gap: 2rem;
     position: relative;
     background-color: var(--first-color-dark);
-    padding:0 2rem;
+    padding: 0 2rem;
     border-radius: 2rem;
     max-width: 1200px;
     width: 100%;
   }
 
-  .container-1{
+  .container-1 {
     display: flex;
-    gap: 60px;
+    flex-direction: row;
+    justify-content: center; /* centra horizontalmente */
+    gap: 4rem; /* espacio entre "Escríbenos" y "Delivery" */
+    width: 100%;
   }
 
   .contact-data {
     padding-top: 3rem;
-    flex:1 1  350px;
+    flex: 1 1 350px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -111,8 +135,8 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
 
   .contact-info {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    flex-direction: column; /* Aseguramos que sea columna */
+    gap: 2rem; /* Espacio entre secciones principales */
   }
 
   .contact-social {
@@ -135,13 +159,13 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
     font-style: normal;
   }
 
-  .location-span{
+  .location-span {
     display: flex;
     width: 100%;
-    flex-direction:column;
-    align-items: start;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   .contact-map {
     color: var(--first-color);
     display: flex;
@@ -168,7 +192,7 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
     max-width: 100%;
     width: 80%;
     height: auto;
-    padding-top:2.5rem;
+    padding-top: 2.5rem;
   }
 
   .svg-container {
@@ -204,15 +228,28 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
     bottom: 4rem;
   }
 
-  .delivery-container{
+  .delivery-container {
     display: flex;
-    flex-direction: column;
-    align-items: start;
+    flex-direction: column; /* Aseguramos que sea columna */
+    align-items: center;
     gap: 1rem;
   }
 
-  /* 🔽 Media Queries */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 816px) {
+    .container-1 {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .writewe,
+    .delivery-container {
+      align-items: center;
+      text-align: center;
+    }
+
+    .delivery-container {
+      align-items: center;
+    }
     .contact-container {
       flex-direction: column;
       padding: 2rem 1rem;
@@ -239,20 +276,31 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
       flex-direction: column;
       align-items: center;
     }
+    .contact-sticker-3 {
+      left: 1rem;
+      bottom: 1rem;
+    }
   }
 
-  .contact-location{
+  .contact-location {
     display: flex;
     flex-direction: column;
-    align-items:start;
-    padding-left:1rem;
+    align-items: center; /* ← CENTRA el contenido */
+    text-align: center;
     gap: 0.5rem;
-    
+    padding-left: 0; /* Elimina padding que empuja a la izquierda */
   }
 
-  .writewe{
+  .writewe {
     display: flex;
     flex-direction: column;
+    align-items: center; /* centra iconos y textos */
+    text-align: center;
     gap: 1rem;
+  }
+
+  .writewe,
+  .delivery-container {
+    flex: 1;
   }
 </style>

@@ -11,10 +11,15 @@ import Footer from '../components/home/Footer.astro';
 
 <Layout>
   <Nav type='Home'/>
-  <main>
+  <main class="main-container">
     <Hero/>
     <ScrollBar client:load/>
     <Contact/>
     <Footer/>
   </main>
 </Layout>
+<style>
+  .main-container{
+    padding-top: 3rem;
+  }
+</style>

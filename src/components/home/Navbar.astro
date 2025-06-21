@@ -1,29 +1,29 @@
 ---
-import CartShopping from '../svg/CartShopping.astro'
-import Pizza from '../svg/Pizza.astro'
-import Bar from '../svg/Bar.astro'
-import CostShop from '../react/CostShop'
-type Props={
-    type:string
-}
+import CartShopping from "../svg/CartShopping.astro";
+import Pizza from "../svg/Pizza.astro";
+import Bar from "../svg/Bar.astro";
+import CostShop from "../react/CostShop";
+type Props = {
+  type: string;
+};
 
-const links=[
-    {name:'Home',url:'/'},
-    {name:'Nosotros ',url:'/Nosotros'},
-    {name:'Menu',url:'/Menu'},
-]
+const links = [
+  { name: "Home", url: "/" },
+  { name: "Nosotros ", url: "/Nosotros" },
+  { name: "Menu", url: "/Menu" },
+];
 
 //Numero de prueba para el carrito
-const cost:string="0.00"
+const cost: string = "0.00";
 ---
+
 <header class="navbar">
   <nav class="nav-container wrapper">
     <div class="text-logo">
       <Pizza />
       <div class="text-panizzeria">
         <span class="title">LA</span>
-        <span class="title">PANIZZERIA</span>
-        <div class="bar-navbar"></div>
+        <span class="title title-line">PANIZZERIA</span>
         <div class="subtitle-panizzeria">
           <span>PIZZAS Y PANES ARTESANALES</span>
         </div>
@@ -32,10 +32,10 @@ const cost:string="0.00"
 
     <div class="container-links">
       {
-        links.map(link => (
+        links.map((link) => (
           <a href={link.url}>
             <span>{link.name}</span>
-            <div class="hover-transition"></div>
+            <div class="hover-transition" />
           </a>
         ))
       }
@@ -55,10 +55,10 @@ const cost:string="0.00"
       </div>
       <div class="links-sidebar" id="mobile-menu">
         {
-          links.map(link => (
+          links.map((link) => (
             <a href={link.url}>
               <span>{link.name}</span>
-              <div class="hover-transition"></div>
+              <div class="hover-transition" />
             </a>
           ))
         }
@@ -68,194 +68,199 @@ const cost:string="0.00"
   </nav>
 </header>
 <script is:inline>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (menuBtn && mobileMenu) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-      });
+  const menuBtn = document.getElementById("menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active");
+    });
 
-      document.addEventListener('click', (e) => {
-        if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-          mobileMenu.classList.remove('active');
-        }
-      });
+    document.addEventListener("click", (e) => {
+      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove("active");
+      }
+    });
 
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('active');
-        });
+    mobileMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active");
       });
-    }
-  </script>
+    });
+  }
+</script>
 <style>
-    .links-sidebar a{
-        text-decoration: none;
-        color: var(--nav-color);
+  .links-sidebar a {
+    text-decoration: none;
+    color: var(--nav-color);
+  }
+
+  .side-bar {
+    display: none;
+    width: 100%;
+    padding-top: 0.75rem;
+    padding-right: 1.5rem;
+    justify-content: end;
+    position: relative;
+  }
+  .links-sidebar {
+    position: fixed;
+    top: 100px;
+    right: -300px;
+    width: 0;
+    max-width: 300px;
+    height: calc(100vh - 100px);
+    background-color: var(--body-color);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 999;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .links-sidebar.active {
+    right: 0;
+    width: 100%;
+  }
+  .overlay {
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 0;
+    height: calc(100vh - 100px);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .overlay.active {
+    width: calc(100vw - 300px);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .links-sidebar.active::after {
+    content: "";
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: calc(100vw - 300px);
+    height: calc(100vh - 100px);
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 9;
+  }
+  .text-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .text-panizzeria {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .subtitle-panizzeria span {
+    font-size: 0.65rem;
+    font-weight: bold;
+  }
+
+  .subtitle-panizzeria span,
+  .title {
+    color: var(--body-color);
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+  }
+
+  .title-line {
+    text-decoration-line: underline;
+    text-underline-offset: 5px;
+  }
+
+  .navbar {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    background: var(--first-color-dark);
+  }
+
+  .nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+  }
+
+  .img-link img {
+    width: 200px;
+    position: relative;
+    top: 5px;
+  }
+
+  .container-links {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .container-links a {
+    text-decoration: none;
+    color: var(--body-color);
+  }
+
+  .container-links a span {
+    font-weight: bold;
+    position: relative;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+  }
+
+  .button-shop {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--nav-color);
+  }
+
+  .shop-container {
+    background-color: var(--body-color);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+  }
+
+  .hover-transition {
+    background-color: antiquewhite;
+    width: 0px;
+    height: 0.1rem;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .container-links a:hover .hover-transition {
+    width: 100%;
+  }
+  @media screen and (max-width: 720px) {
+    .container-links,
+    .shop-container {
+      display: none;
     }
 
-    .side-bar{
-        display: none;
-        width: 100%;
-        padding-top: 0.75rem;
-        padding-right: 1.5rem;
-        justify-content: end;
-        position: relative;
+    .side-bar {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
     }
-    .links-sidebar {
-  position: fixed;
-  top: 100px;
-  right: -300px; /* Empieza oculto */
-  width: 0;
-  max-width: 300px;
-  height: calc(100vh - 100px);
-  background-color: var(--body-color);
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  z-index: 999;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-}
-
-.links-sidebar.active {
-  right: 0;
-  width: 100%;
-}
-.overlay {
-  position: fixed;
-  top: 100px;
-  left: 0;
-  width: 0;
-  height: calc(100vh - 100px);
-  background-color: rgba(0, 0, 0, 0.4);
-  z-index: 9;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.overlay.active {
-  width: calc(100vw - 300px); /* Ajuste para que no cubra el sidebar */
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-    .links-sidebar.active::after {
-        content: '';
-        position: fixed;
-        top: 100px; /* Alineado con la altura del navbar */
-        left: 0;
-        width: calc(100vw - 300px); /* Evita cubrir el sidebar */
-        height: calc(100vh - 100px); /* Evita cubrir el navbar */
-        background-color: rgba(0, 0, 0, 0.4);
-        z-index: 9;
-    }
-    .bar-sidebar{
-        rotate: deg;
-    }
-    .text-logo{
-        display: flex;
-        align-items: center;
-        gap: 0.50rem;
-    }
-    .text-panizzeria{
-        display: flex;
-        flex-direction: column;
-        gap: 1px;
-    }
-    .bar-navbar{
-        width: 100%;
-        height: 1px;
-        background-color: var(--body-color);
-    }
-    .subtitle-panizzeria span{
-        font-size:0.74rem;
-        font-weight: bold;
-    }
-
-    .subtitle-panizzeria span,.title{
-        color: var(--body-color);
-    }
-
-    .title{
-        font-weight: bold;
-        letter-spacing: 5px;
-    }
-
-
-    .navbar{
-        display: flex;
-        width: 100%;
-        height: 100px;
-        justify-content: center;
-        background: var(--nav-color);
-    }
-
-    .nav-container{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        position: relative;
-    }
-
-     .img-link img{
-        width: 200px;
-        position: relative;
-        top: 5px;
-        
-     }
-     
-     .container-links{
-        display: flex;
-        gap: 3rem;
-     }
-
-     .container-links a {
-        text-decoration: none;
-        color: var(--body-color);  
-     }
-
-     .button-shop{
-        display: flex;
-        align-items: center;
-        gap: .5rem;
-        color: var(--nav-color);
-     }
-
-     .shop-container{
-        background-color: var(--body-color);
-        padding: .5rem 1rem;
-        border-radius: 2rem;
-     }
-
-     .hover-transition{
-        background-color: antiquewhite;
-        width: 0px;
-        height: 0.10rem;
-        transition: all 0.3s ease-in-out;
-     }
-
-     .container-links a:hover .hover-transition{
-        width: 100%;
-     }
-     @media screen and (max-width: 720px) {
-        .container-links,.shop-container {
-            display: none;
-        }
-        .subtitle-panizzeria span{
-            font-size: 0.5rem;
-        }
-        .side-bar {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            position: relative;
-        }
-
-     }
+  }
 </style>

@@ -86,11 +86,7 @@
   {
     "nombre": "Pizza Caprina",
     "tipo": "Pizzas Veggies",
-    "ingredientes": [
-      "Queso de cabra",
-      "Cebolla caramelizada",
-      "Mozzarella"
-    ],
+    "ingredientes": ["Queso de cabra", "Cebolla caramelizada", "Mozzarella"],
     "precios": {
       "Personal 30CM": 38,
       "Grande 35CM": 47,
@@ -101,12 +97,7 @@
   {
     "nombre": "Pizza Cuatro Quesos",
     "tipo": "Pizzas Blancas",
-    "ingredientes": [
-      "Mozzarella",
-      "Parmesano",
-      "Gorgonzola",
-      "Azul"
-    ],
+    "ingredientes": ["Mozzarella", "Parmesano", "Gorgonzola", "Azul"],
     "precios": {
       "Personal 30CM": 38,
       "Grande 35CM": 47,
@@ -167,12 +158,7 @@
   {
     "nombre": "Pizza Hawaiana",
     "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Jamón",
-      "Piña"
-    ],
+    "ingredientes": ["Salsa de tomate", "Queso mozzarella", "Jamón", "Piña"],
     "precios": {
       "Personal 30CM": 31,
       "Grande 35CM": 43,
@@ -230,11 +216,7 @@
   {
     "nombre": "Pizza Pepperoni",
     "tipo": "Pizzas Clásicas",
-    "ingredientes": [
-      "Salsa de tomate",
-      "Queso mozzarella",
-      "Pepperoni"
-    ],
+    "ingredientes": ["Salsa de tomate", "Queso mozzarella", "Pepperoni"],
     "precios": {
       "Personal 30CM": 31,
       "Grande 35CM": 43,
@@ -245,11 +227,7 @@
   {
     "nombre": "Pizza Pesto",
     "tipo": "Pizzas Veggies",
-    "ingredientes": [
-      "Queso mozzarella",
-      "Salsa pesto",
-      "Tomates cherry"
-    ],
+    "ingredientes": ["Queso mozzarella", "Salsa pesto", "Tomates cherry"],
     "precios": {
       "Personal 30CM": 38,
       "Grande 35CM": 47,
