@@ -1,0 +1,44 @@
+[
+  {
+    "nombre": "Anticucho Tradicional",
+    "tipo": "Antojos Irresistibles",
+    "ingredientes": [
+      "Papas andinas",
+      "Choclo",
+      "Rocoto"
+    ],
+    "precio": 25,
+    "img": "img/platos/anticucho_tradicional.png"
+  },
+  {
+    "nombre": "Alitas Anticucheras",
+    "tipo": "Antojos Irresistibles",
+    "ingredientes": [
+      "Salsa anticuchera",
+      "Papitas cóctel",
+      "Rocoto"
+    ],
+    "precio": 35,
+    "img": "img/platos/alitas_anticucheras.png"
+  },
+  {
+    "nombre": "Alitas a la BBQ",
+    "tipo": "Antojos Irresistibles",
+    "ingredientes": [
+      "Salsa especial",
+      "Papas fritas"
+    ],
+    "precio": 35,
+    "img": "img/platos/alitas_bbq.png"
+  },
+  {
+    "nombre": "Alitas Hot Wings",
+    "tipo": "Antojos Irresistibles",
+    "ingredientes": [
+      "Salsa especial picante",
+      "Papas fritas"
+    ],
+    "precio": 35,
+    "img": "img/platos/alitas_hotwings.png"
+  }
+]

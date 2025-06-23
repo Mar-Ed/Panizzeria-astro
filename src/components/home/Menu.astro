@@ -1,5 +1,6 @@
 ---
 import pizzasInfo from '../../data/pizzas.json'
+import coctelesInfo from '../../data/cocteles.json'
 ---
 
 <section class="principal-container">
@@ -44,9 +45,22 @@ import pizzasInfo from '../../data/pizzas.json'
 
             </h2>
             <div class="grid">
-                <div class="slider-plato">
-                    <img src="" alt="">
-                </div>
+                {
+                    coctelesInfo.map(coctel=>(
+                        <div class="slider-plato">
+                            <div class="info-plato">
+                                <img src={coctel.img} alt={coctel.tipo} />
+                                <div class="info">
+                                    <h3>{coctel.nombre}</h3>
+                                    <span>S/. {coctel.precio}</span>
+                                </div>
+                            </div>
+                            <div class="button-compra">
+                                <a href="">Ordena aqui</a>
+                            </div>
+                        </div>
+                    ))
+                }
             </div>
         </div>
     </div>

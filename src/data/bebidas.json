@@ -1,0 +1,64 @@
+[
+  {
+    "nombre": "Agua San Luis sin gas",
+    "tipo": "Bebidas Personales",
+    "precios": {
+      "500 ml": 5,
+      "1 L": 7
+    },
+    "img": "img/bebidas/agua.png"
+  },
+  {
+    "nombre": "Agua San Luis con gas",
+    "tipo": "Bebidas Personales",
+    "precios": {
+      "500 ml": 5,
+      "1 L": 7
+    },
+    "img": "img/bebidas/agua.png"
+  },
+  {
+    "nombre": "Coca Cola",
+    "tipo": "Bebidas Personales",
+    "precios": {
+      "500 ml": 5,
+      "1 L": 7.5,
+      "1.5 L": 9,
+      "3 L": 13
+    },
+    "img": "img/bebidas/coca.png"
+  },
+  {
+    "nombre": "Coca Cola Sin Azúcar",
+    "tipo": "Bebidas Personales",
+    "precios": {
+      "500 ml": 5,
+      "1 L": 7.5,
+      "1.5 L": 9,
+      "3 L": 13
+    },
+    "img": "img/bebidas/cocasa.png"
+  },
+  {
+    "nombre": "Inka Kola",
+    "tipo": "Bebidas Personales",
+    "precios": {
+      "500 ml": 5,
+      "1 L": 7.5,
+      "1.5 L": 9,
+      "3 L": 13
+    },
+    "img": "img/bebidas/inca.png"
+  },
+  {
+    "nombre": "Inka Kola Sin Azúcar",
+    "tipo": "Bebidas Personales",
+    "precios": {
+      "500 ml": 5,
+      "1 L": 7.5,
+      "1.5 L": 9,
+      "3 L": 13
+    },
+    "img": "img/bebidas/incasa.png"
+  }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "nombre": "Huaracina (Pale Ale) 6.5%",
+        "tipo": "Cervezas Artesanales",
+        "precio": 15,
+        "img": "img/bebidas/huaracina.png"
+    },
+  {
+    "nombre": "Shaman (IPA) 8%",
+    "tipo": "Cervezas Artesanales",
+    "precio": 15,
+    "img": "img/bebidas/shaman.png"
+  },
+  {
+    "nombre": "Inti Golden (Ale) 5%",
+    "tipo": "Cervezas Artesanales",
+    "precio": 15,
+    "img": "img/bebidas/inti_golden.png"
+  },
+  {
+    "nombre": "Chachapoyana (Kolsh) 4.5%",
+    "tipo": "Cervezas Artesanales",
+    "precio": 15,
+    "img": "img/bebidas/chachapoyana.png"
+  },
+  {
+    "nombre": "Pachacutec (Malta) 10.5%",
+    "tipo": "Cervezas Artesanales",
+    "precio": 16,
+    "img": "img/bebidas/pachacutec.png"
+  },
+  {
+    "nombre": "Don Juan (Porter) 7%",
+    "tipo": "Cervezas Artesanales",
+    "precio": 16,
+    "img": "img/bebidas/don_juan.png"
+  },
+  {
+    "nombre": "Stella Artois",
+    "tipo": "Cervezas Artesanales",
+    "precio": 12,
+    "img": "img/bebidas/stella_artois.png"
+  }
+]
