@@ -1,6 +1,8 @@
 ---
 import pizzasInfo from '../../data/pizzas.json'
 import coctelesInfo from '../../data/cocteles.json'
+import bebidasInfo from '../../data/bebidas.json'
+import entradasInfo from '../../data/entradas.json'
 ---
 
 <section class="principal-container">
@@ -15,7 +17,7 @@ import coctelesInfo from '../../data/cocteles.json'
         </div>
     </div>
     <div class="section-menu">
-        <div class="subsection personal-section">
+        <div class="subsection ">
             <h2 id="pizzasPersonales">
             Pizzas personales
             </h2>
@@ -39,7 +41,31 @@ import coctelesInfo from '../../data/cocteles.json'
                 }
             </div>
         </div>
-        <div class="subsection cocteles-section">
+        <div class="subsection">
+            <h2>
+                Bebidas
+
+            </h2>
+            <div class="grid">
+                {
+                    bebidasInfo.map(bebida=>(
+                        <div class="slider-plato">
+                            <div class="info-plato">
+                                <img src={bebida.img} alt={bebida.tipo} />
+                                <div class="info">
+                                    <h3>{bebida.nombre}</h3>
+                                    <span>S/. {bebida.precios["500 ml"]}</span>
+                                </div>
+                            </div>
+                            <div class="button-compra">
+                                <a href="">Ordena aqui</a>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+        <div class="subsection">
             <h2>
                 Cocteles
 
@@ -52,6 +78,7 @@ import coctelesInfo from '../../data/cocteles.json'
                                 <img src={coctel.img} alt={coctel.tipo} />
                                 <div class="info">
                                     <h3>{coctel.nombre}</h3>
+                                    <p>{coctel.ingredientes.join(', ')}</p>
                                     <span>S/. {coctel.precio}</span>
                                 </div>
                             </div>
@@ -63,6 +90,30 @@ import coctelesInfo from '../../data/cocteles.json'
                 }
             </div>
         </div>
+        <div class="subsection">
+            <h2>
+                Bebidas
+
+            </h2>
+            <div class="grid">
+                {
+                    entradasInfo.map(entrada=>(
+                        <div class="slider-plato">
+                            <div class="info-plato">
+                                <img src={entrada.img} alt={entrada.tipo} />
+                                <div class="info">
+                                    <h3>{entrada.nombre}</h3>
+                                    <p>{entrada.ingredientes.join(', ')}</p>
+                                    <span>S/. {entrada.precio}</span>
+                                </div>
+                            </div>
+                            <div class="button-compra">
+                                <a href="">Ordena aqui</a>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
     </div>
 </section>
 <style>
@@ -119,7 +170,7 @@ import coctelesInfo from '../../data/cocteles.json'
     }
 
     .slider-plato {
-        background-color: #fff;
+        background-color: var(--container-color);
         border-radius: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         overflow: hidden;

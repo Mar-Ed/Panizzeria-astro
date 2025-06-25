@@ -1,5 +1,77 @@
 [
   {
+    "nombre": "Pan al Ajo Clásico",
+    "tipo": "Entradas",
+    "ingredientes": [
+      "Pan con ajo",
+      "Orégano",
+      "Aceite de oliva"
+    ],
+    "precio": 10,
+    "img": "img/entradas/pan-de-ajo.jpg"
+  },
+  {
+    "nombre": "Pan al Ajo Especial",
+    "tipo": "Entradas",
+    "ingredientes": [
+      "Pan con ajo",
+      "Mozzarella",
+      "Orégano",
+      "Aceite de oliva"
+    ],
+    "precio": 15,
+    "img": "img/entradas/pan-ajo-especial.jpg"
+  },
+  {
+    "nombre": "Pan de la Casa",
+    "tipo": "Entradas",
+    "ingredientes": [
+      "Pan con ajo",
+      "Mozzarella",
+      "Orégano",
+      "Tocino ahumado",
+      "Ralladura de parmesano"
+    ],
+    "precio": 12,
+    "img": "img/entradas/pan-casa.jpg"
+  },
+  {
+    "nombre": "Focaccia a la Parmesana",
+    "tipo": "Entradas",
+    "ingredientes": [
+      "Pan focaccia",
+      "Ajo",
+      "Ralladura de parmesano"
+    ],
+    "precio": 19,
+    "img": "img/entradas/focaccia.jpg"
+  },
+  {
+    "nombre": "Burrata",
+    "tipo": "Entradas",
+    "ingredientes": [
+      "Jamón serrano",
+      "Arúgula",
+      "Cherry",
+      "Cortes de pan"
+    ],
+    "precio": 35,
+    "img": "img/entradas/burrata.jpg"
+  },
+  {
+    "nombre": "Champiñones al Ajillo",
+    "tipo": "Entradas",
+    "ingredientes": [
+      "Champiñones",
+      "Aceite de oliva",
+      "Ajo",
+      "Vino blanco",
+      "Pan"
+    ],
+    "precio": 35,
+    "img": "img/entradas/champiñones-ajillo.jpg"
+  },
+  {
     "nombre": "Anticucho Tradicional",
     "tipo": "Antojos Irresistibles",
     "ingredientes": [
@@ -8,7 +80,7 @@
       "Rocoto"
     ],
     "precio": 25,
-    "img": "img/platos/anticucho_tradicional.png"
+    "img": "img/entradas/anticucho.jpg"
   },
   {
     "nombre": "Alitas Anticucheras",
@@ -19,7 +91,7 @@
       "Rocoto"
     ],
     "precio": 35,
-    "img": "img/platos/alitas_anticucheras.png"
+    "img": "img/entradas/alitas-anticucheras.jpg"
   },
   {
     "nombre": "Alitas a la BBQ",
@@ -29,7 +101,7 @@
       "Papas fritas"
     ],
     "precio": 35,
-    "img": "img/platos/alitas_bbq.png"
+    "img": "img/entradas/bbq.jpg"
   },
   {
     "nombre": "Alitas Hot Wings",
@@ -39,6 +111,6 @@
       "Papas fritas"
     ],
     "precio": 35,
-    "img": "img/platos/alitas_hotwings.png"
+    "img": "img/entradas/hotwings.jpg"
   }
 ]

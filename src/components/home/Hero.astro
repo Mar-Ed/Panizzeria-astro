@@ -1,67 +1,85 @@
 <section>
   <div class="container">
-    <h1 class="title">La Panizzeria</h1>
-    <p class="subtitle">
-      Desde 1985, La Panizzeria ha sido el hogar de las mejores pizzas
-      artesanales, combinando tradición italiana con sabores locales únicos.
-    </p>
-    <img
-      src="/img/foto_principal_2.jpg"
-      alt="Pizza Hero "
-      class="hero-image"
-    />
-    <br />
-    <a href="#" class="button">Descubre nuestras pizzas</a>
+    <div class="text-container">
+      <h1 class="title">La Panizzeria</h1>
+      <p class="subtitle">
+        Desde 1985, La Panizzeria ha sido el hogar de las mejores pizzas
+        artesanales, combinando tradición italiana con sabores locales únicos.
+      </p>
+      <a href="/Menu" class="button">Descubre nuestras pizzas</a>
+    </div>
+    <div class="image-container">
+      <img
+        src="/img/panizzeria-fondo.jpg"
+        alt="Pizza Hero"
+        class="hero-image"
+      />
+    </div>
   </div>
 </section>
+
 <style>
   section {
-    padding-top: 4rem; /* py-16 */
+    padding-top: 4rem;
     padding-bottom: 4rem;
-    padding-left: 1rem; /* px-4 */
+    padding-left: 1rem;
     padding-right: 1rem;
-    background-color: var(--container-color); /* bg-gray-100 */
+    background-color: var(--container-color);
   }
   .container {
-    max-width: 64rem;
-    display: column;
-    text-align: center;
+    max-width: 100%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto; 
+    gap: 6rem; /* gap-8 */
   }
-  
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 450px;
+  }
+
   .title {
     font-size: 2.25rem; /* text-4xl */
     font-weight: 700; /* font-bold */
-    margin-bottom: 1.5rem; /* mb-6 */
     color: #1f2937; /* text-gray-900 */
+    text-align: left;
   }
   @media (min-width: 768px) {
-  .title {
-    font-size: 3rem; /* md:text-5xl */
+    .title {
+      font-size: 3rem; /* md:text-5xl */
+    }
   }
-}
   .subtitle {
     font-size: 1.25rem; /* text-xl */
-  color: #4b5563; /* text-gray-600 */
-  line-height: 1.625; /* leading-relaxed */
+    color: #4b5563; /* text-gray-600 */
+    line-height: 1.625; /* leading-relaxed */
   }
   .hero-image {
     width: 100%;
-    height: auto;
-    max-width: 600px; /* max-w-md */
-    margin-top: 1.5rem; /* mt-6 */
+    min-height: 520px; /* h-72 */
+    max-width: 680px; /* max-w-md */
+    margin: 4rem;
     border-radius: 0.5rem; /* rounded-lg */
-    padding-bottom: 1rem;
+    border-radius: 99px;
+    box-shadow: 0 4px 16px hsla(353, 100%, 8%, 0.1);
   }
   .button {
-    display: inline-block;
-    padding: 0.75rem 1.5rem; /* py-3 px-6 */
-    background-color: var(--nav-color); /* bg-orange-500 */
-    color: var(--body-color); /* text-white */
-    border-radius: 9999px; /* rounded-full */
-    text-decoration: none; /* no underline */
-    font-weight: 600; /* font-semibold */
+    display: inline-flex;
+    justify-content: center;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    padding: 1rem 1.5rem;
+    font-weight: var(--font-semi-bold);
+    border-radius: 4rem;
+    text-decoration: none;
+    box-shadow: 0 8px 24px hsla(353, 100%, 40%, 0.4);
+    transition: background-color 0.4s;
+
+    &:hover {
+      background-color: var(--first-color-alt);
+    }
   }
 </style>

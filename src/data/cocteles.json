@@ -2,8 +2,13 @@
   {
     "nombre": "Cóctel de Algarrobina",
     "tipo": "Cócteles",
-    "precios":22,
-    "img": "img/bebidas/coctel_algarrobina.png"
+     "ingredientes": [
+      "Aperol",
+      "Vino espumoso",
+      "Soda (opcional)"
+    ],
+    "precio": 22,
+    "img": "img/cocteles/Algarrobina.jpg"
   },
   {
     "nombre": "Aperol Spritz",
@@ -14,7 +19,7 @@
       "Soda (opcional)"
     ],
     "precio": 25,
-    "img": "img/bebidas/aperol_spritz.png"
+    "img": "img/cocteles/algo.jpg"
   },
     {
     "nombre": "Chilcano Clásico",
@@ -25,7 +30,7 @@
       "Ginger ale"
     ],
     "precio": 20,
-    "img": "img/bebidas/chilcano_clasico.png"
+    "img": "img/cocteles/Chilcano.jpg"
   },
   {
     "nombre": "Daiquiri",
@@ -37,7 +42,7 @@
       "Triple sec"
     ],
     "precio": 22,
-    "img": "img/bebidas/daiquiri.png"
+    "img": "img/cocteles/Daiquiri.jpg"
   },
   {
     "nombre": "Mojito",
@@ -50,7 +55,7 @@
       "Soda"
     ],
     "precio": 22,
-    "img": "img/bebidas/mojito.png"
+    "img": "img/cocteles/Mojito.jpg"
   },
   {
     "nombre": "Piña Colada",
@@ -61,7 +66,7 @@
       "Crema de coco"
     ],
     "precio": 25,
-    "img": "img/bebidas/pina_colada.png"
+    "img": "img/cocteles/Pina-Colada.jpg"
   },
   {
     "nombre": "Pisco Sour",
@@ -72,72 +77,7 @@
       "Jarabe de goma"
     ],
     "precio": 25,
-    "img": "img/bebidas/pisco_sour.png"
-  },
-  
-
-
-  {
-    "nombre": "Caipirinha",
-    "tipo": "Cócteles",
-    "ingredientes": [
-      "Cachaza",
-      "Azúcar",
-      "Limón troceado"
-    ],
-    "precio": 25,
-    "img": "img/bebidas/caipirinha.png"
-  },
-  
-
-
-  
-  {
-    "nombre": "Negroni",
-    "tipo": "Cócteles",
-    "ingredientes": [
-      "Bombay Shappire",
-      "Vermut rojo",
-      "Campari"
-    ],
-    "precio": 25,
-    "img": "img/bebidas/negroni.png"
-  },
-  
-  
-  {
-    "nombre": "Horses Neck",
-    "tipo": "Cócteles",
-    "ingredientes": [
-      "Whisky",
-      "Ginger ale",
-      "Limón",
-      "Angostura"
-    ],
-    "precio": 25,
-    "img": "img/bebidas/horses_neck.png"
-  },
-  {
-    "nombre": "Campari",
-    "tipo": "Cócteles",
-    "ingredientes": [
-      "Campari",
-      "Jugo de naranja"
-    ],
-    "precio": 25,
-    "img": "img/bebidas/campari.png"
-  },
-  {
-    "nombre": "Tom Collins",
-    "tipo": "Cócteles",
-    "ingredientes": [
-      "Bombay Shappire",
-      "Limón",
-      "Goma",
-      "Ginger ale"
-    ],
-    "precio": 25,
-    "img": "img/bebidas/tom_collins.png"
+    "img": "img/cocteles/Pisco-Sour.jpg"
   },
   
   {
@@ -148,6 +88,6 @@
       "Bodega Vaca Sagrada"
     ],
     "precio": 15,
-    "img": "img/bebidas/copa_tinto.png"
+    "img": "img/cocteles/copa-vino.jpg"
   }
 ]
