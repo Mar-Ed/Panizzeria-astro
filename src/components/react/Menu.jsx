@@ -1,7 +1,4 @@
 import { useEffect, useState } from 'react';
-import pizzasInfo from '../../data/pizzas.json';
-import coctelesInfo from '../../data/cocteles.json';
-import bebidasInfo from '../../data/bebidas.json';
 import '../../css/Menu.css';
 export default function Menu() {
   const [entradas, setEntradas] = useState([]);
@@ -13,6 +10,30 @@ export default function Menu() {
       .catch(err => console.error("Error al cargar entradas:", err));
   }, []);
 
+  const [cocteles, setCocteles] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:8080/api/cocteles')
+      .then(res => res.json())
+      .then(data => setCocteles(data))
+      .catch(err => console.error("Error al cargar cocteles:", err));
+  }, []);
+  const [bebidas, setBebidas] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:8080/api/bebidas')
+      .then(res => res.json())
+      .then(data => setBebidas(data))
+      .catch(err => console.error("Error al cargar bebidas:", err));
+  }, []);
+
+  const [pizzas, setPizzas] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:8080/api/pizzas')
+      .then(res => res.json())
+      .then(data => setPizzas(data))
+      .catch(err => console.error("Error al cargar pizzas:", err));
+  }, []);
+  
+  
   return (
     <section className="principal-container">
       <div className="select-menus">
@@ -32,11 +53,11 @@ export default function Menu() {
         <div className="subsection">
           <h2 id="pizzasPersonales">Pizzas personales</h2>
           <div className="grid">
-            {pizzasInfo.map((pizza) =>
+            {pizzas.map((pizza) =>
               pizza.tamaño === 'Personal 30CM' && (
                 <div className="slider-plato" key={pizza.nombre}>
                   <div className="info-plato">
-                    <img src={pizza.img} alt={pizza.tipo} />
+                    <img src={pizza.imagen} alt={pizza.tipo} />
                     <div className="info">
                       <h3>{pizza.nombre}</h3>
                       <p>Tamaño: {pizza.tamaño}</p>
@@ -57,11 +78,11 @@ export default function Menu() {
         <div className="subsection">
           <h2 id="pizzasGrandes">Pizzas Grandes</h2>
           <div className="grid">
-            {pizzasInfo.map((pizza) =>
+            {pizzas.map((pizza) =>
               pizza.tamaño === 'Grande 35CM' && (
                 <div className="slider-plato" key={pizza.nombre}>
                   <div className="info-plato">
-                    <img src={pizza.img} alt={pizza.tipo} />
+                    <img src={pizza.imagen} alt={pizza.tipo} />
                     <div className="info">
                       <h3>{pizza.nombre}</h3>
                       <p>Tamaño: {pizza.tamaño}</p>
@@ -82,11 +103,11 @@ export default function Menu() {
         <div className="subsection">
           <h2 id="pizzasFamiliar">Pizzas Familiares</h2>
           <div className="grid">
-            {pizzasInfo.map((pizza) =>
+            {pizzas.map((pizza) =>
               pizza.tamaño === 'Familiar 40CM' && (
                 <div className="slider-plato" key={pizza.nombre}>
                   <div className="info-plato">
-                    <img src={pizza.img} alt={pizza.tipo} />
+                    <img src={pizza.imagen} alt={pizza.tipo} />
                     <div className="info">
                       <h3>{pizza.nombre}</h3>
                       <p>Tamaño: {pizza.tamaño}</p>
@@ -107,14 +128,14 @@ export default function Menu() {
         <div className="subsection">
           <h2>Bebidas</h2>
           <div className="grid">
-            {bebidasInfo.map((bebida) => (
+            {bebidas.map((bebida) => (
               <div className="slider-plato" key={bebida.nombre}>
                 <div className="info-plato">
-                  <img src={bebida.img} alt={bebida.tipo} />
+                  <img src={bebida.imagen} alt={bebida.descripcion} />
                   <div className="info">
                     <h3>{bebida.nombre}</h3>
-                    <p>{bebida.tipo}</p>
-                    <span>S/. {bebida.precios}</span>
+                    <p>{bebida.descripcion}</p>
+                    <span>S/. {bebida.precio}</span>
                   </div>
                 </div>
                 <div className="button-compra">
@@ -129,10 +150,10 @@ export default function Menu() {
         <div className="subsection">
           <h2 id="cocteles">Cocteles</h2>
           <div className="grid">
-            {coctelesInfo.map((coctel) => (
+            {cocteles.map((coctel) => (
               <div className="slider-plato" key={coctel.nombre}>
                 <div className="info-plato">
-                  <img src={coctel.img} alt={coctel.tipo} />
+                  <img src={coctel.imagen} alt="cocteles" />
                   <div className="info">
                     <h3>{coctel.nombre}</h3>
                     <p>{coctel.ingredientes}</p>

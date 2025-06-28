@@ -4,55 +4,55 @@
     "tipo": "Cócteles",
     "ingredientes": "Aperol, Vino espumoso, Soda (opcional)",
     "precio": 22,
-    "img": "img/cocteles/Algarrobina.jpg"
+    "imagen": "img/cocteles/Algarrobina.jpg"
   },
   {
     "nombre": "Aperol Spritz",
     "tipo": "Cócteles",
     "ingredientes": "Aperol, Vino espumoso, Soda (opcional)",
     "precio": 25,
-    "img": "img/cocteles/algo.jpg"
+    "imagen": "img/cocteles/algo.jpg"
   },
   {
     "nombre": "Chilcano Clásico",
     "tipo": "Cócteles",
     "ingredientes": "Pisco quebranta, Jugo de limón, Ginger ale",
     "precio": 20,
-    "img": "img/cocteles/Chilcano.jpg"
+    "imagen": "img/cocteles/Chilcano.jpg"
   },
   {
     "nombre": "Daiquiri",
     "tipo": "Cócteles",
     "ingredientes": "Ron Bacardí carta blanca, Limón, Goma, Triple sec",
     "precio": 22,
-    "img": "img/cocteles/Daiquiri.jpg"
+    "imagen": "img/cocteles/Daiquiri.jpg"
   },
   {
     "nombre": "Mojito",
     "tipo": "Cócteles",
     "ingredientes": "Ron Bacardí carta blanca, Ron reserva Bacardí, Angostura, Hojas de menta, Soda",
     "precio": 22,
-    "img": "img/cocteles/Mojito.jpg"
+    "imagen": "img/cocteles/Mojito.jpg"
   },
   {
     "nombre": "Piña Colada",
     "tipo": "Cócteles",
     "ingredientes": "Piña golden, Ron rubio, Crema de coco",
     "precio": 25,
-    "img": "img/cocteles/Pina-Colada.jpg"
+    "imagen": "img/cocteles/Pina-Colada.jpg"
   },
   {
     "nombre": "Pisco Sour",
     "tipo": "Cócteles",
     "ingredientes": "Pisco el encanto, Jugo de limón, Jarabe de goma",
     "precio": 25,
-    "img": "img/cocteles/Pisco-Sour.jpg"
+    "imagen": "img/cocteles/Pisco-Sour.jpg"
   },
   {
     "nombre": "Copa de Tinto/Bonarda",
     "tipo": "Cócteles",
     "ingredientes": "Tinto de la casa (Malbec-Bonarda), Bodega Vaca Sagrada",
     "precio": 15,
-    "img": "img/cocteles/copa-vino.jpg"
+    "imagen": "img/cocteles/copa-vino.jpg"
   }
 ]
