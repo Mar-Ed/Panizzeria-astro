@@ -1,64 +1,122 @@
 [
   {
     "nombre": "Agua San Luis sin gas",
-    "tipo": "Bebidas Personales",
-    "precios": {
-      "500 ml": 5,
-      "1 L": 7
-    },
+    "tipo": "500 mL",
+    "precios": 5,
+    "img": "img/bebidas/agua.png"
+  },
+  {
+    "nombre": "Agua San Luis sin gas",
+    "tipo": "1 L",
+    "precios": 7,
     "img": "img/bebidas/agua.png"
   },
   {
     "nombre": "Agua San Luis con gas",
-    "tipo": "Bebidas Personales",
-    "precios": {
-      "500 ml": 5,
-      "1 L": 7
-    },
+    "tipo": "500 mL",
+    "precios": 5,
+    "img": "img/bebidas/agua.png"
+  },
+  {
+    "nombre": "Agua San Luis con gas",
+    "tipo": "1 L",
+    "precios": 7,
     "img": "img/bebidas/agua.png"
   },
   {
     "nombre": "Coca Cola",
-    "tipo": "Bebidas Personales",
-    "precios": {
-      "500 ml": 5,
-      "1 L": 7.5,
-      "1.5 L": 9,
-      "3 L": 13
-    },
+    "tipo": "500 mL",
+    "precios": 5,
+    "img": "img/bebidas/coca.png"
+  },
+  {
+    "nombre": "Coca Cola",
+    "tipo": "1 L",
+    "precios": 7.5,
+    "img": "img/bebidas/coca.png"
+  },
+  {
+    "nombre": "Coca Cola",
+    "tipo": "1.5 L",
+    "precios": 9,
+    "img": "img/bebidas/coca.png"
+  },
+  {
+    "nombre": "Coca Cola",
+    "tipo": "3 L",
+    "precios": 13,
     "img": "img/bebidas/coca.png"
   },
   {
     "nombre": "Coca Cola Sin Azúcar",
-    "tipo": "Bebidas Personales",
-    "precios": {
-      "500 ml": 5,
-      "1 L": 7.5,
-      "1.5 L": 9,
-      "3 L": 13
-    },
+    "tipo": "500 mL",
+    "precios": 5,
+    "img": "img/bebidas/cocasa.png"
+  },
+  {
+    "nombre": "Coca Cola Sin Azúcar",
+    "tipo": "1 L",
+    "precios": 7.5,
+    "img": "img/bebidas/cocasa.png"
+  },
+  {
+    "nombre": "Coca Cola Sin Azúcar",
+    "tipo": "1.5 L",
+    "precios": 9,
+    "img": "img/bebidas/cocasa.png"
+  },
+  {
+    "nombre": "Coca Cola Sin Azúcar",
+    "tipo": "3 L",
+    "precios": 13,
     "img": "img/bebidas/cocasa.png"
   },
   {
     "nombre": "Inka Kola",
-    "tipo": "Bebidas Personales",
-    "precios": {
-      "500 ml": 5,
-      "1 L": 7.5,
-      "1.5 L": 9,
-      "3 L": 13
-    },
+    "tipo": "500 mL",
+    "precios": 5,
+    "img": "img/bebidas/inca.png"
+  },
+  {
+    "nombre": "Inka Kola",
+    "tipo": "1 L",
+    "precios": 7.5,
+    "img": "img/bebidas/inca.png"
+  },
+  {
+    "nombre": "Inka Kola",
+    "tipo": "1.5 L",
+    "precios": 9,
+    "img": "img/bebidas/inca.png"
+  },
+  {
+    "nombre": "Inka Kola",
+    "tipo": "3 L",
+    "precios": 13,
     "img": "img/bebidas/inca.png"
   },
   {
     "nombre": "Inka Kola Sin Azúcar",
-    "tipo": "Bebidas Personales",
-    "precios": {
-      "500 ml": 5,
-      "1 L": 7.5,
-      "1.5 L": 9,
-      "3 L": 13
-    },
+    "tipo": "500 mL",
+    "precios": 5,
+    "img": "img/bebidas/incasa.png"
+  },
+  {
+    "nombre": "Inka Kola Sin Azúcar",
+    "tipo": "1 L",
+    "precios": 7.5,
+    "img": "img/bebidas/incasa.png"
+  },
+  {
+    "nombre": "Inka Kola Sin Azúcar",
+    "tipo": "1.5 L",
+    "precios": 9,
+    "img": "img/bebidas/incasa.png"
+  },
+  {
+    "nombre": "Inka Kola Sin Azúcar",
+    "tipo": "3 L",
+    "precios": 13,
     "img": "img/bebidas/incasa.png"
   }
 ]

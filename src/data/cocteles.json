@@ -2,91 +2,56 @@
   {
     "nombre": "Cóctel de Algarrobina",
     "tipo": "Cócteles",
-     "ingredientes": [
-      "Aperol",
-      "Vino espumoso",
-      "Soda (opcional)"
-    ],
+    "ingredientes": "Aperol, Vino espumoso, Soda (opcional)",
     "precio": 22,
     "img": "img/cocteles/Algarrobina.jpg"
   },
   {
     "nombre": "Aperol Spritz",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Aperol",
-      "Vino espumoso",
-      "Soda (opcional)"
-    ],
+    "ingredientes": "Aperol, Vino espumoso, Soda (opcional)",
     "precio": 25,
     "img": "img/cocteles/algo.jpg"
   },
-    {
+  {
     "nombre": "Chilcano Clásico",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Pisco quebranta",
-      "Jugo de limón",
-      "Ginger ale"
-    ],
+    "ingredientes": "Pisco quebranta, Jugo de limón, Ginger ale",
     "precio": 20,
     "img": "img/cocteles/Chilcano.jpg"
   },
   {
     "nombre": "Daiquiri",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Ron Bacardí carta blanca",
-      "Limón",
-      "Goma",
-      "Triple sec"
-    ],
+    "ingredientes": "Ron Bacardí carta blanca, Limón, Goma, Triple sec",
     "precio": 22,
     "img": "img/cocteles/Daiquiri.jpg"
   },
   {
     "nombre": "Mojito",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Ron Bacardí carta blanca",
-      "Ron reserva Bacardí",
-      "Angostura",
-      "Hojas de menta",
-      "Soda"
-    ],
+    "ingredientes": "Ron Bacardí carta blanca, Ron reserva Bacardí, Angostura, Hojas de menta, Soda",
     "precio": 22,
     "img": "img/cocteles/Mojito.jpg"
   },
   {
     "nombre": "Piña Colada",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Piña golden",
-      "Ron rubio",
-      "Crema de coco"
-    ],
+    "ingredientes": "Piña golden, Ron rubio, Crema de coco",
     "precio": 25,
     "img": "img/cocteles/Pina-Colada.jpg"
   },
   {
     "nombre": "Pisco Sour",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Pisco el encanto",
-      "Jugo de limón",
-      "Jarabe de goma"
-    ],
+    "ingredientes": "Pisco el encanto, Jugo de limón, Jarabe de goma",
     "precio": 25,
     "img": "img/cocteles/Pisco-Sour.jpg"
   },
-  
   {
     "nombre": "Copa de Tinto/Bonarda",
     "tipo": "Cócteles",
-    "ingredientes": [
-      "Tinto de la casa (Malbec-Bonarda)",
-      "Bodega Vaca Sagrada"
-    ],
+    "ingredientes": "Tinto de la casa (Malbec-Bonarda), Bodega Vaca Sagrada",
     "precio": 15,
     "img": "img/cocteles/copa-vino.jpg"
   }

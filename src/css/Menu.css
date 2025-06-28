@@ -1,0 +1,125 @@
+.principal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+    .select-menus {
+      width: 100%;
+      height: 100px;
+      padding-top: 20px;
+    }
+
+    .container-selects {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .button-select {
+      display: flex;
+      text-align: center;
+      padding: 0.6rem 0.7rem;
+      background: var(--nav-color);
+      border-radius: 2rem;
+    }
+
+    .button-select a {
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--title-color);
+    }
+
+    .section-menu {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .subsection {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    .slider-plato {
+      background-color: var(--container-color);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease;
+    }
+
+    .slider-plato:hover {
+      transform: translateY(-5px);
+    }
+
+    .info-plato {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.8rem;
+      padding: 1rem;
+    }
+
+    .info-plato img {
+      width: 135px;
+      height: 135px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    .info h3 {
+      font-size: 1.2rem;
+      margin: 0;
+      color: var(--primary-color, #e63946);
+    }
+
+    .info p {
+      font-size: 1rem;
+      color: #555;
+      margin: 0;
+    }
+
+    .info span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .button-compra {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .button-compra a {
+      text-decoration: none;
+      color: #fff;
+      background-color: var(--nav-color, #e63946);
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+      display: inline-block;
+    }
+
+    .button-compra a:hover {
+      background-color: #c92f3d;
+    }

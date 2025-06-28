@@ -1,116 +1,62 @@
 [
   {
     "nombre": "Pan al Ajo Clásico",
-    "tipo": "Entradas",
-    "ingredientes": [
-      "Pan con ajo",
-      "Orégano",
-      "Aceite de oliva"
-    ],
+    "ingredientes": "Pan con ajo, Orégano, Aceite de oliva",
     "precio": 10,
-    "img": "img/entradas/pan-de-ajo.jpg"
+    "imagen": "img/entradas/pan-de-ajo.jpg"
   },
   {
     "nombre": "Pan al Ajo Especial",
-    "tipo": "Entradas",
-    "ingredientes": [
-      "Pan con ajo",
-      "Mozzarella",
-      "Orégano",
-      "Aceite de oliva"
-    ],
+    "ingredientes": "Pan con ajo, Mozzarella, Orégano, Aceite de oliva",
     "precio": 15,
-    "img": "img/entradas/pan-ajo-especial.jpg"
+    "imagen": "img/entradas/pan-ajo-especial.jpg"
   },
   {
     "nombre": "Pan de la Casa",
-    "tipo": "Entradas",
-    "ingredientes": [
-      "Pan con ajo",
-      "Mozzarella",
-      "Orégano",
-      "Tocino ahumado",
-      "Ralladura de parmesano"
-    ],
+    "ingredientes": "Pan con ajo, Mozzarella, Orégano, Tocino ahumado, Ralladura de parmesano",
     "precio": 12,
-    "img": "img/entradas/pan-casa.jpg"
+    "imagen": "img/entradas/pan-casa.jpg"
   },
   {
     "nombre": "Focaccia a la Parmesana",
-    "tipo": "Entradas",
-    "ingredientes": [
-      "Pan focaccia",
-      "Ajo",
-      "Ralladura de parmesano"
-    ],
+    "ingredientes": "Pan focaccia, Ajo, Ralladura de parmesano",
     "precio": 19,
-    "img": "img/entradas/focaccia.jpg"
+    "imagen": "img/entradas/focaccia.jpg"
   },
   {
     "nombre": "Burrata",
-    "tipo": "Entradas",
-    "ingredientes": [
-      "Jamón serrano",
-      "Arúgula",
-      "Cherry",
-      "Cortes de pan"
-    ],
+    "ingredientes": "Jamón serrano, Arúgula, Cherry, Cortes de pan",
     "precio": 35,
-    "img": "img/entradas/burrata.jpg"
+    "imagen": "img/entradas/burrata.jpg"
   },
   {
     "nombre": "Champiñones al Ajillo",
-    "tipo": "Entradas",
-    "ingredientes": [
-      "Champiñones",
-      "Aceite de oliva",
-      "Ajo",
-      "Vino blanco",
-      "Pan"
-    ],
+    "ingredientes": "Champiñones, Aceite de oliva, Ajo, Vino blanco, Pan",
     "precio": 35,
-    "img": "img/entradas/champiñones-ajillo.jpg"
+    "imagen": "img/entradas/champiñones-ajillo.jpg"
   },
   {
     "nombre": "Anticucho Tradicional",
-    "tipo": "Antojos Irresistibles",
-    "ingredientes": [
-      "Papas andinas",
-      "Choclo",
-      "Rocoto"
-    ],
+    "ingredientes": "Papas andinas, Choclo, Rocoto",
     "precio": 25,
-    "img": "img/entradas/anticucho.jpg"
+    "imagen": "img/entradas/anticucho.jpg"
   },
   {
     "nombre": "Alitas Anticucheras",
-    "tipo": "Antojos Irresistibles",
-    "ingredientes": [
-      "Salsa anticuchera",
-      "Papitas cóctel",
-      "Rocoto"
-    ],
+    "ingredientes": "Salsa anticuchera, Papitas cóctel, Rocoto",
     "precio": 35,
-    "img": "img/entradas/alitas-anticucheras.jpg"
+    "imagen": "img/entradas/alitas-anticucheras.jpg"
   },
   {
     "nombre": "Alitas a la BBQ",
-    "tipo": "Antojos Irresistibles",
-    "ingredientes": [
-      "Salsa especial",
-      "Papas fritas"
-    ],
+    "ingredientes": "Salsa especial, Papas fritas",
     "precio": 35,
-    "img": "img/entradas/bbq.jpg"
+    "imagen": "img/entradas/bbq.jpg"
   },
   {
     "nombre": "Alitas Hot Wings",
-    "tipo": "Antojos Irresistibles",
-    "ingredientes": [
-      "Salsa especial picante",
-      "Papas fritas"
-    ],
+    "ingredientes": "Salsa especial picante, Papas fritas",
     "precio": 35,
-    "img": "img/entradas/hotwings.jpg"
+    "imagen": "img/entradas/hotwings.jpg"
   }
 ]
