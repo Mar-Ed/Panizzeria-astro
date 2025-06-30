@@ -1,0 +1,8 @@
+---
+import RegisterForm from "../components/auth/RegisterForm";
+import { AuthProvider } from "../context/AuthContext";
+---
+
+<AuthProvider>
+  <RegisterForm client:load />
+</AuthProvider>
