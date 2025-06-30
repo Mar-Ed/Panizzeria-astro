@@ -1,4 +1,6 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import type { ReactNode } from "react";
+
 
 interface AuthContextType {
   token: string | null;
@@ -12,21 +14,21 @@ const AuthContext = createContext<AuthContextType>({
   logout: () => {},
 });
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [token, setToken] = useState<string | null>(null);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('jwt');
+    const storedToken = localStorage.getItem("token");
     if (storedToken) setToken(storedToken);
   }, []);
 
-  const login = (jwt: string) => {
-    localStorage.setItem('jwt', jwt);
-    setToken(jwt);
+  const login = (newToken: string) => {
+    localStorage.setItem("token", newToken);
+    setToken(newToken);
   };
 
   const logout = () => {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem("token");
     setToken(null);
   };
 
@@ -35,6 +37,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export const useAuth = () => useContext(AuthContext);

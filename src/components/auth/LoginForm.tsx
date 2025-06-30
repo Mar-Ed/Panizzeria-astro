@@ -7,21 +7,22 @@ export default function LoginForm() {
   const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const res = await fetch("http://localhost:8080/api/auth/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ correo, contraseña }),
-    });
+  e.preventDefault();
+  const res = await fetch("http://localhost:8080/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ correo, contraseña }),
+  });
 
-    if (res.ok) {
-      const data = await res.json();
-      login(data.token); // Guarda el token en contexto o localStorage
-      window.location.href = "/admin"; // Redirige al panel de administración
-    } else {
-      alert("Credenciales inválidas");
-    }
-  };
+  if (res.ok) {
+    const data = await res.json();
+    login(data.token); // 👈 Aquí se guarda en localStorage
+    window.location.href = "/admin";
+  } else {
+    alert("Credenciales inválidas");
+  }
+};
+
 
   return (
     <>

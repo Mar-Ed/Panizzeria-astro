@@ -1,8 +1,12 @@
 ---
 import AdminPanel from '../../components/admin/AdminPanel';
 import { AuthProvider } from '../../context/AuthContext';
+import Layout from '../../layouts/Layout.astro';
 ---
-
-<AuthProvider>
-  <AdminPanel />
-</AuthProvider>
+<Layout>
+  <main>
+    <AuthProvider  client:load >
+      <AdminPanel/>
+    </AuthProvider>
+  </main>
+</Layout>
