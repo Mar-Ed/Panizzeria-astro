@@ -17,21 +17,10 @@
     gap: 30px;
 }
 
-.button-select {
-    display: flex;
-    text-align: center;
-    padding: 0.6rem 0.7rem;
-    background: var(--nav-color);
-    border-radius: 2rem;
-}
 
-.button-select a {
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--title-color);
-}
 
 .section-menu {
+    padding-top: 8rem;
     padding-left: 2rem;
     padding-right: 2rem;
     display: flex;
@@ -125,4 +114,91 @@
 
 .button-compra a:hover {
     background-color: #c92f3d;
+}
+
+/* Estilos para el botón activo */
+.button-select.active {
+    background: var(--primary-color, #e63946);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+}
+
+.button-select.active a {
+    color: white;
+}
+
+/* Mejorar la responsividad de los botones de filtro */
+@media (max-width: 768px) {
+    .container-selects {
+        flex-wrap: wrap;
+        gap: 15px;
+        padding: 0 1rem;
+    }
+    
+    .button-select {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-selects {
+        gap: 10px;
+    }
+    
+    .button-select {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .button-select a {
+        font-size: 0.8rem;
+    }
+}
+
+/* Animación suave para los cambios de filtro */
+.section-menu {
+    transition: opacity 0.3s ease;
+}
+
+.subsection {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.button {
+  display: inline-flex;
+  justify-content: center;
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 1rem 1.5rem;
+  font-weight: var(--font-semi-bold);
+  border-radius: 4rem;
+  box-shadow: 0 8px 24px hsla(353, 100%, 40%, 0.4);
+  transition: background-color 0.4s;
+  border: none;
+  cursor: pointer;
+}
+.button a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.button:hover {
+  background-color: var(--first-color-alt);
+}
+
+.button.active {
+  background: var(--primary-color, #e63946);
+  color: white;
+  transform: scale(1.05);
 }

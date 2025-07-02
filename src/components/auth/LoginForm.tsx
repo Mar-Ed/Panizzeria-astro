@@ -7,28 +7,28 @@ export default function LoginForm() {
   const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  const res = await fetch("http://localhost:8080/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ correo, contraseña }),
-  });
-
-  if (res.ok) {
-    const data = await res.json();
-    login(data.token); // 👈 Aquí se guarda en localStorage
-    window.location.href = "/admin";
-  } else {
-    alert("Credenciales inválidas");
-  }
-};
-
+    e.preventDefault();
+    const res = await fetch("http://localhost:8080/api/auth/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ correo, contraseña }),
+    });
+    
+    if (res.ok) {
+      const data = await res.json();
+      localStorage.setItem("token", data.token);
+      window.location.href = "/admin";
+    } else {
+      alert("Credenciales inválidas");
+    }
+  };
+  //muestrame el token por consola
 
   return (
     <>
-        <head>
-            <meta charSet="UTF-8" />
-        </head>
+      <head>
+        <meta charSet="UTF-8" />
+      </head>
       <form onSubmit={handleSubmit} className="login-form">
         <h2>Admin - Iniciar Sesion</h2>
         <input
@@ -45,8 +45,11 @@ export default function LoginForm() {
           required
         />
         <button type="submit">Entrar</button>
+        <h2>¿Estás Registrado?</h2>
+        <a href="/registro" className="register-link">
+          Registrate aquí
+        </a>
       </form>
-      
     </>
   );
 }

@@ -5,8 +5,8 @@ import Layout from '../../layouts/Layout.astro';
 ---
 <Layout>
   <main>
-    <AuthProvider  client:load >
-      <AdminPanel/>
+    <AuthProvider>
+      <AdminPanel client:load/>
     </AuthProvider>
   </main>
 </Layout>
