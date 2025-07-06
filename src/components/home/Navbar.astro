@@ -1,8 +1,7 @@
 ---
-import CartShopping from "../svg/CartShopping.astro";
 import Pizza from "../svg/Pizza.astro";
 import Bar from "../svg/Bar.astro";
-import CostShop from "../react/CostShop";
+import HeaderReact from "../react/HeaderReact.tsx";
 type Props = {
   type: string;
 };
@@ -43,8 +42,7 @@ const cost: string = "0.00";
 
     <div class="shop-container">
       <div class="button-shop">
-        <CartShopping />
-        <CostShop costShop={cost} />
+        <HeaderReact client:only="react" />
       </div>
     </div>
 

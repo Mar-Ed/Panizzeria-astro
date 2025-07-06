@@ -1,7 +1,4 @@
 import React from "react";
-import { useState } from "react";
-import CartShopping from "../svg/CartShopping.astro";
-
 type CartShopProps = {
   costShop: string;
 };
