@@ -1,18 +1,16 @@
-import { useState } from 'react';
-import EntradasCliente from './EntradasApi';
-import CartShop from './CostShop';
+// src/react/TiendaApp.tsx
+import EntradasCliente from "./EntradasApi";
+import CostShop from "./CostShop";
+import { CartProvider } from "../../context/CartContext";
 
-export default function TiendaPage() {
-  const [precioTotal, setPrecioTotal] = useState(0);
-
-  const handleAgregarPrecio = (precio: number) => {
-    setPrecioTotal(prev => prev + precio);
-  };
-
+export default function TiendaApp() {
   return (
-    <div>
-      <CartShop costShop={precioTotal.toFixed(2)} />
-      <EntradasCliente onAgregarPrecio={handleAgregarPrecio} />
-    </div>
+    <CartProvider>
+      <div className="button-shop">
+        <CostShop />
+      </div>
+
+      <EntradasCliente />
+    </CartProvider>
   );
 }
