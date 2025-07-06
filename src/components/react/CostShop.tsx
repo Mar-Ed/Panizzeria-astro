@@ -6,11 +6,10 @@ type CartShopProps = {
   costShop: string;
 };
 export default function CartShop({ costShop }: CartShopProps) {
-  const [cost, SetCost] = useState<string>(costShop);
   return (
     <>
       <span>S/</span>
-      <span>{cost}</span>
+      <span>{costShop}</span>
     </>
   );
 }
