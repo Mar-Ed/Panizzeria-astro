@@ -67,7 +67,6 @@ export default function Menu() {
             { texto: "Pizza Grande", href: "#pizzasGrandes" },
             { texto: "Pizza Familiar", href: "#pizzasFamiliar" },
             { texto: "Entradas", href: "#entradas" },
-            { texto: "Bebidas", href: "#bebidas" },
           ].map((btn) => (
             <div className="button" key={btn.href}>
               <a href={btn.href}>{btn.texto}</a>
@@ -78,7 +77,6 @@ export default function Menu() {
         {renderSeccion("Pizzas personales", pizzasPorTamaño("Personal 30CM"), "pizzasPersonales")}
         {renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"), "pizzasGrandes")}
         {renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"), "pizzasFamiliar")}
-        {renderSeccion("Bebidas", bebidas, "bebidas")}
         {renderSeccion("Entradas", entradas, "entradas")}
       </div>
 
@@ -86,6 +84,7 @@ export default function Menu() {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         product={selectedProduct}
+        bebidas={bebidas} // ✅ pásalo al modal
       />
     </section>
   );

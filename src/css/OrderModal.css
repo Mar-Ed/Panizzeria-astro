@@ -180,3 +180,56 @@
   pointer-events: none;
   color: #aaa;
 }
+
+
+.modal-bebidas {
+  margin: 1.5rem 0;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.modal-bebidas select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+.bebida-detalle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  background: #f9fafb;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ddd;
+}
+
+.bebida-detalle img {
+  width: 60px;
+  height: 60px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.bebida-detalle strong {
+  display: block;
+  font-size: 1rem;
+  color: #333;
+}
+
+.bebida-detalle p {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 0.25rem 0;
+}
+
+.bebida-detalle .precio {
+  font-size: 0.9rem;
+  color: #ea580c;
+  font-weight: bold;
+}
