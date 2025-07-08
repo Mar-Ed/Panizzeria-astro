@@ -112,10 +112,10 @@ export default function GestionarPizzas() {
           margin-top: 2rem;
         }
         .pizza-form {
-          display: grid;
+          display:flex;
+          flex-direction: column;
           gap: 1rem;
           margin-bottom: 2rem;
-          max-width: 500px;
         }
         .pizza-form input {
           padding: 0.5rem;

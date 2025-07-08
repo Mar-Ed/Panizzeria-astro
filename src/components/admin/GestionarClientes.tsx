@@ -144,9 +144,9 @@ export default function GestionarClientes() {
           margin-top: 2rem;
         }
         .formulario {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-          gap: 0.5rem;
+        display: flex;
+          flex-direction: column;
+          gap: 1rem;
           margin-bottom: 1.5rem;
         }
         .formulario input {
