@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
+import OrderModal from "./OrderModal";
 import "../../css/Menu.css";
 
 export default function Menu() {
   const [entradas, setEntradas] = useState([]);
-  const [cocteles, setCocteles] = useState([]);
   const [bebidas, setBebidas] = useState([]);
   const [pizzas, setPizzas] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const fetchData = async (endpoint, setState, nombre) => {
@@ -19,12 +21,16 @@ export default function Menu() {
     };
 
     fetchData("entradas", setEntradas, "entradas");
-    fetchData("cocteles", setCocteles, "cocteles");
     fetchData("bebidas", setBebidas, "bebidas");
     fetchData("pizzas", setPizzas, "pizzas");
   }, []);
 
-  const renderProductos = (productos, tipoExtra = null) =>
+  const handleAddToOrder = (item) => {
+    setSelectedProduct(item);
+    setModalOpen(true);
+  };
+
+  const renderProductos = (productos) =>
     productos.map((item) => (
       <div className="slider-plato" key={item.id || item.nombre}>
         <div className="info-plato">
@@ -37,7 +43,7 @@ export default function Menu() {
           </div>
         </div>
         <div className="button-compra">
-          <a href="">Agregar al Pedido</a>
+          <a onClick={() => handleAddToOrder(item)}>Agregar al Pedido</a>
         </div>
       </div>
     ));
@@ -62,33 +68,25 @@ export default function Menu() {
             { texto: "Pizza Familiar", href: "#pizzasFamiliar" },
             { texto: "Entradas", href: "#entradas" },
             { texto: "Bebidas", href: "#bebidas" },
-            { texto: "Cocteles", href: "#cocteles" },
           ].map((btn) => (
             <div className="button" key={btn.href}>
               <a href={btn.href}>{btn.texto}</a>
             </div>
           ))}
         </div>
-        
-        {renderSeccion(
-          "Pizzas personales",
-          pizzasPorTamaño("Personal 30CM"),
-          "pizzasPersonales",
-        )}
-        {renderSeccion(
-          "Pizzas Grandes",
-          pizzasPorTamaño("Grande 35CM"),
-          "pizzasGrandes",
-        )}
-        {renderSeccion(
-          "Pizzas Familiares",
-          pizzasPorTamaño("Familiar 40CM"),
-          "pizzasFamiliar",
-        )}
+
+        {renderSeccion("Pizzas personales", pizzasPorTamaño("Personal 30CM"), "pizzasPersonales")}
+        {renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"), "pizzasGrandes")}
+        {renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"), "pizzasFamiliar")}
         {renderSeccion("Bebidas", bebidas, "bebidas")}
-        {renderSeccion("Cocteles", cocteles, "cocteles")}
         {renderSeccion("Entradas", entradas, "entradas")}
       </div>
+
+      <OrderModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        product={selectedProduct}
+      />
     </section>
   );
 }

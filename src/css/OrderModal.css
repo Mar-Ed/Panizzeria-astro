@@ -1,0 +1,182 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 1rem;
+  margin-top: 4rem;
+  width: 100%;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.25);
+  padding: 0;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.modal-product {
+  display: flex;
+  padding: 1.5rem;
+  gap: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.modal-product img {
+  width: 100px;
+  height: 100px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal-product-info {
+  flex: 1;
+}
+
+.precio-cantidad {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.precio {
+  color: #ea580c;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.cantidad {
+  background: #ffedd5;
+  color: #c2410c;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+}
+
+.modal-form {
+  padding: 1.5rem;
+}
+
+.modal-form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.modal-form input,
+.modal-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+}
+
+.modal-form .grid-dos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-resumen {
+  background: #f9fafb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.resumen-item,
+.resumen-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.resumen-total {
+  margin-top: 1rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #ea580c;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.confirmar,
+.cancelar {
+  flex: 1;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.confirmar {
+  background: #ea580c;
+  color: #fff;
+  border: none;
+}
+
+.confirmar:disabled {
+  background: #fcd9b6;
+  cursor: not-allowed;
+}
+
+.cancelar {
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #333;
+}
+
+
+
+.orange {
+  color: #ea580c;
+}
+
+.icon-left {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #aaa;
+}

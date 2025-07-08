@@ -1,8 +1,6 @@
 ---
-import CartShopping from "../svg/CartShopping.astro";
 import Pizza from "../svg/Pizza.astro";
 import Bar from "../svg/Bar.astro";
-import CostShop from "../react/CostShop";
 type Props = {
   type: string;
 };
@@ -41,12 +39,6 @@ const cost: string = "0.00";
       }
     </div>
 
-    <div class="shop-container">
-      <div class="button-shop">
-        <CartShopping />
-        <CostShop costShop={cost} />
-      </div>
-    </div>
 
     <!-- Sidebar Mobile -->
     <div class="side-bar" id="menu-btn">
@@ -235,11 +227,6 @@ const cost: string = "0.00";
     color: var(--body-color);
   }
 
-  .shop-container {
-    background-color: var(--nav-color);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-  }
 
   .hover-transition {
     background-color: var(--first-color);
