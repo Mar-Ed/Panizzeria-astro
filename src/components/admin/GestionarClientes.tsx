@@ -22,6 +22,7 @@ export default function GestionarClientes() {
 
   // 🔁 Siempre cargar clientes al montar el componente
   useEffect(() => {
+    console.log("Token:", token);
     fetch("http://localhost:8080/api/clientes", {
       headers: {
         Authorization: `Bearer ${token}`,

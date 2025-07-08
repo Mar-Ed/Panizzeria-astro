@@ -1,47 +1,40 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
-interface PedidoDetalle {
-  id: number;
+interface DetalleDTO {
   producto: string;
-  tipo: string;
   cantidad: number;
-  precio: number;
 }
 
-interface Pedido {
+interface PedidoDTO {
   id: number;
   estado: string;
-  fecha: string;
-  cliente: {
-    id: number;
-    nombre: string;
-  };
-  detalles: PedidoDetalle[];
+  cliente: string; // no es objeto, es string
+  total: number;
+  detalles: DetalleDTO[];
 }
 
 export default function GestionarPedidos() {
   const { token } = useAuth();
-  const [pedidos, setPedidos] = useState<Pedido[]>([]);
+  const [pedidos, setPedidos] = useState<PedidoDTO[]>([]);
   const [nuevoEstado, setNuevoEstado] = useState<{ [id: number]: string }>({});
 
-  // Cargar pedidos al montar el componente
   useEffect(() => {
-    if (token) {
-      fetch("http://localhost:8080/api/pedidos/dto", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((res) => res.json())
-        .then(setPedidos)
-        .catch((err) => console.error("Error al cargar pedidos:", err));
-    }
+    const headers: HeadersInit = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+
+    fetch("http://localhost:8080/api/pedidos/dto", { headers })
+      .then((res) => res.json())
+      .then(setPedidos)
+      .catch((err) => console.error("Error cargando pedidos:", err));
   }, [token]);
 
   const actualizarEstado = (id: number) => {
     const estado = nuevoEstado[id];
     if (!estado) return;
 
-    fetch(`http://localhost:8080/api/pedidos/dto/${id}`, {
+    fetch(`http://localhost:8080/api/pedidos/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -52,8 +45,8 @@ export default function GestionarPedidos() {
       .then(() => {
         setPedidos((prev) =>
           prev.map((pedido) =>
-            pedido.id === id ? { ...pedido, estado } : pedido
-          )
+            pedido.id === id ? { ...pedido, estado } : pedido,
+          ),
         );
         setNuevoEstado((prev) => ({ ...prev, [id]: "" }));
       })
@@ -70,33 +63,35 @@ export default function GestionarPedidos() {
         <div className="lista-pedidos">
           {pedidos.map((pedido) => (
             <div className="pedido-card" key={pedido.id}>
-              <strong>ID:</strong> {pedido.id}<br />
-              <strong>Cliente:</strong> {pedido.cliente.nombre}<br />
-              <strong>Fecha:</strong>{" "}
-              {new Date(pedido.fecha).toLocaleString()}<br />
+              <strong>ID:</strong> {pedido.id}
+              <br />
+              <strong>Cliente:</strong> {pedido.cliente}
+              <br />
               <strong>Estado:</strong> {pedido.estado}
-
+              <br />
+              <strong>Total:</strong> S/. {pedido.total.toFixed(2)}
               <div className="estado-actualizacion">
                 <input
                   type="text"
                   placeholder="Nuevo estado"
                   value={nuevoEstado[pedido.id] || ""}
                   onChange={(e) =>
-                    setNuevoEstado({ ...nuevoEstado, [pedido.id]: e.target.value })
+                    setNuevoEstado({
+                      ...nuevoEstado,
+                      [pedido.id]: e.target.value,
+                    })
                   }
                 />
                 <button onClick={() => actualizarEstado(pedido.id)}>
                   Guardar
                 </button>
               </div>
-
               <div className="pedido-detalles">
                 <strong>Detalles:</strong>
                 <ul>
-                  {pedido.detalles.map((detalle) => (
-                    <li key={detalle.id}>
-                      {detalle.cantidad}x {detalle.producto} ({detalle.tipo}) — S/.{" "}
-                      {(detalle.precio * detalle.cantidad).toFixed(2)}
+                  {pedido.detalles.map((detalle, i) => (
+                    <li key={i}>
+                      {detalle.cantidad}x {detalle.producto}
                     </li>
                   ))}
                 </ul>

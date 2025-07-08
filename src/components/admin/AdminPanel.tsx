@@ -7,12 +7,13 @@ import GestionarCocteles from "./GestionarCocteles";
 import GestionarClientes from "./GestionarClientes";
 import GestionarPedidos from "./GestionarPedidos";
 
+// Ajustado a la estructura real del DTO
 interface Pedido {
   id: number;
-  cliente: { nombre: string };
+  cliente: string; // era { nombre: string }
   total: number;
   estado: string;
-  detalles: { producto: { nombre: string }; cantidad: number }[];
+  detalles: { producto: string; cantidad: number }[]; // era producto: { nombre: string }
 }
 
 export default function AdminPanel() {
@@ -21,36 +22,15 @@ export default function AdminPanel() {
   const [seccionActiva, setSeccionActiva] = useState<string | null>(null);
 
   useEffect(() => {
-    if (token) {
-      fetch("http://localhost:8080/api/admin/pedidos", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then(setPedidos)
-        .catch((err) => console.error("Error cargando pedidos:", err));
-    }
+    const headers: HeadersInit = token
+      ? { Authorization: `Bearer ${token}` }
+      : {};
+
+    fetch("http://localhost:8080/api/pedidos/dto", { headers })
+      .then((res) => res.json())
+      .then(setPedidos)
+      .catch((err) => console.error("Error cargando pedidos:", err));
   }, [token]);
-  // if (!token) {
-  //   return (
-  //     <div className="no-access">
-  //       <p>No tienes acceso. Por favor, <a href="/login">inicia sesión</a>.</p>
-  //       <style>{`
-  //         .no-access {
-  //           text-align: center;
-  //           margin-top: 4rem;
-  //           font-family: sans-serif;
-  //           color: #333;
-  //         }
-  //         a {
-  //           color: #d33;
-  //           text-decoration: underline;
-  //         }
-  //       `}</style>
-  //     </div>
-  //   );
-  // }
 
   const handleLogout = () => {
     logout();
@@ -73,7 +53,7 @@ export default function AdminPanel() {
             <div className="orders-list">
               {pedidos.map((pedido) => (
                 <div className="order-card" key={pedido.id}>
-                  <strong>Cliente:</strong> {pedido.cliente.nombre}
+                  <strong>Cliente:</strong> {pedido.cliente}
                   <br />
                   <strong>Estado:</strong> {pedido.estado}
                   <br />
@@ -81,7 +61,7 @@ export default function AdminPanel() {
                   <br />
                   <strong>Productos:</strong>{" "}
                   {pedido.detalles
-                    .map((d) => `${d.cantidad}x ${d.producto.nombre}`)
+                    .map((d) => `${d.cantidad}x ${d.producto}`)
                     .join(", ")}
                 </div>
               ))}
@@ -211,5 +191,3 @@ export default function AdminPanel() {
     </div>
   );
 }
-  
- 

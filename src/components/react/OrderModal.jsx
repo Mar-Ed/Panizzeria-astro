@@ -12,14 +12,21 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [bebidas, setBebidas] = useState([]);
+  const [entradas, setEntradas] = useState([]);
   const [selectedBebida, setSelectedBebida] = useState(null);
+  const [selectedEntrada, setSelectedEntrada] = useState(null);
 
   useEffect(() => {
     if (isOpen) {
       fetch("http://localhost:8080/api/bebidas")
         .then((res) => res.json())
         .then((data) => setBebidas(data))
-        .catch((err) => console.error("Error al cargar bebidas:", err));
+        .catch((err) => console.error("Error cargando bebidas:", err));
+
+      fetch("http://localhost:8080/api/entradas")
+        .then((res) => res.json())
+        .then((data) => setEntradas(data))
+        .catch((err) => console.error("Error cargando entradas:", err));
     }
   }, [isOpen]);
 
@@ -31,26 +38,98 @@ export default function OrderModal({ isOpen, onClose, product }) {
   const handleBebidaChange = (e) => {
     const selectedId = parseInt(e.target.value);
     const bebida = bebidas.find((b) => b.id === selectedId);
+    //entradas api
+    // Set the selected bebida or null if not found
+    const entrada = entradas.find((e) => e.id === selectedId);
     setSelectedBebida(bebida || null);
+    setSelectedEntrada(entrada || null);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise((res) => setTimeout(res, 1000));
-    console.log("Pedido confirmado:", {
-      ...customerData,
-      producto: product,
-      bebida: selectedBebida,
-    });
+
+    try {
+      // 1. Registrar cliente
+      const clienteRes = await fetch("http://localhost:8080/api/clientes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(customerData),
+      });
+
+      if (!clienteRes.ok) throw new Error("Error al registrar cliente");
+      const cliente = await clienteRes.json();
+
+      // 2. Registrar pedido
+      const pedidoRes = await fetch("http://localhost:8080/api/pedidos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          estado: "pendiente",
+          cliente: { id: cliente.id },
+        }),
+      });
+
+      if (!pedidoRes.ok) throw new Error("Error al registrar pedido");
+      const pedido = await pedidoRes.json();
+
+      // 3. Crear detalles
+      const detalles = [];
+
+      detalles.push({
+        producto: product.nombre,
+        tipo: "Plato",
+        cantidad: 1,
+        precio: product.precio,
+        pedido: { id: pedido.id },
+      });
+
+      if (selectedBebida) {
+        detalles.push({
+          producto: selectedBebida.nombre,
+          tipo: "Bebida",
+          cantidad: 1,
+          precio: selectedBebida.precio,
+          pedido: { id: pedido.id },
+        });
+      }
+
+      if (selectedEntrada) {
+        detalles.push({
+          producto: selectedEntrada.nombre,
+          tipo: "Entrada",
+          cantidad: 1,
+          precio: selectedEntrada.precio,
+          pedido: { id: pedido.id },
+        });
+      }
+
+      // POST de todos los detalles en paralelo
+      await Promise.all(
+        detalles.map((detalle) =>
+          fetch("http://localhost:8080/api/pedido-detalles", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(detalle),
+          }),
+        ),
+      );
+
+      alert("✅ Pedido enviado con éxito.");
+      onClose();
+    } catch (err) {
+      console.error("Error al enviar el pedido:", err);
+      alert("❌ Error al enviar el pedido. Inténtalo de nuevo.");
+    }
+
     setIsSubmitting(false);
-    onClose();
   };
 
   if (!isOpen || !product) return null;
 
   const precioBebida = selectedBebida?.precio || 0;
-  const total = product.precio + precioBebida;
+  const precioEntrada = selectedEntrada?.precio || 0;
+  const total = product.precio + precioBebida + precioEntrada;
 
   return (
     <div className="modal-overlay">
@@ -116,6 +195,46 @@ export default function OrderModal({ isOpen, onClose, product }) {
                   <p>{selectedBebida.descripcion}</p>
                   <span className="precio">
                     S/. {selectedBebida.precio.toFixed(2)}
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        {/* Selector de entrada */}
+        {entradas.length > 0 && (
+          <div className="modal-bebidas">
+            <label htmlFor="entrada-select">
+              Entrada adicional (opcional)
+              <select
+                onChange={(e) => {
+                  const entradaSeleccionada = entradas.find(
+                    (b) => b.id === parseInt(e.target.value),
+                  );
+                  setSelectedEntrada(entradaSeleccionada || null);
+                }}
+                value={selectedEntrada?.id || ""}
+              >
+                <option value="">-- Selecciona una entrada --</option>
+                {entradas.map((entrada) => (
+                  <option key={entrada.id} value={entrada.id}>
+                    🍽️ {entrada.nombre} - {entrada.descripcion} - S/.{" "}
+                    {entrada.precio}
+                  </option>
+                ))}
+              </select>
+            </label>
+            {selectedEntrada && (
+              <div className="bebida-detalle">
+                <img
+                  src={selectedEntrada.imagen}
+                  alt={selectedEntrada.nombre}
+                />
+                <div>
+                  <strong>{selectedEntrada.nombre}</strong>
+                  <p>{selectedEntrada.descripcion}</p>
+                  <span className="precio">
+                    S/. {selectedEntrada.precio.toFixed(2)}
                   </span>
                 </div>
               </div>
@@ -190,6 +309,12 @@ export default function OrderModal({ isOpen, onClose, product }) {
               <div className="resumen-item">
                 <span>Bebida:</span>
                 <span>S/. {precioBebida.toFixed(2)}</span>
+              </div>
+            )}
+            {selectedEntrada && (
+              <div className="resumen-item">
+                <span>Entrada:</span>
+                <span>S/. {precioEntrada.toFixed(2)}</span>
               </div>
             )}
             <div className="resumen-item">

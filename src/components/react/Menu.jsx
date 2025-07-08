@@ -3,7 +3,6 @@ import OrderModal from "./OrderModal";
 import "../../css/Menu.css";
 
 export default function Menu() {
-  const [entradas, setEntradas] = useState([]);
   const [bebidas, setBebidas] = useState([]);
   const [pizzas, setPizzas] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -20,7 +19,6 @@ export default function Menu() {
       }
     };
 
-    fetchData("entradas", setEntradas, "entradas");
     fetchData("bebidas", setBebidas, "bebidas");
     fetchData("pizzas", setPizzas, "pizzas");
   }, []);
@@ -66,7 +64,6 @@ export default function Menu() {
             { texto: "Pizza Personal", href: "#pizzasPersonales" },
             { texto: "Pizza Grande", href: "#pizzasGrandes" },
             { texto: "Pizza Familiar", href: "#pizzasFamiliar" },
-            { texto: "Entradas", href: "#entradas" },
           ].map((btn) => (
             <div className="button" key={btn.href}>
               <a href={btn.href}>{btn.texto}</a>
@@ -77,14 +74,13 @@ export default function Menu() {
         {renderSeccion("Pizzas personales", pizzasPorTamaño("Personal 30CM"), "pizzasPersonales")}
         {renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"), "pizzasGrandes")}
         {renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"), "pizzasFamiliar")}
-        {renderSeccion("Entradas", entradas, "entradas")}
       </div>
 
       <OrderModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         product={selectedProduct}
-        bebidas={bebidas} // ✅ pásalo al modal
+        bebidas={bebidas}
       />
     </section>
   );
