@@ -248,3 +248,27 @@
   font-weight: bold;
   cursor: pointer;
 }
+.modal-form h3,
+.modal-form h4 {
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-form ul {
+  list-style: disc;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+}
+
+.modal-form li {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.resumen-subtitulo {
+  text-align: center;
+  color: #ea580c;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 1.5rem;
+}

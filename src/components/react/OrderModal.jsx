@@ -20,6 +20,9 @@ export default function OrderModal({ isOpen, onClose, product }) {
   const [cantidadBebida, setCantidadBebida] = useState(1);
   const [cantidadEntrada, setCantidadEntrada] = useState(1);
 
+  const [showSummaryModal, setShowSummaryModal] = useState(false);
+  const [resumenPedido, setResumenPedido] = useState(null);
+
   useEffect(() => {
     if (isOpen) {
       setCantidadProducto(1);
@@ -70,7 +73,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           estado: "pendiente",
-          fecha: fechaFormateada, 
+          fecha: fechaFormateada,
           cliente: { id: cliente.id },
         }),
       });
@@ -118,8 +121,14 @@ export default function OrderModal({ isOpen, onClose, product }) {
         ),
       );
 
-      alert("✅ Pedido enviado con éxito.");
-      onClose();
+      setResumenPedido({
+        cliente: customerData,
+        productos: detalles,
+        total: total.toFixed(2),
+        estado: "pendiente",
+        fecha: fechaFormateada,
+      });
+      setShowSummaryModal(true);
     } catch (err) {
       console.error("Error al enviar el pedido:", err);
       alert("❌ Error al enviar el pedido. Inténtalo de nuevo.");
@@ -373,6 +382,79 @@ export default function OrderModal({ isOpen, onClose, product }) {
           </div>
         </form>
       </div>
+      {showSummaryModal && resumenPedido && (
+        <div className="modal-overlay">
+          <div className="modal-box">
+            <div className="modal-header">
+              <h2 className="text-2xl font-bold text-gray-800">
+                Pedido Confirmado
+              </h2>
+              <button
+                className="modal-close"
+                onClick={() => {
+                  setShowSummaryModal(false);
+                  onClose(); // cerrar todo
+                }}
+              >
+                <X className="icon" />
+              </button>
+            </div>
+
+            <div className="modal-form">
+              <p className="resumen-subtitulo">
+                📱 Nos comunicaremos a tu WSP para la entrega de tu pedido!
+              </p>
+              <h3>📄 Detalles del Pedido</h3>
+              <p>
+                <strong>Estado:</strong> {resumenPedido.estado}
+              </p>
+              <p>
+                <strong>Fecha:</strong> {resumenPedido.fecha}
+              </p>
+
+              <h4 style={{ marginTop: "1rem" }}>🧍 Cliente</h4>
+              <p>
+                <strong>Nombre:</strong> {resumenPedido.cliente.nombre}
+              </p>
+              <p>
+                <strong>Dirección:</strong> {resumenPedido.cliente.direccion}
+              </p>
+              <p>
+                <strong>Teléfono:</strong> {resumenPedido.cliente.telefono}
+              </p>
+              <p>
+                <strong>Email:</strong> {resumenPedido.cliente.correo}
+              </p>
+
+              <h4 style={{ marginTop: "1rem" }}>🍽️ Productos</h4>
+              <ul style={{ paddingLeft: "1rem" }}>
+                {resumenPedido.productos.map((p, idx) => (
+                  <li key={idx} style={{ marginBottom: "0.5rem" }}>
+                    <strong>{p.tipo}</strong>: {p.producto} x {p.cantidad} - S/.{" "}
+                    {p.precio.toFixed(2)}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="resumen-total" style={{ marginTop: "1rem" }}>
+                <strong>Total pagado:</strong>
+                <strong>S/. {resumenPedido.total}</strong>
+              </div>
+
+              <button
+                className="confirmar"
+                style={{ marginTop: "1.5rem" }}
+                onClick={() => {
+                  setShowSummaryModal(false);
+                  onClose();
+                }}
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
