@@ -7,6 +7,7 @@ export default function Menu() {
   const [pizzas, setPizzas] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [activeSection, setActiveSection] = useState("Personal");
 
   useEffect(() => {
     const fetchData = async (endpoint, setState, nombre) => {
@@ -46,9 +47,9 @@ export default function Menu() {
       </div>
     ));
 
-  const renderSeccion = (titulo, productos, id = null) => (
+  const renderSeccion = (titulo, productos) => (
     <div className="subsection">
-      <h2 id={id || titulo.toLowerCase()}>{titulo}</h2>
+      <h2>{titulo}</h2>
       <div className="grid">{renderProductos(productos)}</div>
     </div>
   );
@@ -61,19 +62,22 @@ export default function Menu() {
       <div className="section-menu">
         <div className="container-selects">
           {[
-            { texto: "Pizza Personal", href: "#pizzasPersonales" },
-            { texto: "Pizza Grande", href: "#pizzasGrandes" },
-            { texto: "Pizza Familiar", href: "#pizzasFamiliar" },
+            { texto: "Pizza Personal", valor: "Personal" },
+            { texto: "Pizza Grande", valor: "Grande" },
+            { texto: "Pizza Familiar", valor: "Familiar" },
           ].map((btn) => (
-            <div className="button" key={btn.href}>
-              <a href={btn.href}>{btn.texto}</a>
+              <div className="button" key={btn.href}>
+              <a onClick={() => setActiveSection(btn.valor)} href={btn.href}>{btn.texto}</a>
             </div>
           ))}
         </div>
 
-        {renderSeccion("Pizzas personales", pizzasPorTamaño("Personal 30CM"), "pizzasPersonales")}
-        {renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"), "pizzasGrandes")}
-        {renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"), "pizzasFamiliar")}
+        {activeSection === "Personal" &&
+          renderSeccion("Pizzas Personales", pizzasPorTamaño("Personal 30CM"))}
+        {activeSection === "Grande" &&
+          renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"))}
+        {activeSection === "Familiar" &&
+          renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"))}
       </div>
 
       <OrderModal
