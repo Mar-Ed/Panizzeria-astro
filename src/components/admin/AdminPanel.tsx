@@ -11,6 +11,7 @@ interface Pedido {
   id: number;
   cliente: string; // era { nombre: string }
   total: number;
+  fecha: string;
   estado: string;
   detalles: { producto: string; cantidad: number }[]; // era producto: { nombre: string }
 }
@@ -50,20 +51,25 @@ export default function AdminPanel() {
             <p>No hay pedidos aún.</p>
           ) : (
             <div className="orders-list">
-              {pedidos.map((pedido) => (
-                <div className="order-card" key={pedido.id}>
-                  <strong>Cliente:</strong> {pedido.cliente}
-                  <br />
-                  <strong>Estado:</strong> {pedido.estado}
-                  <br />
-                  <strong>Total:</strong> S/. {pedido.total.toFixed(2)}
-                  <br />
-                  <strong>Productos:</strong>{" "}
-                  {pedido.detalles
-                    .map((d) => `${d.cantidad}x ${d.producto}`)
-                    .join(", ")}
-                </div>
-              ))}
+              {[...pedidos]
+                .slice(-2)
+                .reverse()
+                .map((pedido) => (
+                  <div className="order-card" key={pedido.id}>
+                    <strong>Cliente:</strong> {pedido.cliente}
+                    <br />
+                    <strong>Estado:</strong> {pedido.estado}
+                    <br />
+                    <strong>Total:</strong> S/. {pedido.total.toFixed(2)}
+                    <br />
+                    <strong>Fecha:</strong> {pedido.fecha}
+                    <br />
+                    <strong>Productos:</strong>{" "}
+                    {pedido.detalles
+                      .map((d) => `${d.cantidad}x ${d.producto}`)
+                      .join(", ")}
+                  </div>
+                ))}
             </div>
           )}
         </section>
