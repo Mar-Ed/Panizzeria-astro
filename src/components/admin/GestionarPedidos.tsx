@@ -4,7 +4,7 @@ import { useAuth } from "../../context/AuthContext";
 interface DetalleDTO {
   producto: string;
   cantidad: number;
-  precio?: number; 
+  precio?: number;
 }
 
 interface PedidoDTO {
@@ -12,10 +12,9 @@ interface PedidoDTO {
   estado: string;
   cliente: string;
   total: number;
-  fecha: string; 
+  fecha: string; // ahora incluida la fecha
   detalles: DetalleDTO[];
 }
-
 
 export default function GestionarPedidos() {
   const { token } = useAuth();
@@ -69,11 +68,16 @@ export default function GestionarPedidos() {
               <div><strong>ID:</strong> {pedido.id}</div>
               <div><strong>Cliente:</strong> {pedido.cliente}</div>
               <div><strong>Estado actual:</strong> {pedido.estado}</div>
+              <div><strong>Fecha:</strong> {pedido.fecha}</div>
+
               <div className="estado-actualizacion">
                 <select
                   value={nuevoEstado[pedido.id] || ""}
                   onChange={(e) =>
-                    setNuevoEstado({ ...nuevoEstado, [pedido.id]: e.target.value })
+                    setNuevoEstado({
+                      ...nuevoEstado,
+                      [pedido.id]: e.target.value,
+                    })
                   }
                 >
                   <option value="">-- Cambiar estado --</option>
@@ -95,11 +99,9 @@ export default function GestionarPedidos() {
                   {pedido.detalles.map((detalle, i) => (
                     <li key={i} className="detalle-item">
                       <span>{detalle.cantidad}x {detalle.producto}</span>
-                      {detalle.precio && (
-                        <span className="precio-derecha">
-                          S/. {(detalle.precio).toFixed(2)}
-                        </span>
-                      )}
+                      <span className="precio-derecha">
+                        S/. {(detalle.precio ?? 0).toFixed(2)}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -143,7 +145,7 @@ export default function GestionarPedidos() {
         }
         .pedido-detalles ul {
           margin-top: 0.5rem;
-          padding-left: 1rem;
+          padding-left: 0;
           list-style: none;
         }
         .detalle-item {
