@@ -156,7 +156,7 @@ export default function GestionarClientes() {
         }
         .formulario button {
           grid-column: span 2;
-          background-color: #28a745;
+          background-color: #d33;
           color: white;
           border: none;
           padding: 0.6rem;

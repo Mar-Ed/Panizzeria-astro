@@ -136,7 +136,7 @@ export default function GestionarPedidos() {
           padding: 0.4rem;
         }
         .estado-actualizacion button {
-          background-color: #007bff;
+          background-color: #d33;
           color: white;
           border: none;
           padding: 0.4rem 0.8rem;

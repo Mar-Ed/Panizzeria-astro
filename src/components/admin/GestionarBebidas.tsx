@@ -156,7 +156,7 @@ export default function GestionarBebidas() {
           border-radius: 4px;
         }
         .formulario button {
-          background-color: #007bff;
+          background-color: #d33;
           color: white;
           padding: 0.6rem;
           border: none;

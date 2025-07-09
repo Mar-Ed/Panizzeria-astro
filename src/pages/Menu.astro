@@ -2,11 +2,12 @@
 import Menus from "../components/react/Menu.jsx"
 import Navbar from "../components/home/Navbar.astro"
 import Layout from "../layouts/Layout.astro"
+import Footer from "../components/home/Footer.astro"
 ---
 <Layout>
     <main>
         <Navbar type="menus"/>
         <Menus client:load />
-        <Navbar type="menus" />
+        <Footer/>
     </main>
 </Layout>

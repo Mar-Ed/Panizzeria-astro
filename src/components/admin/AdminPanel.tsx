@@ -3,7 +3,6 @@ import { useAuth } from "../../context/AuthContext";
 import GestionarPizzas from "./GestionarPizzas";
 import GestionarEntradas from "./GestionarEntradas";
 import GestionarBebidas from "./GestionarBebidas";
-import GestionarCocteles from "./GestionarCocteles";
 import GestionarClientes from "./GestionarClientes";
 import GestionarPedidos from "./GestionarPedidos";
 
@@ -93,12 +92,6 @@ export default function AdminPanel() {
             </button>
           </div>
           <div className="crud-card">
-            <h3>🍹 Cocteles</h3>
-            <button onClick={() => setSeccionActiva("cocteles")}>
-              Gestionar Cocteles
-            </button>
-          </div>
-          <div className="crud-card">
             <h3>👥 Clientes</h3>
             <button onClick={() => setSeccionActiva("clientes")}>
               Gestionar Clientes
@@ -116,7 +109,6 @@ export default function AdminPanel() {
       {seccionActiva === "pizzas" && <GestionarPizzas />}
       {seccionActiva === "entradas" && <GestionarEntradas />}
       {seccionActiva === "bebidas" && <GestionarBebidas />}
-      {seccionActiva === "cocteles" && <GestionarCocteles />}
       {seccionActiva === "clientes" && <GestionarClientes />}
       {seccionActiva === "pedidos" && <GestionarPedidos />}
 

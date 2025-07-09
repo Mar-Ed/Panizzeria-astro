@@ -152,7 +152,7 @@ export default function GestionarEntradas() {
           border-radius: 4px;
         }
         .formulario button {
-          background-color: #28a745;
+          background-color: #d33;
           color: white;
           padding: 0.6rem;
           border: none;
