@@ -15,6 +15,7 @@ import { FreeMode, Pagination } from "swiper/modules";
 export default function App() {
   return (
     <>
+      <div className="prin-container">
       <div className="wrapper">
         <div className="title-container">
           <h1 className="title">
@@ -116,6 +117,7 @@ export default function App() {
             </div>
           </SwiperSlide>
         </Swiper>
+      </div>
       </div>
     </>
   );
