@@ -1,0 +1,99 @@
+<div class="prin-container">
+    <div class="container">
+        <span class="title principal-title">Ingredientes Naturales</span>
+        <div class="sub-container">
+            <div class="ingredients">
+                <div class="ingredient">
+                    <img src="img/recipe-flour.png" alt="" />
+                    <div class="ingredient-info">
+                        <span class="title">Harina</span>
+                        <p>El mejor trigo del campo para la mejor harina.</p>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <img src="img/recipe-cheese.png" alt="" />
+                    <div class="ingredient-info">
+                        <span class="title">Queso</span>
+                        <p>El queso seleccionado puro</p>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <img src="img/recipe-sauces.png" alt="" />
+                    <div class="ingredient-info">
+                        <span class="title">Salsa de tomate </span>
+                        <p>Añade un toque de salsa a tu vida y sabrá mejor</p>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <img src="img/recipe-tomato.png" alt="" />
+                    <div class="ingredient-info">
+                        <span class="title">Vegetales</span>
+                        <p>
+                            Verduras llenas de esencia de la naturaleza y
+                            orgánicas.
+                        </p>
+                    </div>
+                </div>
+                <div class="ingredient">
+                    <img src="img/recipe-meat.png" alt="" />
+                    <div class="ingredient-info">
+                        <span class="title">Carnes</span>
+                        <p>La mejor carne y fresca.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="recipe-container">
+                <img src="img/recipe-img.png" alt="" />
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .container .principal-title {
+        font-size: 2rem;
+    }
+    .prin-container {
+        margin-bottom: 3rem;
+        padding-top: 5rem;
+    }
+    .ingredients {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .ingredient {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 500px;
+    }
+    .ingredient-info {
+        width: 50%;
+    }
+    .ingredient img {
+        width: 6rem;
+    }
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5rem;
+    }
+    .recipe-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .recipe-container img {
+        width: 600px;
+    }
+    .title {
+        font-size: 1.3rem;
+    }
+    .sub-container {
+        display: flex;
+    }
+    .ingredient p {
+        color: var(--first-color-dark);
+    }
+</style>

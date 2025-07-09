@@ -1,0 +1,95 @@
+<div class="prin-container">
+    <div class="container">
+        <div class="content">
+            <div class="contain-image">
+                <img src="img/about-img.png" alt="" />
+            </div>
+            <div class="content-right">
+                <div class="contain-text">
+                    <p class="big-text title">
+                        Aprende acerca de Nuestra historia
+                    </p>
+                    <p>
+                        El secreto del éxito reside en los mejores ingredientes
+                        para elaborar una pizza excepcional. Hoy buscamos la
+                        perfección, tal como lo hemos hecho durante 15 años,
+                        cuando abrimos la pizzería en Lima, Perú.
+                    </p>
+                </div>
+                <div class="button-container">
+                    <a href="/Menu" class="button">Descubre nuestras pizzas</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .prin-container {
+        background-color: var(--body-color);
+    }
+    .content {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        max-width: 1000px;
+        width: 100%;
+        padding: 2rem;
+        border-radius: 8px;
+    }
+
+    .contain-image img {
+        width: 400px;
+        height: auto;
+    }
+
+    .contain-text {
+        padding-left: 2rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .contain-text .big-text {
+        font-size: 2rem;
+    }
+    .contain-text p {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: var(--first-color-dark);
+    }
+
+    .button-container {
+        padding-left: 2rem;
+    }
+    .button {
+        display: inline-flex;
+        justify-content: center;
+        background-color: var(--first-color);
+        color: var(--white-color);
+        padding: 1rem 1.5rem;
+        font-weight: var(--font-semi-bold);
+        border-radius: 4rem;
+        text-decoration: none;
+        box-shadow: 0 8px 24px hsla(353, 100%, 40%, 0.4);
+        transition: background-color 0.4s;
+
+        &:hover {
+            background-color: var(--first-color-alt);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .contain-image img {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+</style>

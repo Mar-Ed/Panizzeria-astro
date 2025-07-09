@@ -48,6 +48,15 @@ body {
   font-family: var(--body-font);
   background-color: var(--body-color);
 }
+.prin-container{
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+}
 .wrapper {
   max-width: 1120px;
   margin: 0 auto;
@@ -58,7 +67,7 @@ body {
 }
 
 .container {
-  max-width: 1120px;
+  max-width: 1500px;
   margin-inline: 1.5rem;
 }
 
