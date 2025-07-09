@@ -13,9 +13,13 @@ export default function LoginForm() {
     rol: "ROLE_ADMIN",
   });
 
+  const [loginError, setLoginError] = useState("");
+  const [registerMessage, setRegisterMessage] = useState("");
+
   // Registrar
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setRegisterMessage(""); // Limpiar mensaje si cambia algo
   };
 
   const handleSubmitRegister = async (e: React.FormEvent) => {
@@ -24,7 +28,7 @@ export default function LoginForm() {
     const { nombre, correo, contraseña } = form;
 
     if (!nombre || !correo || !contraseña) {
-      alert("Por favor, complete todos los campos para registrarse.");
+      setRegisterMessage("Por favor, complete todos los campos.");
       return;
     }
 
@@ -35,10 +39,10 @@ export default function LoginForm() {
     });
 
     if (res.ok) {
-      alert("Usuario registrado correctamente");
-      window.location.href = "/login";
+      setRegisterMessage("Usuario registrado correctamente. Ahora inicia sesión.");
+      setForm({ nombre: "", correo: "", contraseña: "", rol: "ROLE_ADMIN" });
     } else {
-      alert("Error al registrar");
+      setRegisterMessage("Error al registrar. Intenta nuevamente.");
     }
   };
 
@@ -46,7 +50,7 @@ export default function LoginForm() {
     e.preventDefault();
 
     if (!correo || !contraseña) {
-      alert("Por favor, ingrese su correo y contraseña.");
+      setLoginError("Por favor, ingrese su correo y contraseña.");
       return;
     }
 
@@ -61,98 +65,95 @@ export default function LoginForm() {
       localStorage.setItem("token", data.token);
       window.location.href = "/admin";
     } else {
-      alert("Credenciales inválidas");
+      setLoginError("Credenciales inválidas. Intenta nuevamente.");
     }
   };
 
   return (
-    <>
-      <div
-        className={`container ${isSignUpActive ? "right-panel-active" : ""}`}
-        id="container"
-      >
-        <div className="form-container sign-up-container">
-          <form onSubmit={handleSubmitRegister}>
-            <h1>Crear Cuenta</h1>
-            <input
-              type="text"
-              name="nombre"
-              value={form.nombre}
-              onChange={handleChange}
-              placeholder="Nombre"
-            />
-            <input
-              type="email"
-              name="correo"
-              value={form.correo}
-              onChange={handleChange}
-              placeholder="Email"
-            />
-            <input
-              type="password"
-              name="contraseña"
-              value={form.contraseña}
-              onChange={handleChange}
-              placeholder="Password"
-            />
+    <div className={`container ${isSignUpActive ? "right-panel-active" : ""}`} id="container">
+      <div className="form-container sign-up-container">
+        <form onSubmit={handleSubmitRegister}>
+          <h1>Crear Cuenta</h1>
+          <input
+            type="text"
+            name="nombre"
+            value={form.nombre}
+            onChange={handleChange}
+            placeholder="Nombre"
+          />
+          <input
+            type="email"
+            name="correo"
+            value={form.correo}
+            onChange={handleChange}
+            placeholder="Email"
+          />
+          <input
+            type="password"
+            name="contraseña"
+            value={form.contraseña}
+            onChange={handleChange}
+            placeholder="Password"
+          />
+          <button>Registrarte</button>
+          {registerMessage && (
+            <p className={`message ${registerMessage.includes("correctamente") ? "success" : "error"}`}>
+              {registerMessage}
+            </p>
+          )}
+        </form>
+      </div>
 
-            <button>Registrarte</button>
-          </form>
-        </div>
+      <div className="form-container sign-in-container">
+        <form onSubmit={handleSubmitLogin}>
+          <h1>Iniciar sesión</h1>
 
-        <div className="form-container sign-in-container">
-          <form onSubmit={handleSubmitLogin}>
-            <h1>Iniciar sesión</h1>
-          
-            <input
-              type="email"
-              name="correo"
-              placeholder="Email"
-              value={correo}
-              onChange={(e) => setCorreo(e.target.value)}
-            />
-            <input
-              type="password"
-              name="contraseña"
-              placeholder="Password"
-              value={contraseña}
-              onChange={(e) => setContraseña(e.target.value)}
-            />
+          <input
+            type="email"
+            name="correo"
+            placeholder="Email"
+            value={correo}
+            onChange={(e) => {
+              setCorreo(e.target.value);
+              setLoginError("");
+            }}
+          />
+          <input
+            type="password"
+            name="contraseña"
+            placeholder="Password"
+            value={contraseña}
+            onChange={(e) => {
+              setContraseña(e.target.value);
+              setLoginError("");
+            }}
+          />
 
-            <a href="#">¿Olvidaste tu contraseña?</a>
-            <button>Iniciar sesión</button>
-          </form>
-        </div>
+          <a href="#">¿Olvidaste tu contraseña?</a>
+          <button>Iniciar sesión</button>
 
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-left">
-              <h1>Bienvenido de vuelta!</h1>
-              <p>
-                Inicia sesión con tus datos personales
-              </p>
-              <button
-                className="ghost"
-                onClick={() => setIsSignUpActive(false)}
-                id="signIn"
-              >
-                Inicia sesión
-              </button>
-            </div>
-            <div className="overlay-panel overlay-right">
-              <h1>Hola, usuario!</h1>
-              <p>Registrate para poder tener acceso al Panel Admin</p>
-              <button
-                className="ghost"
-                onClick={() => setIsSignUpActive(true)}
-                id="signUp"
-              >
-                Registrate
-              </button>
-            </div>
+          {loginError && <p className="message error">{loginError}</p>}
+        </form>
+      </div>
+
+      <div className="overlay-container">
+        <div className="overlay">
+          <div className="overlay-panel overlay-left">
+            <h1>Bienvenido de vuelta!</h1>
+            <p>Inicia sesión con tus datos personales</p>
+            <button className="ghost" onClick={() => setIsSignUpActive(false)} id="signIn">
+              Inicia sesión
+            </button>
+          </div>
+          <div className="overlay-panel overlay-right">
+            <h1>Hola, usuario!</h1>
+            <p>Regístrate para tener acceso al Panel Admin</p>
+            <button className="ghost" onClick={() => setIsSignUpActive(true)} id="signUp">
+              Regístrate
+            </button>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

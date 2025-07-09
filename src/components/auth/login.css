@@ -250,3 +250,62 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+.login-error {
+  color: #ff4b2b;
+  background-color: #ffe5e0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-top: 12px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(255, 75, 43, 0.3);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.message {
+  margin-top: 12px;
+  padding: 10px 16px;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600; /* Letra más gruesa */
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.message.error {
+  color: #b00020; /* Rojo oscuro */
+  background-color: #fdecea; /* Fondo más suave */
+  box-shadow: 0 2px 4px rgba(176, 0, 32, 0.2);
+  border: 1px solid #b00020;
+}
+
+.message.success {
+  color: #256029;
+  background-color: #e6f4ea;
+  box-shadow: 0 2px 4px rgba(37, 96, 41, 0.2);
+  border: 1px solid #256029;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
