@@ -6,7 +6,7 @@ interface Pizza {
   nombre: string;
   tipo: string;
   ingredientes: string;
-  tamano: string;
+  tamaño: string;
   precio: number;
   imagen: string;
 }
@@ -18,7 +18,7 @@ export default function GestionarPizzas() {
     nombre: "",
     tipo: "",
     ingredientes: "",
-    tamano: "",
+    tamaño: "",
     precio: 0,
     imagen: ""
   });
@@ -55,7 +55,7 @@ export default function GestionarPizzas() {
     })
       .then(() => {
         fetchPizzas();
-        setForm({ nombre: "", tipo: "", ingredientes: "", tamano: "", precio: 0, imagen: "" });
+        setForm({ nombre: "", tipo: "", ingredientes: "", tamaño: "", precio: 0, imagen: "" });
         setModoEdicion(false);
       });
   };
@@ -78,12 +78,12 @@ export default function GestionarPizzas() {
 
   return (
     <div className="crud-pizzas">
-      <h2>{modoEdicion ? "Editar Pizza" : "Agregar Nueva Pizza"}</h2>
+      <h2>{modoEdicion ? "Editar Pizza" : "Gestión de Pizzas"}</h2>
       <form onSubmit={handleSubmit} className="pizza-form">
         <input name="nombre" placeholder="Nombre" value={form.nombre} onChange={handleChange} required />
         <input name="tipo" placeholder="Tipo" value={form.tipo} onChange={handleChange} required />
         <input name="ingredientes" placeholder="Ingredientes" value={form.ingredientes} onChange={handleChange} required />
-        <input name="tamano" placeholder="Tamaño (ej. Personal 30CM)" value={form.tamano} onChange={handleChange} required />
+        <input name="tamaño" placeholder="Tamaño (ej. Personal 30CM)" value={form.tamaño} onChange={handleChange} required />
         <input name="precio" type="number" step="0.01" placeholder="Precio" value={form.precio} onChange={handleChange} required />
         <input name="imagen" placeholder="URL de Imagen" value={form.imagen} onChange={handleChange} required />
         <button type="submit">{modoEdicion ? "Actualizar" : "Agregar"}</button>
@@ -98,7 +98,7 @@ export default function GestionarPizzas() {
               <h4>{pizza.nombre}</h4>
               <p>{pizza.tipo}</p>
               <p>{pizza.ingredientes}</p>
-              <p><strong>Tamaño:</strong> {pizza.tamano}</p>
+              <p><strong>Tamaño:</strong> {pizza.tamaño}</p>
               <p><strong>S/.</strong> {pizza.precio}</p>
               <button onClick={() => handleEdit(pizza)}>Editar</button>
               <button onClick={() => handleDelete(pizza.id)}>Eliminar</button>
