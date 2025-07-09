@@ -38,8 +38,7 @@ export default function App() {
             clickable: true,
           }}
           modules={[FreeMode, Pagination]}
-          className="mySwiper"
-          class="wrapper"
+          className="mySwiper wrapper"
         >
           <SwiperSlide>
             <div className="slider-container">

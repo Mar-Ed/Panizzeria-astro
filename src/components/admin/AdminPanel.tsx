@@ -119,72 +119,152 @@ export default function AdminPanel() {
       {seccionActiva === "pedidos" && <GestionarPedidos />}
 
       <style>{`
-        .admin-container {
-          max-width: 1024px;
-          margin: 0 auto;
-          font-family: sans-serif;
-          padding: 2rem;
-        }
-        .admin-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 1px solid #ccc;
-          padding-bottom: 1rem;
-        }
-        .admin-header h1 {
-          margin: 0;
-          color: #d33;
-        }
-        .admin-header button {
-          background-color: #d33;
-          color: white;
-          border: none;
-          padding: 0.5rem 1rem;
-          cursor: pointer;
-          border-radius: 4px;
-        }
-        .orders-section {
-          margin-top: 2rem;
-        }
-        .orders-list {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-        .order-card {
-          border: 1px solid #ddd;
-          padding: 1rem;
-          border-radius: 6px;
-          background-color: #f9f9f9;
-        }
-        .crud-section {
-          margin-top: 3rem;
-        }
-        .crud-cards {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1rem;
-        }
-        .crud-card {
-          flex: 1 1 30%;
-          border: 1px solid #ccc;
-          padding: 1rem;
-          border-radius: 6px;
-          background-color: #fff8f8;
-          text-align: center;
-        }
-        .crud-card h3 {
-          margin-bottom: 0.5rem;
-        }
-        .crud-card button {
-          padding: 0.5rem 1rem;
-          border: none;
-          background-color: #d33;
-          color: white;
-          border-radius: 4px;
-          cursor: pointer;
-        }
+        /* admin-panel.css */
+
+:root {
+  --color-red: #dc2626;
+  --color-red-dark: #b91c1c;
+  --color-orange: #f97316;
+  --color-blue: #3b82f6;
+  --color-green: #10b981;
+  --color-purple: #8b5cf6;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--color-gray-100);
+  margin: 0;
+}
+
+.admin-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+  border: 1px solid var(--color-gray-200);
+}
+
+.admin-header h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-gray-900);
+}
+
+.admin-header button {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(to right, var(--color-red), var(--color-red-dark));
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.admin-header button:hover {
+  background: linear-gradient(to right, var(--color-red-dark), #7f1d1d);
+}
+
+/* Pedidos Recientes */
+.orders-section h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900);
+}
+
+.orders-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.order-card {
+  background-color: white;
+  border: 1px solid var(--color-gray-200);
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.order-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.order-card strong {
+  font-weight: 600;
+  color: var(--color-gray-700);
+}
+
+/* Gestión */
+.crud-section {
+  margin-top: 3rem;
+}
+
+.crud-section h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--color-gray-900);
+  margin-bottom: 1.5rem;
+}
+
+.crud-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.crud-card {
+  background-color: white;
+  width: calc(33.333% - 1rem);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid var(--color-gray-200);
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.crud-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+.crud-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--color-gray-900);
+}
+
+.crud-card button {
+  padding: 0.5rem 1rem;
+  background: linear-gradient(to right, var(--color-red), var(--color-red-dark));
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.crud-card button:hover {
+  background: linear-gradient(to right, var(--color-red-dark), #7f1d1d);
+}
+
       `}</style>
     </div>
   );
