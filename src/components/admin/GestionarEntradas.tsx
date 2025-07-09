@@ -65,6 +65,9 @@ export default function GestionarEntradas() {
   const handleEditar = (entrada: Entrada) => {
     setFormEntrada(entrada);
     setEditandoId(entrada.id ?? null);
+    setTimeout(() => {
+    document.querySelector(".gestion-container")?.scrollIntoView({ behavior: "smooth" });
+  }, 100);
   };
 
   const handleEliminar = async (id: number | undefined) => {

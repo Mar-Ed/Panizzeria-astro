@@ -57,6 +57,28 @@ export default function GestionarPedidos() {
       .catch((err) => console.error("Error al actualizar estado:", err));
   };
 
+  const handleEliminarPedido = async (id: number) => {
+    const confirmar = confirm("¿Estás seguro de eliminar este pedido?");
+    if (!confirmar) return;
+
+    try {
+      const res = await fetch(`http://localhost:8080/api/pedidos/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.ok) {
+        setPedidos((prev) => prev.filter((p) => p.id !== id));
+      } else {
+        console.error("Error al eliminar el pedido");
+      }
+    } catch (err) {
+      console.error("Error de red al eliminar el pedido:", err);
+    }
+  };
+
   return (
     <div className="gestion-container">
       <h2>📦 Gestión de Pedidos</h2>
@@ -106,6 +128,12 @@ export default function GestionarPedidos() {
                   </select>
                   <button onClick={() => actualizarEstado(pedido.id)}>
                     Guardar
+                  </button>
+                  <button
+                    className="btn-eliminar"
+                    onClick={() => handleEliminarPedido(pedido.id)}
+                  >
+                    Eliminar
                   </button>
                 </div>
 

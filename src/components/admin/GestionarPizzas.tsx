@@ -20,13 +20,13 @@ export default function GestionarPizzas() {
     ingredientes: "",
     tamaño: "",
     precio: 0,
-    imagen: ""
+    imagen: "",
   });
   const [modoEdicion, setModoEdicion] = useState(false);
 
   const fetchPizzas = () => {
     fetch("http://localhost:8080/api/pizzas")
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(setPizzas);
   };
 
@@ -34,7 +34,9 @@ export default function GestionarPizzas() {
     fetchPizzas();
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -49,21 +51,31 @@ export default function GestionarPizzas() {
       method,
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(form)
-    })
-      .then(() => {
-        fetchPizzas();
-        setForm({ nombre: "", tipo: "", ingredientes: "", tamaño: "", precio: 0, imagen: "" });
-        setModoEdicion(false);
+      body: JSON.stringify(form),
+    }).then(() => {
+      fetchPizzas();
+      setForm({
+        nombre: "",
+        tipo: "",
+        ingredientes: "",
+        tamaño: "",
+        precio: 0,
+        imagen: "",
       });
+      setModoEdicion(false);
+    });
   };
 
   const handleEdit = (pizza: Pizza) => {
-    setForm({ ...pizza });
-    setModoEdicion(true);
-  };
+  setForm({ ...pizza });
+  setModoEdicion(true);
+  // Espera al renderizado del DOM y hace scroll hacia el formulario
+  setTimeout(() => {
+    document.querySelector(".crud-pizzas")?.scrollIntoView({ behavior: "smooth" });
+  }, 100);
+};
 
   const handleDelete = (id: number | undefined) => {
     if (!id) return;
@@ -71,8 +83,8 @@ export default function GestionarPizzas() {
     fetch(`http://localhost:8080/api/pizzas/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     }).then(fetchPizzas);
   };
 
@@ -80,12 +92,66 @@ export default function GestionarPizzas() {
     <div className="crud-pizzas">
       <h2>{modoEdicion ? "Editar Pizza" : "Gestión de Pizzas"}</h2>
       <form onSubmit={handleSubmit} className="pizza-form">
-        <input name="nombre" placeholder="Nombre" value={form.nombre} onChange={handleChange} required />
-        <input name="tipo" placeholder="Tipo" value={form.tipo} onChange={handleChange} required />
-        <input name="ingredientes" placeholder="Ingredientes" value={form.ingredientes} onChange={handleChange} required />
-        <input name="tamaño" placeholder="Tamaño (ej. Personal 30CM)" value={form.tamaño} onChange={handleChange} required />
-        <input name="precio" type="number" step="0.01" placeholder="Precio" value={form.precio} onChange={handleChange} required />
-        <input name="imagen" placeholder="URL de Imagen" value={form.imagen} onChange={handleChange} required />
+        <input
+          name="nombre"
+          placeholder="Nombre"
+          value={form.nombre}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="tipo"
+          placeholder="Tipo"
+          value={form.tipo}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="ingredientes"
+          placeholder="Ingredientes"
+          value={form.ingredientes}
+          onChange={handleChange}
+          required
+        />
+        {modoEdicion ? (
+          <select
+            name="tamaño"
+            value={form.tamaño}
+            onChange={handleChange}
+            required
+            className="select-tamano"
+          >
+            <option value="">Seleccione un tamaño</option>
+            <option value="Personal 30CM">Personal 30CM</option>
+            <option value="Grande 35CM">Grande 35CM</option>
+            <option value="Familiar 40CM">Familiar 40CM</option>
+          </select>
+        ) : (
+          <input
+            name="tamaño"
+            placeholder="Tamaño (ej. Personal 30CM)"
+            value={form.tamaño}
+            onChange={handleChange}
+            required
+          />
+        )}
+
+        <input
+          name="precio"
+          type="number"
+          step="0.01"
+          placeholder="Precio"
+          value={form.precio}
+          onChange={handleChange}
+          required
+        />
+        <input
+          name="imagen"
+          placeholder="URL de Imagen"
+          value={form.imagen}
+          onChange={handleChange}
+          required
+        />
         <button type="submit">{modoEdicion ? "Actualizar" : "Agregar"}</button>
       </form>
 
@@ -98,10 +164,16 @@ export default function GestionarPizzas() {
               <h4>{pizza.nombre}</h4>
               <p>{pizza.tipo}</p>
               <p>{pizza.ingredientes}</p>
-              <p><strong>Tamaño:</strong> {pizza.tamaño}</p>
-              <p><strong>S/.</strong> {pizza.precio}</p>
-              <button onClick={() => handleEdit(pizza)}>Editar</button>
-              <button onClick={() => handleDelete(pizza.id)}>Eliminar</button>
+              <p>
+                <strong>Tamaño:</strong> {pizza.tamaño}
+              </p>
+              <p>
+                <strong>S/.</strong> {pizza.precio}
+              </p>
+              <div className="button-container">
+                <button onClick={() => handleEdit(pizza)}>Editar</button>
+                <button onClick={() => handleDelete(pizza.id)}>Eliminar</button>
+              </div>
             </div>
           </div>
         ))}
@@ -160,6 +232,24 @@ export default function GestionarPizzas() {
           color: white;
           cursor: pointer;
         }
+        .button-container{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;}
+      .pizza-form select.select-tamano {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: white;
+        font-size: 1rem;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='gray' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1rem;
+      }
+    
       `}</style>
     </div>
   );

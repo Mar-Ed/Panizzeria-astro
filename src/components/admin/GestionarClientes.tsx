@@ -74,6 +74,9 @@ export default function GestionarClientes() {
       direccion: cliente.direccion,
     });
     setEditandoId(cliente.id);
+    setTimeout(() => {
+    document.querySelector(".gestion-container")?.scrollIntoView({ behavior: "smooth" });
+  }, 100);
   };
 
   const handleEliminar = (id: number) => {

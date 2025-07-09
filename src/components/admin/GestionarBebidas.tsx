@@ -67,6 +67,9 @@ export default function GestionarBebidas() {
   const handleEditar = (bebida: Bebida) => {
     setFormBebida(bebida);
     setEditandoId(bebida.id ?? null);
+    setTimeout(() => {
+    document.querySelector(".gestion-container")?.scrollIntoView({ behavior: "smooth" });
+  }, 100);
   };
 
   const handleEliminar = async (id?: number) => {
