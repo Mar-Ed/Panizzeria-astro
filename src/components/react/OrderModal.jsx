@@ -16,16 +16,23 @@ export default function OrderModal({ isOpen, onClose, product }) {
   const [selectedBebida, setSelectedBebida] = useState(null);
   const [selectedEntrada, setSelectedEntrada] = useState(null);
 
+  const [cantidadProducto, setCantidadProducto] = useState(1);
+  const [cantidadBebida, setCantidadBebida] = useState(1);
+  const [cantidadEntrada, setCantidadEntrada] = useState(1);
+
   useEffect(() => {
     if (isOpen) {
+      setCantidadProducto(1);
+      setCantidadBebida(1);
+      setCantidadEntrada(1);
       fetch("http://localhost:8080/api/bebidas")
         .then((res) => res.json())
-        .then((data) => setBebidas(data))
+        .then(setBebidas)
         .catch((err) => console.error("Error cargando bebidas:", err));
 
       fetch("http://localhost:8080/api/entradas")
         .then((res) => res.json())
-        .then((data) => setEntradas(data))
+        .then(setEntradas)
         .catch((err) => console.error("Error cargando entradas:", err));
     }
   }, [isOpen]);
@@ -35,22 +42,11 @@ export default function OrderModal({ isOpen, onClose, product }) {
     setCustomerData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleBebidaChange = (e) => {
-    const selectedId = parseInt(e.target.value);
-    const bebida = bebidas.find((b) => b.id === selectedId);
-    //entradas api
-    // Set the selected bebida or null if not found
-    const entrada = entradas.find((e) => e.id === selectedId);
-    setSelectedBebida(bebida || null);
-    setSelectedEntrada(entrada || null);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // 1. Registrar cliente
       const clienteRes = await fetch("http://localhost:8080/api/clientes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,13 +55,22 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
       if (!clienteRes.ok) throw new Error("Error al registrar cliente");
       const cliente = await clienteRes.json();
+      const fechaActual = new Date();
+      const fechaFormateada = fechaActual.toLocaleString("es-PE", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
 
-      // 2. Registrar pedido
       const pedidoRes = await fetch("http://localhost:8080/api/pedidos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           estado: "pendiente",
+          fecha: fechaFormateada, 
           cliente: { id: cliente.id },
         }),
       });
@@ -73,14 +78,13 @@ export default function OrderModal({ isOpen, onClose, product }) {
       if (!pedidoRes.ok) throw new Error("Error al registrar pedido");
       const pedido = await pedidoRes.json();
 
-      // 3. Crear detalles
       const detalles = [];
 
       detalles.push({
         producto: product.nombre,
         tipo: "Plato",
-        cantidad: 1,
-        precio: product.precio,
+        cantidad: cantidadProducto,
+        precio: product.precio * cantidadProducto,
         pedido: { id: pedido.id },
       });
 
@@ -88,8 +92,8 @@ export default function OrderModal({ isOpen, onClose, product }) {
         detalles.push({
           producto: selectedBebida.nombre,
           tipo: "Bebida",
-          cantidad: 1,
-          precio: selectedBebida.precio,
+          cantidad: cantidadBebida,
+          precio: selectedBebida.precio * cantidadBebida,
           pedido: { id: pedido.id },
         });
       }
@@ -98,13 +102,12 @@ export default function OrderModal({ isOpen, onClose, product }) {
         detalles.push({
           producto: selectedEntrada.nombre,
           tipo: "Entrada",
-          cantidad: 1,
-          precio: selectedEntrada.precio,
+          cantidad: cantidadEntrada,
+          precio: selectedEntrada.precio * cantidadEntrada,
           pedido: { id: pedido.id },
         });
       }
 
-      // POST de todos los detalles en paralelo
       await Promise.all(
         detalles.map((detalle) =>
           fetch("http://localhost:8080/api/pedido-detalles", {
@@ -127,14 +130,14 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
   if (!isOpen || !product) return null;
 
-  const precioBebida = selectedBebida?.precio || 0;
-  const precioEntrada = selectedEntrada?.precio || 0;
-  const total = product.precio + precioBebida + precioEntrada;
+  const precioBebida = (selectedBebida?.precio || 0) * cantidadBebida;
+  const precioEntrada = (selectedEntrada?.precio || 0) * cantidadEntrada;
+  const total =
+    product.precio * cantidadProducto + precioBebida + precioEntrada;
 
   return (
     <div className="modal-overlay">
       <div className="modal-box">
-        {/* Encabezado */}
         <div className="modal-header">
           <div className="flex items-center gap-3">
             <ShoppingBag className="w-6 h-6 text-orange-600" />
@@ -147,7 +150,6 @@ export default function OrderModal({ isOpen, onClose, product }) {
           </button>
         </div>
 
-        {/* Producto */}
         <div className="modal-product">
           <img src={product.imagen} alt={product.nombre} />
           <div className="modal-product-info">
@@ -160,12 +162,22 @@ export default function OrderModal({ isOpen, onClose, product }) {
             <p>{product.ingredientes || product.descripcion}</p>
             <div className="precio-cantidad">
               <span className="precio">S/. {product.precio}</span>
-              <span className="cantidad">Cantidad: 1</span>
+              <div className="cantidad-control">
+                <span>Cantidad:</span>
+                <button
+                  onClick={() => setCantidadProducto((c) => Math.max(1, c - 1))}
+                >
+                  −
+                </button>
+                <span>{cantidadProducto}</span>
+                <button onClick={() => setCantidadProducto((c) => c + 1)}>
+                  +
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bebidas opcionales */}
         {bebidas.length > 0 && (
           <div className="modal-bebidas">
             <label htmlFor="bebida-select">Acompaña con una bebida:</label>
@@ -196,34 +208,48 @@ export default function OrderModal({ isOpen, onClose, product }) {
                   <span className="precio">
                     S/. {selectedBebida.precio.toFixed(2)}
                   </span>
+                  <div className="cantidad-control">
+                    <span>Cantidad:</span>
+                    <button
+                      onClick={() =>
+                        setCantidadBebida((c) => Math.max(1, c - 1))
+                      }
+                    >
+                      −
+                    </button>
+                    <span>{cantidadBebida}</span>
+                    <button onClick={() => setCantidadBebida((c) => c + 1)}>
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
           </div>
         )}
-        {/* Selector de entrada */}
+
         {entradas.length > 0 && (
           <div className="modal-bebidas">
-            <label htmlFor="entrada-select">
-              Entrada adicional (opcional)
-              <select
-                onChange={(e) => {
-                  const entradaSeleccionada = entradas.find(
-                    (b) => b.id === parseInt(e.target.value),
-                  );
-                  setSelectedEntrada(entradaSeleccionada || null);
-                }}
-                value={selectedEntrada?.id || ""}
-              >
-                <option value="">-- Selecciona una entrada --</option>
-                {entradas.map((entrada) => (
-                  <option key={entrada.id} value={entrada.id}>
-                    🍽️ {entrada.nombre} - {entrada.descripcion} - S/.{" "}
-                    {entrada.precio}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <label htmlFor="entrada-select">Entrada adicional (opcional)</label>
+            <select
+              id="entrada-select"
+              onChange={(e) => {
+                const entradaSeleccionada = entradas.find(
+                  (b) => b.id === parseInt(e.target.value),
+                );
+                setSelectedEntrada(entradaSeleccionada || null);
+              }}
+              value={selectedEntrada?.id || ""}
+            >
+              <option value="">-- Selecciona una entrada --</option>
+              {entradas.map((entrada) => (
+                <option key={entrada.id} value={entrada.id}>
+                  🍽️ {entrada.nombre} - {entrada.descripcion} - S/.{" "}
+                  {entrada.precio}
+                </option>
+              ))}
+            </select>
+
             {selectedEntrada && (
               <div className="bebida-detalle">
                 <img
@@ -236,17 +262,29 @@ export default function OrderModal({ isOpen, onClose, product }) {
                   <span className="precio">
                     S/. {selectedEntrada.precio.toFixed(2)}
                   </span>
+                  <div className="cantidad-control">
+                    <span>Cantidad:</span>
+                    <button
+                      onClick={() =>
+                        setCantidadEntrada((c) => Math.max(1, c - 1))
+                      }
+                    >
+                      −
+                    </button>
+                    <span>{cantidadEntrada}</span>
+                    <button onClick={() => setCantidadEntrada((c) => c + 1)}>
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
           </div>
         )}
 
-        {/* Formulario */}
         <form onSubmit={handleSubmit} className="modal-form">
           <h3 className="form-titulo">
-            <User className="icon orange" />
-            Datos del Cliente
+            <User className="icon orange" /> Datos del Cliente
           </h3>
 
           <label>
@@ -284,7 +322,6 @@ export default function OrderModal({ isOpen, onClose, product }) {
                 placeholder="999 123 456"
               />
             </label>
-
             <label>
               <Mail className="icon-left" />
               <input
@@ -298,12 +335,11 @@ export default function OrderModal({ isOpen, onClose, product }) {
             </label>
           </div>
 
-          {/* Resumen */}
           <div className="modal-resumen">
             <h4>Resumen del Pedido</h4>
             <div className="resumen-item">
               <span>Subtotal:</span>
-              <span>S/. {product.precio.toFixed(2)}</span>
+              <span>S/. {(product.precio * cantidadProducto).toFixed(2)}</span>
             </div>
             {selectedBebida && (
               <div className="resumen-item">
@@ -327,7 +363,6 @@ export default function OrderModal({ isOpen, onClose, product }) {
             </div>
           </div>
 
-          {/* Botones */}
           <div className="form-buttons">
             <button type="button" className="cancelar" onClick={onClose}>
               Cancelar

@@ -233,3 +233,18 @@
   color: #ea580c;
   font-weight: bold;
 }
+.cantidad-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+.cantidad-control button {
+  background-color: #f97316;
+  color: white;
+  border: none;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
