@@ -12,7 +12,9 @@ interface PedidoDTO {
   estado: string;
   cliente: string;
   total: number;
-  fecha: string; // ahora incluida la fecha
+  fecha: string;
+  telefono: string;
+  direccion: string;
   detalles: DetalleDTO[];
 }
 
@@ -72,6 +74,12 @@ export default function GestionarPedidos() {
                 </div>
                 <div>
                   <strong>Cliente:</strong> {pedido.cliente}
+                </div>
+                <div>
+                  <strong>Teléfono:</strong> {pedido.telefono}
+                </div>
+                <div>
+                  <strong>Dirección:</strong> {pedido.direccion}
                 </div>
                 <div>
                   <strong>Estado actual:</strong> {pedido.estado}
@@ -134,6 +142,9 @@ export default function GestionarPedidos() {
           gap: 1rem;
         }
         .pedido-card {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
           border: 1px solid #ccc;
           border-radius: 6px;
           padding: 1rem;
