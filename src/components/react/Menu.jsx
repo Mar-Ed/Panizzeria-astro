@@ -12,7 +12,7 @@ export default function Menu() {
   useEffect(() => {
     const fetchData = async (endpoint, setState, nombre) => {
       try {
-        const res = await fetch(`http://localhost:8080/api/${endpoint}`);
+        const res = await fetch(`https://proactive-presence-production-6423.up.railway.app/api/${endpoint}`);
         const data = await res.json();
         setState(data);
       } catch (err) {

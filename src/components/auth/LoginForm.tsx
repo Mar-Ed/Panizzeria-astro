@@ -32,7 +32,7 @@ export default function LoginForm() {
       return;
     }
 
-    const res = await fetch("http://localhost:8080/api/auth/register", {
+    const res = await fetch("https://proactive-presence-production-6423.up.railway.app/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
@@ -54,7 +54,7 @@ export default function LoginForm() {
       return;
     }
 
-    const res = await fetch("http://localhost:8080/api/auth/login", {
+    const res = await fetch("https://proactive-presence-production-6423.up.railway.app/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ correo, contraseña }),

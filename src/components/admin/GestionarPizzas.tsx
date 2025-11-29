@@ -25,7 +25,7 @@ export default function GestionarPizzas() {
   const [modoEdicion, setModoEdicion] = useState(false);
 
   const fetchPizzas = () => {
-    fetch("http://localhost:8080/api/pizzas")
+    fetch("https://proactive-presence-production-6423.up.railway.app/api/pizzas")
       .then((res) => res.json())
       .then(setPizzas);
   };
@@ -43,8 +43,8 @@ export default function GestionarPizzas() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const url = modoEdicion
-      ? `http://localhost:8080/api/pizzas/${form.id}`
-      : "http://localhost:8080/api/pizzas";
+      ? `https://proactive-presence-production-6423.up.railway.app/api/pizzas/${form.id}`
+      : "https://proactive-presence-production-6423.up.railway.app/api/pizzas";
     const method = modoEdicion ? "PUT" : "POST";
 
     fetch(url, {
@@ -80,7 +80,7 @@ export default function GestionarPizzas() {
   const handleDelete = (id: number | undefined) => {
     if (!id) return;
     if (!confirm("¿Seguro que quieres eliminar esta pizza?")) return;
-    fetch(`http://localhost:8080/api/pizzas/${id}`, {
+    fetch(`https://proactive-presence-production-6423.up.railway.app/api/pizzas/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

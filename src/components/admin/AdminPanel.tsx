@@ -26,7 +26,7 @@ export default function AdminPanel() {
       ? { Authorization: `Bearer ${token}` }
       : {};
 
-    fetch("http://localhost:8080/api/pedidos/dto", { headers })
+    fetch("https://proactive-presence-production-6423.up.railway.app/api/pedidos/dto", { headers })
       .then((res) => res.json())
       .then(setPedidos)
       .catch((err) => console.error("Error cargando pedidos:", err));

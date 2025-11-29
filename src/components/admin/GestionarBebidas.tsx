@@ -21,7 +21,7 @@ export default function GestionarBebidas() {
   const [editandoId, setEditandoId] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/bebidas")
+    fetch("https://proactive-presence-production-6423.up.railway.app/api/bebidas")
       .then((res) => res.json())
       .then(setBebidas)
       .catch((err) => console.error("Error al cargar bebidas:", err));
@@ -35,8 +35,8 @@ export default function GestionarBebidas() {
 
   const handleGuardar = async () => {
     const url = editandoId
-      ? `http://localhost:8080/api/bebidas/${editandoId}`
-      : "http://localhost:8080/api/bebidas";
+      ? `https://proactive-presence-production-6423.up.railway.app/api/bebidas/${editandoId}`
+      : "https://proactive-presence-production-6423.up.railway.app/api/bebidas";
     const method = editandoId ? "PUT" : "POST";
 
     const res = await fetch(url, {

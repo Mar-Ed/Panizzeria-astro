@@ -21,7 +21,7 @@ export default function GestionarEntradas() {
   const [editandoId, setEditandoId] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/entradas")
+    fetch("https://proactive-presence-production-6423.up.railway.app/api/entradas")
       .then((res) => res.json())
       .then(setEntradas)
       .catch((err) => console.error("Error cargando entradas:", err));
@@ -33,8 +33,8 @@ export default function GestionarEntradas() {
 
   const handleGuardar = async () => {
     const url = editandoId
-      ? `http://localhost:8080/api/entradas/${editandoId}`
-      : "http://localhost:8080/api/entradas";
+      ? `https://proactive-presence-production-6423.up.railway.app/api/entradas/${editandoId}`
+      : "https://proactive-presence-production-6423.up.railway.app/api/entradas";
     const method = editandoId ? "PUT" : "POST";
 
     const res = await fetch(url, {
@@ -72,7 +72,7 @@ export default function GestionarEntradas() {
 
   const handleEliminar = async (id: number | undefined) => {
     if (!id) return;
-    const res = await fetch(`http://localhost:8080/api/entradas/${id}`, {
+    const res = await fetch(`https://proactive-presence-production-6423.up.railway.app/api/entradas/${id}`, {
       method: "DELETE",
       headers: { Authorization: `Bearer ${token}` },
     });

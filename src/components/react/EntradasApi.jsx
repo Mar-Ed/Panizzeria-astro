@@ -4,7 +4,7 @@ export default function EntradasCliente() {
   const [entradas, setEntradas] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/entradas')
+    fetch('https://proactive-presence-production-6423.up.railway.app/api/entradas')
       .then(res => res.json())
       .then(data => setEntradas(data));
   }, []);

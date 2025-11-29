@@ -21,7 +21,7 @@ export default function GestionarCocteles() {
   const [editandoId, setEditandoId] = useState<number | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/cocteles")
+    fetch("https://proactive-presence-production-6423.up.railway.app/api/cocteles")
       .then((res) => res.json())
       .then(setCocteles)
       .catch((err) => console.error("Error al cargar cocteles:", err));
@@ -35,8 +35,8 @@ export default function GestionarCocteles() {
 
   const handleGuardar = async () => {
     const url = editandoId
-      ? `http://localhost:8080/api/cocteles/${editandoId}`
-      : "http://localhost:8080/api/cocteles";
+      ? `https://proactive-presence-production-6423.up.railway.app/api/cocteles/${editandoId}`
+      : "https://proactive-presence-production-6423.up.railway.app/api/cocteles";
     const method = editandoId ? "PUT" : "POST";
 
     const res = await fetch(url, {
@@ -71,7 +71,7 @@ export default function GestionarCocteles() {
 
   const handleEliminar = async (id?: number) => {
     if (!id) return;
-    const res = await fetch(`http://localhost:8080/api/cocteles/${id}`, {
+    const res = await fetch(`https://proactive-presence-production-6423.up.railway.app/api/cocteles/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,

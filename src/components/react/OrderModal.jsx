@@ -33,7 +33,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
         .then(setBebidas)
         .catch((err) => console.error("Error cargando bebidas:", err));
 
-      fetch("http://localhost:8080/api/entradas")
+      fetch("https://proactive-presence-production-6423.up.railway.app/api/entradas")
         .then((res) => res.json())
         .then(setEntradas)
         .catch((err) => console.error("Error cargando entradas:", err));
@@ -50,7 +50,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
     setIsSubmitting(true);
 
     try {
-      const clienteRes = await fetch("http://localhost:8080/api/clientes", {
+      const clienteRes = await fetch("https://proactive-presence-production-6423.up.railway.app/api/clientes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(customerData),
@@ -68,7 +68,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
         hour12: false,
       });
 
-      const pedidoRes = await fetch("http://localhost:8080/api/pedidos", {
+      const pedidoRes = await fetch("https://proactive-presence-production-6423.up.railway.app/api/pedidos", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -113,7 +113,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
       await Promise.all(
         detalles.map((detalle) =>
-          fetch("http://localhost:8080/api/pedido-detalles", {
+          fetch("https://proactive-presence-production-6423.up.railway.app/api/pedido-detalles", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(detalle),

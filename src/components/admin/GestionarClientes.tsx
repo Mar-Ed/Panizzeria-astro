@@ -23,7 +23,7 @@ export default function GestionarClientes() {
   // 🔁 Siempre cargar clientes al montar el componente
   useEffect(() => {
     console.log("Token:", token);
-    fetch("http://localhost:8080/api/clientes", {
+    fetch("https://proactive-presence-production-6423.up.railway.app/api/clientes", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -40,8 +40,8 @@ export default function GestionarClientes() {
   const handleGuardar = () => {
     const method = editandoId ? "PUT" : "POST";
     const url = editandoId
-      ? `http://localhost:8080/api/clientes/${editandoId}`
-      : "http://localhost:8080/api/clientes";
+      ? `https://proactive-presence-production-6423.up.railway.app/api/clientes/${editandoId}`
+      : "https://proactive-presence-production-6423.up.railway.app/api/clientes";
 
     fetch(url, {
       method,
