@@ -15,25 +15,41 @@ import { FreeMode, Pagination } from "swiper/modules";
 export default function App() {
   return (
     <>
-      <div className="prin-container">
+      <div
+        className="prin-container"
+        style={{ flexDirection: "column", padding: 0 }}
+      >
         <div className="wrapper">
-          <div className="title-container">
+          <div
+            className="title-container"
+            style={{ textAlign: "center", padding: "0 1rem" }}
+          >
             <h1 className="title">
               <span className="block">Descubre</span>
               <span className="block">Nuestros Platos</span>
             </h1>
-            <div className="text-container">
-              <p>
+            <div
+              className="text-container"
+              style={{ width: "100%", maxWidth: "600px", margin: "0 auto" }}
+            >
+              <p style={{ fontSize: "1.2rem", marginTop: "1rem" }}>
                 Selecciona los sabores más deliciosos y mejor preparados. Hemos
                 recopilado algunas recetas populares de todo el mundo para que
                 elijas tu favorita.
               </p>
             </div>
           </div>
+        </div>
+        <div
+          className="swiper-section"
+          style={{ width: "100%", marginTop: "3rem" }}
+        >
           <Swiper
-            slidesPerView={1}
-            spaceBetween={10}
-            freeMode={true}
+            slidesPerView={1.2}
+            spaceBetween={20}
+            centeredSlides={true}
+            loop={true}
+            grabCursor={true}
             pagination={{
               clickable: true,
             }}
@@ -41,14 +57,16 @@ export default function App() {
               640: {
                 slidesPerView: 2,
                 spaceBetween: 20,
+                centeredSlides: false,
               },
               1024: {
                 slidesPerView: 3,
                 spaceBetween: 30,
+                centeredSlides: false,
               },
             }}
             modules={[FreeMode, Pagination]}
-            className="mySwiper wrapper"
+            className="mySwiper"
           >
             <SwiperSlide>
               <div className="slider-container">
