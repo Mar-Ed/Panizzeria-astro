@@ -1,99 +1,158 @@
 <div class="prin-container">
-    <div class="container">
-        <span class="title principal-title">Ingredientes Naturales</span>
-        <div class="sub-container">
-            <div class="ingredients">
-                <div class="ingredient">
-                    <img src="img/recipe-flour.png" alt="" />
-                    <div class="ingredient-info">
-                        <span class="title">Harina</span>
-                        <p>El mejor trigo del campo para la mejor harina.</p>
-                    </div>
-                </div>
-                <div class="ingredient">
-                    <img src="img/recipe-cheese.png" alt="" />
-                    <div class="ingredient-info">
-                        <span class="title">Queso</span>
-                        <p>El queso seleccionado puro</p>
-                    </div>
-                </div>
-                <div class="ingredient">
-                    <img src="img/recipe-sauces.png" alt="" />
-                    <div class="ingredient-info">
-                        <span class="title">Salsa de tomate </span>
-                        <p>Añade un toque de salsa a tu vida y sabrá mejor</p>
-                    </div>
-                </div>
-                <div class="ingredient">
-                    <img src="img/recipe-tomato.png" alt="" />
-                    <div class="ingredient-info">
-                        <span class="title">Vegetales</span>
-                        <p>
-                            Verduras llenas de esencia de la naturaleza y
-                            orgánicas.
-                        </p>
-                    </div>
-                </div>
-                <div class="ingredient">
-                    <img src="img/recipe-meat.png" alt="" />
-                    <div class="ingredient-info">
-                        <span class="title">Carnes</span>
-                        <p>La mejor carne y fresca.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="recipe-container">
-                <img src="img/recipe-img.png" alt="" />
-            </div>
+  <div class="container">
+    <span class="title principal-title">Ingredientes Naturales</span>
+    <div class="sub-container">
+      <div class="ingredients">
+        <div class="ingredient">
+          <img src="img/recipe-flour.png" alt="" />
+          <div class="ingredient-info">
+            <span class="title">Harina</span>
+            <p>El mejor trigo del campo para la mejor harina.</p>
+          </div>
         </div>
+        <div class="ingredient">
+          <img src="img/recipe-cheese.png" alt="" />
+          <div class="ingredient-info">
+            <span class="title">Queso</span>
+            <p>El queso seleccionado puro</p>
+          </div>
+        </div>
+        <div class="ingredient">
+          <img src="img/recipe-sauces.png" alt="" />
+          <div class="ingredient-info">
+            <span class="title">Salsa de tomate </span>
+            <p>Añade un toque de salsa a tu vida y sabrá mejor</p>
+          </div>
+        </div>
+        <div class="ingredient">
+          <img src="img/recipe-tomato.png" alt="" />
+          <div class="ingredient-info">
+            <span class="title">Vegetales</span>
+            <p>Verduras llenas de esencia de la naturaleza y orgánicas.</p>
+          </div>
+        </div>
+        <div class="ingredient">
+          <img src="img/recipe-meat.png" alt="" />
+          <div class="ingredient-info">
+            <span class="title">Carnes</span>
+            <p>La mejor carne y fresca.</p>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-container">
+        <img src="img/recipe-img.png" alt="" />
+      </div>
     </div>
+  </div>
 </div>
 <style>
-    .container .principal-title {
-        font-size: 2rem;
-    }
-    .prin-container {
-        margin-bottom: 3rem;
-        padding-top: 5rem;
-    }
-    .ingredients {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+  .container .principal-title {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .prin-container {
+    margin-bottom: 3rem;
+    padding-top: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .ingredients {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1; /* Allow it to take available space */
+  }
+  .ingredient {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%; /* Fluid width */
+    max-width: 500px; /* Limit max width */
+  }
+  .ingredient-info {
+    flex: 1; /* Take remaining space */
+  }
+  .ingredient img {
+    width: 6rem;
+    height: auto;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .recipe-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+  .recipe-container img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    object-fit: contain;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+  .sub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    flex-wrap: wrap; /* Allow wrapping on intermediate screens */
+  }
+  .ingredient p {
+    color: var(--first-color-dark);
+  }
+
+  /* Intermediate breakpoint for tablet/smaller desktops */
+  @media (max-width: 900px) {
+    .sub-container {
+      flex-direction: column-reverse; /* Stack ingredients under image or vice versa, user asked for column */
+      text-align: center;
     }
     .ingredient {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        width: 500px;
+      flex-direction: row; /* Keep ingredient items logical */
+      text-align: left;
+      margin: 0 auto; /* Center the block itself */
     }
-    .ingredient-info {
-        width: 50%;
+    .ingredients {
+      width: 100%;
+      align-items: center;
     }
-    .ingredient img {
-        width: 6rem;
-    }
+  }
+
+  @media (max-width: 600px) {
     .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5rem;
-    }
-    .recipe-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .recipe-container img {
-        width: 600px;
-    }
-    .title {
-        font-size: 1.3rem;
+      gap: 2rem;
     }
     .sub-container {
-        display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 2rem;
     }
-    .ingredient p {
-        color: var(--first-color-dark);
+    .ingredients {
+      align-items: center;
+      width: 100%;
     }
+    .ingredient {
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+    .ingredient-info {
+      width: 100%;
+    }
+    .recipe-container img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
 </style>

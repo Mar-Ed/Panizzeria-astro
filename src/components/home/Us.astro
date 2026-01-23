@@ -31,7 +31,11 @@ import PizzaBox from "../svg/PizzaBox.astro";
         <div class="container-text">
           <h1 class="title-2">EL COMIENZO</h1>
           <h3 class="subtitle">
-            En La Panizzería combinamos el arte del pan artesanal con la pasión por la auténtica pizza italiana. Fundada en 2017 por una pareja de italianos, Giulia Bianchi y Marco Rossi, nuestra pizzería nace con el sueño de compartir el verdadero sabor de Italia en las playas de Pulpos, Perú.
+            En La Panizzería combinamos el arte del pan artesanal con la pasión
+            por la auténtica pizza italiana. Fundada en 2017 por una pareja de
+            italianos, Giulia Bianchi y Marco Rossi, nuestra pizzería nace con
+            el sueño de compartir el verdadero sabor de Italia en las playas de
+            Pulpos, Perú.
           </h3>
         </div>
       </div>
@@ -64,7 +68,11 @@ import PizzaBox from "../svg/PizzaBox.astro";
         <div class="container-text">
           <h1 class="title-2">MISIÓN</h1>
           <h3 class="subtitle">
-            Nuestra misión es ofrecer una experiencia gastronómica cercana y memorable, donde cada cliente se sienta en casa. Creemos en la cocina de corazón, en la calidez del servicio y en el compromiso con la comunidad local de Pulpos. Por eso trabajamos con productores de la región para que cada ingrediente llegue fresco a tu mesa.
+            Nuestra misión es ofrecer una experiencia gastronómica cercana y
+            memorable, donde cada cliente se sienta en casa. Creemos en la
+            cocina de corazón, en la calidez del servicio y en el compromiso con
+            la comunidad local de Pulpos. Por eso trabajamos con productores de
+            la región para que cada ingrediente llegue fresco a tu mesa.
           </h3>
         </div>
       </div>
@@ -72,7 +80,11 @@ import PizzaBox from "../svg/PizzaBox.astro";
         <div class="container-text-2">
           <h1 class="title">VISIÓN</h1>
           <h3 class="subtitle">
-            Nuestra visión es ser el punto de encuentro para los amantes del pan y la pizza, innovando siempre con nuevas combinaciones de sabores y adaptándonos a las tendencias sin perder la esencia artesanal. Queremos que La Panizzería sea sinónimo de calidad, cercanía y creatividad.
+            Nuestra visión es ser el punto de encuentro para los amantes del pan
+            y la pizza, innovando siempre con nuevas combinaciones de sabores y
+            adaptándonos a las tendencias sin perder la esencia artesanal.
+            Queremos que La Panizzería sea sinónimo de calidad, cercanía y
+            creatividad.
           </h3>
         </div>
         <div class="img-container">
@@ -206,5 +218,41 @@ import PizzaBox from "../svg/PizzaBox.astro";
     justify-content: center;
     align-items: center;
     padding: 3rem;
+  }
+  @media (max-width: 768px) {
+    .order-container {
+      display: none;
+    }
+    .top-container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .title-container {
+      width: 100%;
+      text-align: center;
+    }
+    .title,
+    .title-2 {
+      font-size: 2rem;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      line-height: normal;
+    }
+
+    .first-box {
+      flex-direction: column;
+    }
+
+    /* Target blocks where text comes first in HTML (container-text-2) and reverse them so image is on top */
+    .first-box:has(.container-text-2:first-child) {
+      flex-direction: column-reverse;
+    }
+
+    .img-container,
+    .container-text,
+    .container-text-2 {
+      max-width: 100%;
+      width: 100%;
+    }
   }
 </style>

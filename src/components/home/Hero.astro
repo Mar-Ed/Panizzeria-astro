@@ -58,12 +58,14 @@
   }
   .hero-image {
     width: 100%;
-    min-height: 520px; /* h-72 */
-    max-width: 680px; /* max-w-md */
-    margin: 4rem;
-    border-radius: 0.5rem; /* rounded-lg */
-    border-radius: 99px;
+    height: auto;
+    min-height: 400px;
+    max-height: 600px; /* Prevent excessive height */
+    max-width: 680px;
+    margin: 0 auto; /* Center image */
+    border-radius: 99px; /* Pill shape */
     box-shadow: 0 4px 16px hsla(353, 100%, 8%, 0.1);
+    object-fit: cover; /* Prevent squashing */
   }
   .button {
     display: inline-flex;
@@ -79,6 +81,45 @@
 
     &:hover {
       background-color: var(--first-color-alt);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .container {
+      gap: 3rem;
+    }
+    .hero-image {
+      min-height: 300px;
+      margin: 2rem 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    section {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+    }
+    .container {
+      flex-direction: column-reverse; /* Image top, text bottom */
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .text-container {
+      align-items: center; /* Center text */
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .title {
+      text-align: center;
+      font-size: 1.8rem;
+    }
+    .hero-image {
+      min-height: 250px; /* Smaller min-height for mobile */
+      height: 250px; /* Fixed height for pill shape stability */
+      margin: 0;
+      width: 100%;
+      max-width: 350px;
+      border-radius: 2rem; /* Reduce radius on mobile so it's not a weird pill */
     }
   }
 </style>
