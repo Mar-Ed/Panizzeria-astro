@@ -1,28 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import OrderModal from "./OrderModal";
 import "../../css/Menu.css";
 
+// Import local data
+import pizzasData from "../../data/pizzas.json";
+import bebidasData from "../../data/bebidas.json";
+
 export default function Menu() {
-  const [bebidas, setBebidas] = useState([]);
-  const [pizzas, setPizzas] = useState([]);
+  const [bebidas] = useState(bebidasData);
+  const [pizzas] = useState(pizzasData);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeSection, setActiveSection] = useState("Personal");
-
-  useEffect(() => {
-    const fetchData = async (endpoint, setState, nombre) => {
-      try {
-        const res = await fetch(`https://proactive-presence-production-6423.up.railway.app/api/${endpoint}`);
-        const data = await res.json();
-        setState(data);
-      } catch (err) {
-        console.error(`Error al cargar ${nombre}:`, err);
-      }
-    };
-
-    fetchData("bebidas", setBebidas, "bebidas");
-    fetchData("pizzas", setPizzas, "pizzas");
-  }, []);
 
   const handleAddToOrder = (item) => {
     setSelectedProduct(item);
@@ -30,8 +19,8 @@ export default function Menu() {
   };
 
   const renderProductos = (productos) =>
-    productos.map((item) => (
-      <div className="slider-plato" key={item.id || item.nombre}>
+    productos.map((item, index) => (
+      <div className="slider-plato" key={`${item.nombre}-${item.tamaño || index}`}>
         <div className="info-plato">
           <img src={item.imagen} alt={item.nombre} />
           <div className="info">
@@ -49,13 +38,17 @@ export default function Menu() {
 
   const renderSeccion = (titulo, productos) => (
     <div className="subsection">
-      <h2>{titulo}</h2>
+      <h2 className="subsection-title">{titulo}</h2>
       <div className="grid">{renderProductos(productos)}</div>
     </div>
   );
 
-  const pizzasPorTamaño = (tamaño) =>
-    pizzas.filter((pizza) => pizza.tamaño === tamaño);
+  const pizzasPorTamaño = (tamañoBusca) => {
+    return pizzas.filter((pizza) => {
+      const valTamaño = (pizza.tamaño || pizza.tamano || "").toString().trim().toLowerCase();
+      return valTamaño.includes(tamañoBusca.trim().toLowerCase());
+    });
+  };
 
   return (
     <section className="principal-container">
@@ -66,18 +59,23 @@ export default function Menu() {
             { texto: "Pizza Grande", valor: "Grande" },
             { texto: "Pizza Familiar", valor: "Familiar" },
           ].map((btn) => (
-              <div className="button" key={btn.href}>
-              <a onClick={() => setActiveSection(btn.valor)} href={btn.href}>{btn.texto}</a>
+              <div 
+                className={`button ${activeSection === btn.valor ? 'active' : ''}`} 
+                key={btn.valor}
+              >
+              <a onClick={() => setActiveSection(btn.valor)}>{btn.texto}</a>
             </div>
           ))}
         </div>
 
-        {activeSection === "Personal" &&
-          renderSeccion("Pizzas Personales", pizzasPorTamaño("Personal 30CM"))}
-        {activeSection === "Grande" &&
-          renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"))}
-        {activeSection === "Familiar" &&
-          renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"))}
+        <div className="menu-content-pizzas">
+          {activeSection === "Personal" &&
+            renderSeccion("Pizzas Personales", pizzasPorTamaño("Personal 30CM"))}
+          {activeSection === "Grande" &&
+            renderSeccion("Pizzas Grandes", pizzasPorTamaño("Grande 35CM"))}
+          {activeSection === "Familiar" &&
+            renderSeccion("Pizzas Familiares", pizzasPorTamaño("Familiar 40CM"))}
+        </div>
       </div>
 
       <OrderModal

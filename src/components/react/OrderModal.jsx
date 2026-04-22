@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
-import { X, ShoppingBag, User, Phone, Mail } from "lucide-react";
+import { X, ShoppingBag, User, Phone, Mail, CheckCircle2 } from "lucide-react";
 import "../../css/OrderModal.css";
+
+// Import local data
+import bebidasData from "../../data/bebidas.json";
+import entradasData from "../../data/entradas.json";
 
 export default function OrderModal({ isOpen, onClose, product }) {
   const [customerData, setCustomerData] = useState({
@@ -11,8 +15,8 @@ export default function OrderModal({ isOpen, onClose, product }) {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [bebidas, setBebidas] = useState([]);
-  const [entradas, setEntradas] = useState([]);
+  const [bebidas] = useState(bebidasData);
+  const [entradas] = useState(entradasData);
   const [selectedBebida, setSelectedBebida] = useState(null);
   const [selectedEntrada, setSelectedEntrada] = useState(null);
 
@@ -28,15 +32,8 @@ export default function OrderModal({ isOpen, onClose, product }) {
       setCantidadProducto(1);
       setCantidadBebida(1);
       setCantidadEntrada(1);
-      fetch("http://localhost:8080/api/bebidas")
-        .then((res) => res.json())
-        .then(setBebidas)
-        .catch((err) => console.error("Error cargando bebidas:", err));
-
-      fetch("https://proactive-presence-production-6423.up.railway.app/api/entradas")
-        .then((res) => res.json())
-        .then(setEntradas)
-        .catch((err) => console.error("Error cargando entradas:", err));
+      setSelectedBebida(null);
+      setSelectedEntrada(null);
     }
   }, [isOpen]);
 
@@ -49,15 +46,10 @@ export default function OrderModal({ isOpen, onClose, product }) {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const clienteRes = await fetch("https://proactive-presence-production-6423.up.railway.app/api/clientes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(customerData),
-      });
+    // Simulating API call delay for a professional feel
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
-      if (!clienteRes.ok) throw new Error("Error al registrar cliente");
-      const cliente = await clienteRes.json();
+    try {
       const fechaActual = new Date();
       const fechaFormateada = fechaActual.toLocaleString("es-PE", {
         day: "2-digit",
@@ -68,27 +60,12 @@ export default function OrderModal({ isOpen, onClose, product }) {
         hour12: false,
       });
 
-      const pedidoRes = await fetch("https://proactive-presence-production-6423.up.railway.app/api/pedidos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          estado: "pendiente",
-          fecha: fechaFormateada,
-          cliente: { id: cliente.id },
-        }),
-      });
-
-      if (!pedidoRes.ok) throw new Error("Error al registrar pedido");
-      const pedido = await pedidoRes.json();
-
       const detalles = [];
-
       detalles.push({
         producto: product.nombre,
         tipo: "Plato",
         cantidad: cantidadProducto,
         precio: product.precio * cantidadProducto,
-        pedido: { id: pedido.id },
       });
 
       if (selectedBebida) {
@@ -96,8 +73,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
           producto: selectedBebida.nombre,
           tipo: "Bebida",
           cantidad: cantidadBebida,
-          precio: selectedBebida.precio * cantidadBebida,
-          pedido: { id: pedido.id },
+          precio: (selectedBebida.precios || selectedBebida.precio || 0) * cantidadBebida,
         });
       }
 
@@ -107,31 +83,43 @@ export default function OrderModal({ isOpen, onClose, product }) {
           tipo: "Entrada",
           cantidad: cantidadEntrada,
           precio: selectedEntrada.precio * cantidadEntrada,
-          pedido: { id: pedido.id },
         });
       }
 
-      await Promise.all(
-        detalles.map((detalle) =>
-          fetch("https://proactive-presence-production-6423.up.railway.app/api/pedido-detalles", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(detalle),
-          }),
-        ),
-      );
+      const totalPedido = total.toFixed(2);
 
+      // --- WhatsApp Message Construction ---
+      const phoneNumber = "51970338010"; // User's number
+      let message = `*🍕 NUEVO PEDIDO - LA PANIZZERIA*%0A%0A`;
+      message += `*Cliente:* ${customerData.nombre}%0A`;
+      message += `*Dirección:* ${customerData.direccion}%0A`;
+      message += `*Teléfono:* ${customerData.telefono}%0A`;
+      message += `*Email:* ${customerData.correo}%0A%0A`;
+      message += `*🛒 PRODUCTOS:*%0A`;
+      
+      detalles.forEach(d => {
+        message += `• ${d.producto} x${d.cantidad} - S/. ${d.precio.toFixed(2)}%0A`;
+      });
+
+      message += `%0A*TOTAL A PAGAR: S/. ${totalPedido}*%0A%0A`;
+      message += `_Pedido realizado el ${fechaFormateada}_`;
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+      
       setResumenPedido({
         cliente: customerData,
         productos: detalles,
-        total: total.toFixed(2),
-        estado: "pendiente",
+        total: totalPedido,
+        estado: "Enviado a WhatsApp",
         fecha: fechaFormateada,
       });
+
+      // Opening WhatsApp
+      window.open(whatsappUrl, '_blank');
+      
       setShowSummaryModal(true);
     } catch (err) {
-      console.error("Error al enviar el pedido:", err);
-      alert("❌ Error al enviar el pedido. Inténtalo de nuevo.");
+      console.error("Error simulation:", err);
     }
 
     setIsSubmitting(false);
@@ -139,20 +127,18 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
   if (!isOpen || !product) return null;
 
-  const precioBebida = (selectedBebida?.precio || 0) * cantidadBebida;
-  const precioEntrada = (selectedEntrada?.precio || 0) * cantidadEntrada;
   const total =
-    product.precio * cantidadProducto + precioBebida + precioEntrada;
+    product.precio * cantidadProducto + 
+    ((selectedBebida?.precios || selectedBebida?.precio || 0) * cantidadBebida) + 
+    ((selectedEntrada?.precio || 0) * cantidadEntrada);
 
   return (
     <div className="modal-overlay">
-      <div className="modal-box">
+      <div className="modal-box" data-lenis-prevent>
         <div className="modal-header">
-          <div className="flex items-center gap-3">
-            <ShoppingBag className="w-6 h-6 text-orange-600" />
-            <h2 className="text-2xl font-bold text-gray-800">
-              Resumen del Pedido
-            </h2>
+          <div className="modal-title">
+            <ShoppingBag />
+            <h2>Resumen del Pedido</h2>
           </div>
           <button className="modal-close" onClick={onClose}>
             <X className="icon" />
@@ -175,11 +161,12 @@ export default function OrderModal({ isOpen, onClose, product }) {
                 <span>Cantidad:</span>
                 <button
                   onClick={() => setCantidadProducto((c) => Math.max(1, c - 1))}
+                  type="button"
                 >
                   −
                 </button>
                 <span>{cantidadProducto}</span>
-                <button onClick={() => setCantidadProducto((c) => c + 1)}>
+                <button onClick={() => setCantidadProducto((c) => c + 1)} type="button">
                   +
                 </button>
               </div>
@@ -187,23 +174,23 @@ export default function OrderModal({ isOpen, onClose, product }) {
           </div>
         </div>
 
-        {bebidas.length > 0 && (
+        {bebidas && bebidas.length > 0 && (
           <div className="modal-bebidas">
             <label htmlFor="bebida-select">Acompaña con una bebida:</label>
             <select
               id="bebida-select"
               onChange={(e) => {
                 const bebidaSeleccionada = bebidas.find(
-                  (b) => b.id === parseInt(e.target.value),
+                  (b) => `${b.nombre}-${b.tipo}` === e.target.value,
                 );
                 setSelectedBebida(bebidaSeleccionada || null);
               }}
-              value={selectedBebida?.id || ""}
+              value={selectedBebida ? `${selectedBebida.nombre}-${selectedBebida.tipo}` : ""}
             >
               <option value="">-- Sin bebida --</option>
-              {bebidas.map((b) => (
-                <option key={b.id} value={b.id}>
-                  {b.nombre} - S/. {b.precio.toFixed(2)}
+              {bebidas.map((b, idx) => (
+                <option key={`${b.nombre}-${idx}`} value={`${b.nombre}-${b.tipo}`}>
+                  {b.nombre} ({b.tipo}) - S/. {(b.precios || b.precio || 0).toFixed(2)}
                 </option>
               ))}
             </select>
@@ -212,24 +199,25 @@ export default function OrderModal({ isOpen, onClose, product }) {
               <div className="bebida-detalle">
                 <img src={selectedBebida.imagen} alt={selectedBebida.nombre} />
                 <div>
-                  <strong>{selectedBebida.nombre}</strong>
-                  <p>{selectedBebida.descripcion}</p>
-                  <span className="precio">
-                    S/. {selectedBebida.precio.toFixed(2)}
-                  </span>
-                  <div className="cantidad-control">
-                    <span>Cantidad:</span>
-                    <button
-                      onClick={() =>
-                        setCantidadBebida((c) => Math.max(1, c - 1))
-                      }
-                    >
-                      −
-                    </button>
-                    <span>{cantidadBebida}</span>
-                    <button onClick={() => setCantidadBebida((c) => c + 1)}>
-                      +
-                    </button>
+                  <strong>{selectedBebida.nombre} ({selectedBebida.tipo})</strong>
+                  <div className="precio-cantidad">
+                    <span className="precio">
+                      S/. {(selectedBebida.precios || selectedBebida.precio || 0).toFixed(2)}
+                    </span>
+                    <div className="cantidad-control">
+                      <button
+                        onClick={() =>
+                          setCantidadBebida((c) => Math.max(1, c - 1))
+                        }
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{cantidadBebida}</span>
+                      <button onClick={() => setCantidadBebida((c) => c + 1)} type="button">
+                        +
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -237,24 +225,23 @@ export default function OrderModal({ isOpen, onClose, product }) {
           </div>
         )}
 
-        {entradas.length > 0 && (
+        {entradas && entradas.length > 0 && (
           <div className="modal-bebidas">
             <label htmlFor="entrada-select">Entrada adicional (opcional)</label>
             <select
               id="entrada-select"
               onChange={(e) => {
                 const entradaSeleccionada = entradas.find(
-                  (b) => b.id === parseInt(e.target.value),
+                  (b) => b.nombre === e.target.value,
                 );
                 setSelectedEntrada(entradaSeleccionada || null);
               }}
-              value={selectedEntrada?.id || ""}
+              value={selectedEntrada?.nombre || ""}
             >
               <option value="">-- Selecciona una entrada --</option>
-              {entradas.map((entrada) => (
-                <option key={entrada.id} value={entrada.id}>
-                  🍽️ {entrada.nombre} - {entrada.descripcion} - S/.{" "}
-                  {entrada.precio}
+              {entradas.map((entrada, idx) => (
+                <option key={`${entrada.nombre}-${idx}`} value={entrada.nombre}>
+                  🍽️ {entrada.nombre} - S/. {entrada.precio}
                 </option>
               ))}
             </select>
@@ -267,23 +254,25 @@ export default function OrderModal({ isOpen, onClose, product }) {
                 />
                 <div>
                   <strong>{selectedEntrada.nombre}</strong>
-                  <p>{selectedEntrada.descripcion}</p>
-                  <span className="precio">
-                    S/. {selectedEntrada.precio.toFixed(2)}
-                  </span>
-                  <div className="cantidad-control">
-                    <span>Cantidad:</span>
-                    <button
-                      onClick={() =>
-                        setCantidadEntrada((c) => Math.max(1, c - 1))
-                      }
-                    >
-                      −
-                    </button>
-                    <span>{cantidadEntrada}</span>
-                    <button onClick={() => setCantidadEntrada((c) => c + 1)}>
-                      +
-                    </button>
+                  <p>{selectedEntrada.ingredientes}</p>
+                  <div className="precio-cantidad">
+                    <span className="precio">
+                      S/. {selectedEntrada.precio.toFixed(2)}
+                    </span>
+                    <div className="cantidad-control">
+                      <button
+                        onClick={() =>
+                          setCantidadEntrada((c) => Math.max(1, c - 1))
+                        }
+                        type="button"
+                      >
+                        −
+                      </button>
+                      <span>{cantidadEntrada}</span>
+                      <button onClick={() => setCantidadEntrada((c) => c + 1)} type="button">
+                        +
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -293,7 +282,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
         <form onSubmit={handleSubmit} className="modal-form">
           <h3 className="form-titulo">
-            <User className="icon orange" /> Datos del Cliente
+            <User /> Datos del Cliente
           </h3>
 
           <label>
@@ -352,19 +341,19 @@ export default function OrderModal({ isOpen, onClose, product }) {
             </div>
             {selectedBebida && (
               <div className="resumen-item">
-                <span>Bebida:</span>
-                <span>S/. {precioBebida.toFixed(2)}</span>
+                <span>Bebida ({selectedBebida.nombre}):</span>
+                <span>S/. {((selectedBebida.precios || selectedBebida.precio || 0) * cantidadBebida).toFixed(2)}</span>
               </div>
             )}
             {selectedEntrada && (
               <div className="resumen-item">
-                <span>Entrada:</span>
-                <span>S/. {precioEntrada.toFixed(2)}</span>
+                <span>Entrada ({selectedEntrada.nombre}):</span>
+                <span>S/. {(selectedEntrada.precio * cantidadEntrada).toFixed(2)}</span>
               </div>
             )}
             <div className="resumen-item">
               <span>Delivery:</span>
-              <span>Free</span>
+              <span>Gratis</span>
             </div>
             <div className="resumen-total">
               <strong>Total:</strong>
@@ -384,16 +373,17 @@ export default function OrderModal({ isOpen, onClose, product }) {
       </div>
       {showSummaryModal && resumenPedido && (
         <div className="modal-overlay">
-          <div className="modal-box">
+          <div className="modal-box" data-lenis-prevent>
             <div className="modal-header">
-              <h2 className="text-2xl font-bold text-gray-800">
-                Pedido Confirmado
-              </h2>
+              <div className="modal-title">
+                <CheckCircle2 style={{ color: 'var(--first-color)' }} />
+                <h2>Pedido Confirmado</h2>
+              </div>
               <button
                 className="modal-close"
                 onClick={() => {
                   setShowSummaryModal(false);
-                  onClose(); // cerrar todo
+                  onClose(); 
                 }}
               >
                 <X className="icon" />

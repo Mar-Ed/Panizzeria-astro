@@ -3,12 +3,6 @@ import PizzaBox from "../svg/PizzaBox.astro";
 ---
 
 <section class="about-us-section">
-  <div class="order-banner">
-    <div class="order-container wrapper">
-      <h2 class="order-title">¡Ordena tu pizza favorita y recíbela en casa!</h2>
-      <a href="/Menu" class="button button-accent">Ordena aquí</a>
-    </div>
-  </div>
   <div class="about-container wrapper">
     <div class="box">
       <div class="top-container">
@@ -22,6 +16,7 @@ import PizzaBox from "../svg/PizzaBox.astro";
           </h1>
         </div>
       </div>
+
       <div class="first-box">
         <div class="img-container">
           <img
@@ -99,6 +94,13 @@ import PizzaBox from "../svg/PizzaBox.astro";
       </div>
     </div>
   </div>
+
+  <div class="order-banner">
+    <div class="order-container wrapper">
+      <h2 class="order-title">¡Ordena tu pizza favorita y recíbela en casa!</h2>
+      <a href="/Menu" class="button button-accent">Ordena aquí</a>
+    </div>
+  </div>
 </section>
 
 <style>
@@ -109,40 +111,52 @@ import PizzaBox from "../svg/PizzaBox.astro";
     background-color: var(--body-color);
   }
   .order-banner {
-    background-color: var(--first-color);
     width: 100%;
-    padding: 2.5rem 0;
-    margin-bottom: 4rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem 0 0.1rem;
+    background-color: transparent;
+    border-top: 1px solid rgba(0,0,0,0.05);
   }
+
   .order-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    gap: 3rem;
   }
+
   .order-title {
-    color: var(--white-color);
+    color: var(--nav-color);
     font-family: var(--second-font);
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: 0;
-    text-align: left;
+    letter-spacing: 0;
+    line-height: normal;
   }
+
   .button-accent {
-    background-color: var(--white-color) !important;
-    color: var(--first-color) !important;
-    padding: 1.2rem 2.5rem !important;
-    font-size: 1.1rem;
-    font-weight: 800;
-    border-radius: 5rem !important;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: var(--first-color) !important;
+    color: white !important;
+    padding: 0.8rem 2rem !important;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 0.5rem !important;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(255, 99, 71, 0.2);
 
     &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
-      background-color: var(--container-color) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 99, 71, 0.3);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .order-container {
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
     }
   }
 
