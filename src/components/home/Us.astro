@@ -2,12 +2,14 @@
 import PizzaBox from "../svg/PizzaBox.astro";
 ---
 
-<section>
-  <div class="about-container wrapper">
-    <div class="order-container">
-      <h1 class="order-title">¡Ordena tu pizza favorita!</h1>
-      <a href="#popular" class="button">Ordena aquí</a>
+<section class="about-us-section">
+  <div class="order-banner">
+    <div class="order-container wrapper">
+      <h2 class="order-title">¡Ordena tu pizza favorita y recíbela en casa!</h2>
+      <a href="/Menu" class="button button-accent">Ordena aquí</a>
     </div>
+  </div>
+  <div class="about-container wrapper">
     <div class="box">
       <div class="top-container">
         <div class="sticker-pizza">
@@ -100,24 +102,53 @@ import PizzaBox from "../svg/PizzaBox.astro";
 </section>
 
 <style>
-  section {
+  .about-us-section {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 0;
+    flex-direction: column;
+    padding-top: 100px; /* Base height of fixed navbar */
+    background-color: var(--body-color);
+  }
+  .order-banner {
+    background-color: var(--first-color);
+    width: 100%;
+    padding: 2.5rem 0;
+    margin-bottom: 4rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
   .order-container {
-    text-align: center;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 20px;
-    margin-bottom: 40px;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .order-title {
+    color: var(--white-color);
+    font-family: var(--second-font);
+    font-size: 2rem;
+    margin: 0;
+    text-align: left;
+  }
+  .button-accent {
+    background-color: var(--white-color) !important;
+    color: var(--first-color) !important;
+    padding: 1.2rem 2.5rem !important;
+    font-size: 1.1rem;
+    font-weight: 800;
+    border-radius: 5rem !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      background-color: var(--container-color) !important;
+    }
   }
 
   .about-container {
     text-align: center;
+    width: 100%;
   }
   .top-container {
     display: flex;
@@ -220,8 +251,21 @@ import PizzaBox from "../svg/PizzaBox.astro";
     padding: 3rem;
   }
   @media (max-width: 768px) {
+    .about-us-section {
+      padding-top: 70px; /* Reduced navbar height on mobile */
+    }
+    .order-banner {
+      padding: 2rem 1rem;
+      margin-bottom: 2rem;
+    }
     .order-container {
-      display: none;
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+    .order-title {
+      font-size: 1.5rem;
+      text-align: center;
     }
     .top-container {
       flex-direction: column;

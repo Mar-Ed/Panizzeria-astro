@@ -83,6 +83,27 @@ body {
   margin-bottom: 2rem;
 }
 
-.main {
-  overflow: hidden;
+/*=============== GLOBAL TRANSITIONS ===============*/
+a, button, .button, input {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button:active, a:active {
+  transform: scale(0.95);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Ensure smooth image loading */
+img {
+  opacity: 0;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

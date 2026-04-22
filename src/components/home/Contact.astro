@@ -8,8 +8,8 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
 ---
 
 <section class="contact-section wrapper">
-  <div class="contact-container">
-    <div class="contact-image">
+  <div class="contact-container contact-main-box">
+    <div class="contact-image contact-img-anim">
       <img src="/img/contact-img.png" alt="image" class="contact-img" />
     </div>
     <div class="contact-data">
@@ -76,15 +76,75 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
       </div>
     </div>
 
-    <img src="/img/sticker-tomato.svg" alt="image" class="contact-sticker-1" />
+    <img src="/img/sticker-tomato.svg" alt="image" class="contact-sticker-1 sticker-float" />
     <img
       src="/img/sticker-mushroom.svg"
       alt="image"
-      class="contact-sticker-2"
+      class="contact-sticker-2 sticker-float"
     />
-    <img src="/img/sticker-onion.svg" alt="image" class="contact-sticker-3" />
+    <img src="/img/sticker-onion.svg" alt="image" class="contact-sticker-3 sticker-float" />
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("load", () => {
+    // Main container entry
+    gsap.from(".contact-main-box", {
+      scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top 70%",
+      },
+      scale: 0.95,
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out"
+    });
+
+    // Image entry
+    gsap.from(".contact-img-anim", {
+      scrollTrigger: {
+        trigger: ".contact-section",
+        start: "top 60%",
+      },
+      x: -50,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power2.out"
+    });
+
+    // Floating stickers
+    gsap.to(".sticker-float", {
+      y: 20,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      stagger: {
+        amount: 1,
+        from: "random"
+      }
+    });
+
+    // Rotation for stickers
+    gsap.to(".sticker-float", {
+      rotation: 15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut",
+      stagger: {
+        amount: 1,
+        from: "random"
+      }
+    });
+  });
+</script>
 
 <style>
   .contact-section {
@@ -102,11 +162,12 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
     justify-content: center;
     gap: 2rem;
     position: relative;
-    background-color: var(--first-color-dark);
-    padding: 0 2rem;
-    border-radius: 2rem;
+    background-color: var(--container-color);
+    padding: 3rem 2rem;
+    border-radius: 3rem;
     max-width: 1200px;
     width: 100%;
+    box-shadow: 0 15px 40px rgba(184, 115, 51, 0.1);
   }
 
   .container-1 {
@@ -129,7 +190,7 @@ import InstagramIcon from "../svg/InstagramIcon.astro";
   .contact-title,
   .contact-address,
   .location-span {
-    color: var(--white-color);
+    color: var(--first-color-dark);
     text-align: center;
   }
 

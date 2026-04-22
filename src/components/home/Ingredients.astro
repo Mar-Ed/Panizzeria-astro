@@ -1,37 +1,37 @@
-<div class="prin-container">
+<div class="prin-container ingredients-section">
   <div class="container">
-    <span class="title principal-title">Ingredientes Naturales</span>
+    <span class="title principal-title ingredients-title">Ingredientes Naturales</span>
     <div class="sub-container">
       <div class="ingredients">
-        <div class="ingredient">
+        <div class="ingredient ingredient-card">
           <img src="img/recipe-flour.png" alt="" />
           <div class="ingredient-info">
             <span class="title">Harina</span>
             <p>El mejor trigo del campo para la mejor harina.</p>
           </div>
         </div>
-        <div class="ingredient">
+        <div class="ingredient ingredient-card">
           <img src="img/recipe-cheese.png" alt="" />
           <div class="ingredient-info">
             <span class="title">Queso</span>
             <p>El queso seleccionado puro</p>
           </div>
         </div>
-        <div class="ingredient">
+        <div class="ingredient ingredient-card">
           <img src="img/recipe-sauces.png" alt="" />
           <div class="ingredient-info">
             <span class="title">Salsa de tomate </span>
             <p>Añade un toque de salsa a tu vida y sabrá mejor</p>
           </div>
         </div>
-        <div class="ingredient">
+        <div class="ingredient ingredient-card">
           <img src="img/recipe-tomato.png" alt="" />
           <div class="ingredient-info">
             <span class="title">Vegetales</span>
             <p>Verduras llenas de esencia de la naturaleza y orgánicas.</p>
           </div>
         </div>
-        <div class="ingredient">
+        <div class="ingredient ingredient-card">
           <img src="img/recipe-meat.png" alt="" />
           <div class="ingredient-info">
             <span class="title">Carnes</span>
@@ -39,12 +39,58 @@
           </div>
         </div>
       </div>
-      <div class="recipe-container">
+      <div class="recipe-container recipe-img-box">
         <img src="img/recipe-img.png" alt="" />
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("load", () => {
+    // Title animation
+    gsap.from(".ingredients-title", {
+      scrollTrigger: {
+        trigger: ".ingredients-title",
+        start: "top 80%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    // Ingredient cards animation
+    gsap.from(".ingredient-card", {
+      scrollTrigger: {
+        trigger: ".ingredients",
+        start: "top 70%",
+      },
+      x: -50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+    });
+
+    // Image animation (parallax-ish or just entry)
+    gsap.from(".recipe-img-box", {
+      scrollTrigger: {
+        trigger: ".recipe-img-box",
+        start: "top 70%",
+      },
+      scale: 0.9,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power2.out",
+    });
+  });
+</script>
 <style>
   .container .principal-title {
     font-size: 2rem;

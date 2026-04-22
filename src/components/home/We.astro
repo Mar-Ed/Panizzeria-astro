@@ -1,28 +1,66 @@
-<div class="prin-container">
+<div class="prin-container about-section">
     <div class="container">
-        <div class="content">
-            <div class="contain-image">
+        <div class="content about-content">
+            <div class="contain-image about-image-box">
                 <img src="img/about-img.png" alt="" />
             </div>
-            <div class="content-right">
+            <div class="content-right about-text-box">
                 <div class="contain-text">
-                    <p class="big-text title">
+                    <p class="big-text title about-title">
                         Aprende acerca de Nuestra historia
                     </p>
-                    <p>
+                    <p class="about-description">
                         El secreto del éxito reside en los mejores ingredientes
                         para elaborar una pizza excepcional. Hoy buscamos la
                         perfección, tal como lo hemos hecho durante 15 años,
                         cuando abrimos la pizzería en Lima, Perú.
                     </p>
                 </div>
-                <div class="button-container">
+                <div class="button-container about-cta">
                     <a href="/Nosotros" class="button">Conocenos</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("load", () => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".about-section",
+        start: "top 75%",
+      }
+    });
+
+    tl.from(".about-image-box", {
+      x: -100,
+      opacity: 0,
+      duration: 1.2,
+      ease: "power3.out"
+    })
+    .from(".about-title", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+    }, "-=0.8")
+    .from(".about-description", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+    }, "-=0.6")
+    .from(".about-cta", {
+      y: 20,
+      opacity: 0,
+      duration: 0.6,
+    }, "-=0.4");
+  });
+</script>
 
 <style>
     .prin-container {

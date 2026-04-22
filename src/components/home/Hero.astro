@@ -1,22 +1,108 @@
-<section>
-  <div class="container">
+<section class="hero-section">
+  <div class="container hero-container">
     <div class="text-container">
-      <h1 class="title">La Panizzeria</h1>
-      <p class="subtitle">
+      <h1 class="title hero-title">La Panizzeria</h1>
+      <p class="subtitle hero-subtitle">
         Desde 1985, La Panizzeria ha sido el hogar de las mejores pizzas
         artesanales, combinando tradición italiana con sabores locales únicos.
       </p>
-      <a href="/Menu" class="button">Descubre nuestras pizzas</a>
+      <div class="hero-cta">
+        <a href="/Menu" class="button">Descubre nuestras pizzas</a>
+      </div>
     </div>
-    <div class="image-container">
-      <img
-        src="/img/panizzeria-fondo.jpg"
-        alt="Pizza Hero"
-        class="hero-image"
-      />
+    <div class="image-container hero-image-box">
+      <div class="hero-image-wrapper">
+        <img
+          src="/img/panizzeria-fondo.jpg"
+          alt="Pizza Hero"
+          class="hero-image"
+        />
+        <div class="hero-frame"></div>
+      </div>
     </div>
   </div>
 </section>
+
+<script>
+  import gsap from "gsap";
+
+  window.addEventListener("load", () => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+    // Entry animation
+    tl.from(".hero-title", {
+      y: 100,
+      opacity: 0,
+      duration: 1.2,
+      delay: 0.2,
+    })
+      .from(
+        ".hero-subtitle",
+        {
+          y: 50,
+          opacity: 0,
+          duration: 1,
+        },
+        "-=0.8"
+      )
+      .from(
+        ".hero-cta",
+        {
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+        },
+        "-=0.6"
+      )
+      .from(
+        ".hero-image-box",
+        {
+          scale: 0.8,
+          opacity: 0,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.75)",
+        },
+        "-=1.2"
+      );
+
+    // Hover animation
+    const wrapper = document.querySelector(".hero-image-wrapper");
+    const img = document.querySelector(".hero-image");
+    const frame = document.querySelector(".hero-frame");
+
+    if (wrapper && img && frame) {
+      wrapper.addEventListener("mouseenter", () => {
+        gsap.to(img, {
+          scale: 1.08,
+          duration: 0.6,
+          ease: "power2.out",
+        });
+        gsap.to(frame, {
+          opacity: 1,
+          scale: 1.02,
+          borderWidth: "4px",
+          duration: 0.4,
+          ease: "back.out(2)",
+        });
+      });
+
+      wrapper.addEventListener("mouseleave", () => {
+        gsap.to(img, {
+          scale: 1,
+          duration: 0.6,
+          ease: "power2.inOut",
+        });
+        gsap.to(frame, {
+          opacity: 0,
+          scale: 0.95,
+          borderWidth: "0px",
+          duration: 0.4,
+          ease: "power2.inOut",
+        });
+      });
+    }
+  });
+</script>
 
 <style>
   section {
@@ -56,16 +142,40 @@
     color: #4b5563; /* text-gray-600 */
     line-height: 1.625; /* leading-relaxed */
   }
+  .hero-image-wrapper {
+    position: relative;
+    cursor: pointer;
+    border-radius: 99px;
+    padding: 10px; /* Space for the frame to breathe */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .hero-image {
     width: 100%;
     height: auto;
     min-height: 400px;
-    max-height: 600px; /* Prevent excessive height */
+    max-height: 600px;
     max-width: 680px;
-    margin: 0 auto; /* Center image */
-    border-radius: 99px; /* Pill shape */
-    box-shadow: 0 4px 16px hsla(353, 100%, 8%, 0.1);
-    object-fit: cover; /* Prevent squashing */
+    border-radius: 99px;
+    box-shadow: 0 10px 30px hsla(353, 100%, 8%, 0.15);
+    object-fit: cover;
+    z-index: 2;
+    position: relative;
+  }
+  .hero-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 0px solid var(--first-color);
+    border-radius: 99px;
+    opacity: 0;
+    scale: 0.95;
+    z-index: 1;
+    pointer-events: none;
+    box-shadow: 0 0 40px hsla(353, 100%, 50%, 0.2);
   }
   .button {
     display: inline-flex;
@@ -119,7 +229,11 @@
       margin: 0;
       width: 100%;
       max-width: 350px;
-      border-radius: 2rem; /* Reduce radius on mobile so it's not a weird pill */
+      border-radius: 2rem; /* Reduce radius on mobile */
+    }
+    .hero-image-wrapper,
+    .hero-frame {
+      border-radius: 2rem;
     }
   }
 </style>
