@@ -18,16 +18,18 @@ const cost: string = "0.00";
 
 <header class="navbar">
   <nav class="nav-container wrapper">
-    <div class="text-logo">
-      <Pizza />
-      <div class="text-panizzeria">
-        <span class="title">LA</span>
-        <span class="title title-line">PANIZZERIA</span>
-        <div class="subtitle-panizzeria">
-          <span>PIZZAS Y PANES ARTESANALES</span>
+    <a href="/" class="logo-link">
+      <div class="text-logo">
+        <Pizza />
+        <div class="text-panizzeria">
+          <span class="title">LA</span>
+          <span class="title title-line">PANIZZERIA</span>
+          <div class="subtitle-panizzeria">
+            <span>PIZZAS Y PANES ARTESANALES</span>
+          </div>
         </div>
       </div>
-    </div>
+    </a>
 
     <div class="container-actions">
       <div class="container-links">
@@ -112,6 +114,26 @@ const cost: string = "0.00";
       link.addEventListener("click", () => {
         mobileMenu.classList.remove("active");
         overlay.classList.remove("active");
+      });
+    });
+  }
+
+  // Logo Animation
+  import gsap from "gsap";
+  const logo = document.querySelector(".logo-link");
+  if (logo) {
+    logo.addEventListener("mouseenter", () => {
+      gsap.to(logo, {
+        scale: 1.05,
+        duration: 0.4,
+        ease: "expo.out"
+      });
+    });
+    logo.addEventListener("mouseleave", () => {
+      gsap.to(logo, {
+        scale: 1,
+        duration: 0.4,
+        ease: "expo.out"
       });
     });
   }
@@ -204,11 +226,17 @@ const cost: string = "0.00";
     opacity: 1;
   }
 
+  .logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
   .text-logo {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    transition: transform 0.3s ease;
   }
 
   .navbar.scrolled .text-logo {
