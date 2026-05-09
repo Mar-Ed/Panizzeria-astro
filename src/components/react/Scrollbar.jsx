@@ -46,15 +46,15 @@ export default function ScrollBar() {
   }, []);
 
   const pizzas = [
-    { name: "Americana", img: "/img/platos/Americana.png" },
-    { name: "Pizza Burger", img: "/img/platos/Burger.png" },
-    { name: "Pizza Campesina", img: "/img/platos/Campesina.png" },
-    { name: "Pizza Suprema", img: "/img/platos/Suprema.png" },
-    { name: "Pizza Pepperoni", img: "/img/platos/Pepperoni.png" },
-    { name: "Pizza Cuatro Quesos", img: "/img/platos/Cuatro-quesos.png" },
-    { name: "Pizza Especial", img: "/img/platos/Especial.png" },
-    { name: "Pizza Fourseasons", img: "/img/platos/Fourseasons.png" },
-    { name: "Pizza Hawaiana", img: "/img/platos/Hawaiana.png" },
+    { name: "Americana", desc: "Salsa de tomate, mozzarella y jamón.", img: "/img/platos/Americana.png" },
+    { name: "Pizza Burger", desc: "Carne de res, queso cheddar y tocino.", img: "/img/platos/Burger.png" },
+    { name: "Pizza Campesina", desc: "Pimientos, champiñones y aceitunas.", img: "/img/platos/Campesina.png" },
+    { name: "Pizza Suprema", desc: "Pepperoni, carne, pimientos y champiñones.", img: "/img/platos/Suprema.png" },
+    { name: "Pizza Pepperoni", desc: "Doble pepperoni y extra mozzarella.", img: "/img/platos/Pepperoni.png" },
+    { name: "Pizza Cuatro Quesos", desc: "Mozzarella, parmesano, provolone y azul.", img: "/img/platos/Cuatro-quesos.png" },
+    { name: "Pizza Especial", desc: "Jamón, tocino, duraznos y cerezas.", img: "/img/platos/Especial.png" },
+    { name: "Pizza Fourseasons", desc: "Jamón, pepperoni y champiñones.", img: "/img/platos/Fourseasons.png" },
+    { name: "Pizza Hawaiana", desc: "Jamón y piña seleccionada.", img: "/img/platos/Hawaiana.png" },
   ];
 
   return (
@@ -112,6 +112,7 @@ export default function ScrollBar() {
                 </div>
                 <div className="card-info">
                   <h2 className="slider-title">{pizza.name}</h2>
+                  <p className="slider-desc">{pizza.desc}</p>
                   <button className="order-btn-mini">Ver Más</button>
                 </div>
               </div>
@@ -168,7 +169,14 @@ export default function ScrollBar() {
           font-family: 'Carter One', sans-serif;
           font-size: 1.6rem;
           color: var(--first-color-dark);
-          margin-top: auto;
+          margin-bottom: 0.5rem;
+        }
+        .slider-desc {
+          font-size: 0.95rem;
+          color: #6b7280;
+          line-height: 1.4;
+          margin-bottom: 1.5rem;
+          max-width: 200px;
         }
         .order-btn-mini {
           margin-top: 1.5rem;
