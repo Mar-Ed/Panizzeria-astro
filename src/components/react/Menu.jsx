@@ -52,21 +52,28 @@ export default function Menu() {
   // Initial Header Animation
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline();
+      // Ensure initial state
+      gsap.set([".button-tab", ".filters-bar"], { autoAlpha: 0, y: 20 });
 
-      tl.from(".button-tab", {
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
+      const tl = gsap.timeline({
+        delay: 0.1, // Small delay to ensure DOM is ready
+      });
+
+      tl.to(".button-tab", {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.6,
         stagger: 0.1,
-        ease: "back.out(1.7)"
+        ease: "back.out(1.4)",
+        clearProps: "all"
       })
-      .from(".filters-bar", {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        ease: "expo.out"
-      }, "-=0.4");
+      .to(".filters-bar", {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.8,
+        ease: "expo.out",
+        clearProps: "all"
+      }, "-=0.3");
     }, menuRef);
 
     return () => ctx.revert();
@@ -82,25 +89,26 @@ export default function Menu() {
       gsap.fromTo(
         cards,
         { 
-          opacity: 0, 
-          y: 40,
-          scale: 0.98,
+          autoAlpha: 0, 
+          y: 30,
+          scale: 0.95,
         },
         {
-          opacity: 1,
+          autoAlpha: 1,
           y: 0,
           scale: 1,
-          duration: 0.6,
+          duration: 0.5,
           stagger: {
-            amount: 0.5,
+            amount: 0.4,
             from: "start"
           },
-          ease: "expo.out",
+          ease: "power2.out",
           scrollTrigger: {
             trigger: menuRef.current,
             start: "top 85%",
             toggleActions: "play none none none"
-          }
+          },
+          clearProps: "transform,opacity"
         }
       );
     }, menuRef);
