@@ -34,55 +34,69 @@
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".about-section",
-        start: "top 75%",
+        start: "top 80%",
+        toggleActions: "play none none none"
       }
     });
 
-    tl.from(".about-image-box", {
-      x: -100,
+    tl.from(".about-image-box img", {
+      scale: 0.8,
       opacity: 0,
-      duration: 1.2,
-      ease: "power3.out"
+      duration: 1.5,
+      ease: "expo.out"
     })
     .from(".about-title", {
-      y: 30,
+      y: 40,
       opacity: 0,
-      duration: 0.8,
-    }, "-=0.8")
+      duration: 1,
+      ease: "expo.out"
+    }, "-=1.2")
     .from(".about-description", {
       y: 30,
       opacity: 0,
-      duration: 0.8,
-    }, "-=0.6")
+      duration: 1,
+      ease: "expo.out"
+    }, "-=0.8")
     .from(".about-cta", {
-      y: 20,
+      scale: 0.9,
       opacity: 0,
-      duration: 0.6,
-    }, "-=0.4");
+      duration: 0.8,
+      ease: "back.out(1.7)"
+    }, "-=0.6");
+
+    // Continuous floating animation for the pizza board
+    gsap.to(".about-image-box img", {
+      y: -15,
+      duration: 3,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
   });
 </script>
 
 <style>
-    .prin-container {
-        background-color: var(--body-color);
+    .about-section {
+        padding: 6rem 0;
+        display: flex;
+        justify-content: center;
     }
     .content {
         display: flex;
         align-items: center;
-        gap: 2rem;
-        max-width: 1000px;
+        gap: 4rem;
+        max-width: 1200px;
         width: 100%;
         padding: 2rem;
-        border-radius: 8px;
     }
 
     .contain-image img {
-        width: 400px;
+        width: 500px;
         height: auto;
+        filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
     }
 
     .contain-text {
-        padding-left: 2rem;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -90,32 +104,39 @@
     }
 
     .contain-text .big-text {
-        font-size: 2rem;
+        font-size: 3.5rem;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        font-family: var(--second-font);
     }
     .contain-text p {
-        margin-bottom: 1rem;
-        font-size: 1.1rem;
-        line-height: 1.6;
+        margin-bottom: 2rem;
+        font-size: 1.25rem;
+        line-height: 1.8;
         color: var(--first-color-dark);
+        max-width: 600px;
     }
 
     .button-container {
-        padding-left: 2rem;
+        display: flex;
     }
     .button {
         display: inline-flex;
         justify-content: center;
         background-color: var(--first-color);
         color: var(--white-color);
-        padding: 1rem 1.5rem;
-        font-weight: var(--font-semi-bold);
+        padding: 1.2rem 2.5rem;
+        font-size: 1.1rem;
+        font-weight: 800;
         border-radius: 4rem;
         text-decoration: none;
-        box-shadow: 0 8px 24px hsla(353, 100%, 40%, 0.4);
-        transition: background-color 0.4s;
+        box-shadow: 0 10px 30px hsla(353, 100%, 40%, 0.3);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
         &:hover {
-            background-color: var(--first-color-alt);
+            background-color: var(--first-color-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px hsla(353, 100%, 40%, 0.4);
         }
     }
 
