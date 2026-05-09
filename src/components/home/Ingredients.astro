@@ -53,42 +53,33 @@
   gsap.registerPlugin(ScrollTrigger);
 
   window.addEventListener("load", () => {
-    // Title animation
-    gsap.from(".ingredients-title", {
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: ".ingredients-title",
-        start: "top 80%",
-      },
-      y: 50,
+        trigger: ".ingredients-section",
+        start: "top 90%",
+        toggleActions: "play none none none"
+      }
+    });
+
+    tl.from(".ingredients-title", {
+      y: 40,
       opacity: 0,
       duration: 1,
-      ease: "power3.out",
-    });
-
-    // Ingredient cards animation
-    gsap.from(".ingredient-card", {
-      scrollTrigger: {
-        trigger: ".ingredients",
-        start: "top 70%",
-      },
-      x: -50,
+      ease: "expo.out",
+    })
+    .from(".ingredient-card", {
+      x: -40,
       opacity: 0,
       duration: 0.8,
-      stagger: 0.2,
-      ease: "power3.out",
-    });
-
-    // Image animation (parallax-ish or just entry)
-    gsap.from(".recipe-img-box", {
-      scrollTrigger: {
-        trigger: ".recipe-img-box",
-        start: "top 70%",
-      },
-      scale: 0.9,
+      stagger: 0.15,
+      ease: "power2.out",
+    }, "-=0.6")
+    .from(".recipe-img-box", {
+      scale: 0.8,
       opacity: 0,
       duration: 1.2,
-      ease: "power2.out",
-    });
+      ease: "expo.out",
+    }, "-=1");
   });
 </script>
 <style>
