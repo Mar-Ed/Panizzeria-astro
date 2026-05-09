@@ -118,8 +118,12 @@ export default function Menu() {
       onComplete: () => {
         flyer.remove();
         addProductToCart(item);
-        // Optional: Open cart on first add
-        $isCartOpen.set(true);
+        
+        // Bounce animation for the cart icon
+        gsap.fromTo(cartIcon, 
+          { scale: 1 }, 
+          { scale: 1.2, duration: 0.2, yoyo: true, repeat: 1, ease: "back.out(1.7)" }
+        );
       }
     });
   };
