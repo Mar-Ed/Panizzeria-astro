@@ -103,6 +103,79 @@ import PizzaBox from "../svg/PizzaBox.astro";
   </div>
 </section>
 
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  window.addEventListener("load", () => {
+    // Header Animation
+    const headerTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".top-container",
+        start: "top 90%",
+      }
+    });
+
+    headerTl.from(".sticker-pizza", {
+      scale: 0,
+      rotation: -180,
+      duration: 1,
+      ease: "back.out(1.7)"
+    })
+    .from(".title-container .title", {
+      x: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "expo.out"
+    }, "-=0.5");
+
+    // Alternating Boxes Animation
+    const boxes = gsap.utils.toArray(".first-box");
+    
+    boxes.forEach((box, i) => {
+      const img = box.querySelector(".img-container");
+      const text = box.querySelector(".container-text, .container-text-2");
+      const isEven = i % 2 === 0;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: box,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      });
+
+      tl.from(img, {
+        x: isEven ? -60 : 60,
+        opacity: 0,
+        duration: 1.2,
+        ease: "expo.out"
+      })
+      .from(text.children, {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "expo.out"
+      }, "-=0.8");
+    });
+
+    // Order Banner Animation
+    gsap.from(".order-banner", {
+      scrollTrigger: {
+        trigger: ".order-banner",
+        start: "top 90%",
+      },
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+  });
+</script>
+
 <style>
   .about-us-section {
     display: flex;
