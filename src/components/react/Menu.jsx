@@ -49,37 +49,7 @@ export default function Menu() {
     return filtered;
   }, [pizzas, activeSection, searchTerm, sortOrder, maxPrice]);
 
-  // Initial Header Animation
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Ensure initial state
-      gsap.set([".button-tab", ".filters-bar"], { autoAlpha: 0, y: 20 });
-
-      const tl = gsap.timeline({
-        delay: 0.1, // Small delay to ensure DOM is ready
-      });
-
-      tl.to(".button-tab", {
-        y: 0,
-        autoAlpha: 1,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.4)",
-        clearProps: "all"
-      })
-      .to(".filters-bar", {
-        y: 0,
-        autoAlpha: 1,
-        duration: 0.8,
-        ease: "expo.out",
-        clearProps: "all"
-      }, "-=0.3");
-    }, menuRef);
-
-    return () => ctx.revert();
-  }, []);
-
-  // GSAP Animation Logic for Cards
+  // GSAP Animation Logic
   useEffect(() => {
     if (processedProducts.length === 0) return;
 
@@ -89,26 +59,25 @@ export default function Menu() {
       gsap.fromTo(
         cards,
         { 
-          autoAlpha: 0, 
-          y: 30,
-          scale: 0.95,
+          opacity: 0, 
+          y: 40,
+          scale: 0.98,
         },
         {
-          autoAlpha: 1,
+          opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.5,
+          duration: 0.6,
           stagger: {
-            amount: 0.4,
+            amount: 0.5,
             from: "start"
           },
-          ease: "power2.out",
+          ease: "expo.out",
           scrollTrigger: {
             trigger: menuRef.current,
             start: "top 85%",
             toggleActions: "play none none none"
-          },
-          clearProps: "transform,opacity"
+          }
         }
       );
     }, menuRef);
