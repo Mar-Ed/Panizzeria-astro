@@ -168,6 +168,18 @@ const cost: string = "0.00";
     align-items: center;
     gap: 1rem;
     position: relative;
+    cursor: pointer;
+    color: var(--nav-color); /* Ensure visibility */
+  }
+
+  .bar-sidebar {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .side-bar:hover .bar-sidebar {
+    transform: scale(1.1);
   }
 
   .links-sidebar {
@@ -176,14 +188,33 @@ const cost: string = "0.00";
     right: -100%;
     width: 300px;
     height: 100vh;
-    background-color: white; /* Clean white background */
+    background: rgba(18, 12, 10, 0.95); /* Dark premium background */
+    backdrop-filter: blur(15px);
     padding: 6rem 2.5rem;
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
     z-index: 6000;
     transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.1);
+    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .links-sidebar a {
+    text-decoration: none;
+    color: var(--white-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--second-font);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .links-sidebar a:hover {
+    color: var(--first-color);
+    transform: translateX(10px);
   }
 
   .links-sidebar.active {
