@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { X, ShoppingBag, User, Phone, Mail, CheckCircle2 } from "lucide-react";
+import { useStore } from "@nanostores/react";
+import { $cart, clearCart } from "../../store/cartStore";
 import "../../css/OrderModal.css";
 
 // Import local data
 import bebidasData from "../../data/bebidas.json";
 import entradasData from "../../data/entradas.json";
 
-export default function OrderModal({ isOpen, onClose, product }) {
+export default function OrderModal({ isOpen, onClose }) {
+  const cart = useStore($cart);
   const [customerData, setCustomerData] = useState({
     nombre: "",
     direccion: "",
@@ -20,7 +23,6 @@ export default function OrderModal({ isOpen, onClose, product }) {
   const [selectedBebida, setSelectedBebida] = useState(null);
   const [selectedEntrada, setSelectedEntrada] = useState(null);
 
-  const [cantidadProducto, setCantidadProducto] = useState(1);
   const [cantidadBebida, setCantidadBebida] = useState(1);
   const [cantidadEntrada, setCantidadEntrada] = useState(1);
 
@@ -29,7 +31,6 @@ export default function OrderModal({ isOpen, onClose, product }) {
 
   useEffect(() => {
     if (isOpen) {
-      setCantidadProducto(1);
       setCantidadBebida(1);
       setCantidadEntrada(1);
       setSelectedBebida(null);
@@ -41,6 +42,12 @@ export default function OrderModal({ isOpen, onClose, product }) {
     const { name, value } = e.target;
     setCustomerData((prev) => ({ ...prev, [name]: value }));
   };
+
+  const cartTotal = cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
+  const total =
+    cartTotal + 
+    ((selectedBebida?.precios || selectedBebida?.precio || 0) * cantidadBebida) + 
+    ((selectedEntrada?.precio || 0) * cantidadEntrada);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,11 +68,15 @@ export default function OrderModal({ isOpen, onClose, product }) {
       });
 
       const detalles = [];
-      detalles.push({
-        producto: product.nombre,
-        tipo: "Plato",
-        cantidad: cantidadProducto,
-        precio: product.precio * cantidadProducto,
+      
+      // Add cart items
+      cart.forEach(item => {
+        detalles.push({
+          producto: item.nombre,
+          tipo: item.tamaño || "Plato",
+          cantidad: item.cantidad,
+          precio: item.precio * item.cantidad,
+        });
       });
 
       if (selectedBebida) {
@@ -98,7 +109,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
       message += `*🛒 PRODUCTOS:*%0A`;
       
       detalles.forEach(d => {
-        message += `• ${d.producto} x${d.cantidad} - S/. ${d.precio.toFixed(2)}%0A`;
+        message += `• ${d.producto} (${d.tipo}) x${d.cantidad} - S/. ${d.precio.toFixed(2)}%0A`;
       });
 
       message += `%0A*TOTAL A PAGAR: S/. ${totalPedido}*%0A%0A`;
@@ -118,6 +129,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
       window.open(whatsappUrl, '_blank');
       
       setShowSummaryModal(true);
+      clearCart(); // Clear cart after success
     } catch (err) {
       console.error("Error simulation:", err);
     }
@@ -125,12 +137,7 @@ export default function OrderModal({ isOpen, onClose, product }) {
     setIsSubmitting(false);
   };
 
-  if (!isOpen || !product) return null;
-
-  const total =
-    product.precio * cantidadProducto + 
-    ((selectedBebida?.precios || selectedBebida?.precio || 0) * cantidadBebida) + 
-    ((selectedEntrada?.precio || 0) * cantidadEntrada);
+  if (!isOpen) return null;
 
   return (
     <div className="modal-overlay">
@@ -138,40 +145,28 @@ export default function OrderModal({ isOpen, onClose, product }) {
         <div className="modal-header">
           <div className="modal-title">
             <ShoppingBag />
-            <h2>Resumen del Pedido</h2>
+            <h2>Finalizar Compra</h2>
           </div>
           <button className="modal-close" onClick={onClose}>
             <X className="icon" />
           </button>
         </div>
 
-        <div className="modal-product">
-          <img src={product.imagen} alt={product.nombre} />
-          <div className="modal-product-info">
-            <h3>{product.nombre}</h3>
-            {product.tamaño && (
-              <p>
-                <strong>Tamaño:</strong> {product.tamaño}
-              </p>
-            )}
-            <p>{product.ingredientes || product.descripcion}</p>
-            <div className="precio-cantidad">
-              <span className="precio">S/. {product.precio}</span>
-              <div className="cantidad-control">
-                <span>Cantidad:</span>
-                <button
-                  onClick={() => setCantidadProducto((c) => Math.max(1, c - 1))}
-                  type="button"
-                >
-                  −
-                </button>
-                <span>{cantidadProducto}</span>
-                <button onClick={() => setCantidadProducto((c) => c + 1)} type="button">
-                  +
-                </button>
-              </div>
+        <div className="modal-items-summary" style={{ padding: '0 2.5rem' }}>
+          <h3 style={{ margin: '1.5rem 0 1rem', fontFamily: 'var(--second-font)' }}>Tus Productos:</h3>
+          {cart.map((item, idx) => (
+            <div key={idx} className="modal-product" style={{ margin: '0.5rem 0', padding: '1.5rem' }}>
+                <img src={item.imagen} alt={item.nombre} style={{ width: '80px', height: '80px' }} />
+                <div className="modal-product-info">
+                    <h3>{item.nombre}</h3>
+                    <p>{item.tamaño}</p>
+                    <div className="precio-cantidad">
+                        <span className="precio">S/. {(item.precio * item.cantidad).toFixed(2)}</span>
+                        <span>x{item.cantidad}</span>
+                    </div>
+                </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {bebidas && bebidas.length > 0 && (
@@ -336,8 +331,8 @@ export default function OrderModal({ isOpen, onClose, product }) {
           <div className="modal-resumen">
             <h4>Resumen del Pedido</h4>
             <div className="resumen-item">
-              <span>Subtotal:</span>
-              <span>S/. {(product.precio * cantidadProducto).toFixed(2)}</span>
+              <span>Subtotal Productos:</span>
+              <span>S/. {cartTotal.toFixed(2)}</span>
             </div>
             {selectedBebida && (
               <div className="resumen-item">
@@ -448,3 +443,4 @@ export default function OrderModal({ isOpen, onClose, product }) {
     </div>
   );
 }
+

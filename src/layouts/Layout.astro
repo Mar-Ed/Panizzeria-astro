@@ -2,6 +2,7 @@
 import Hero from "../components/home/Hero.astro";
 import "../css/base.css";
 import { AuthProvider } from "../context/AuthContext";
+import CartManager from "../components/react/CartManager";
 
 const { title = "La Panizzeria | Pizzas Artesanales" } = Astro.props;
 ---
@@ -23,6 +24,7 @@ const { title = "La Panizzeria | Pizzas Artesanales" } = Astro.props;
     />
   </head>
   <body>
+    <CartManager client:load />
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <slot />

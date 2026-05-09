@@ -1,0 +1,70 @@
+.cart-trigger-container {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.cart-trigger-icon {
+  position: relative;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--first-color-dark);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
+
+.cart-trigger-icon:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: white;
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  color: var(--first-color);
+}
+
+.cart-trigger-icon:active {
+  transform: scale(0.95);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: var(--first-color);
+  color: white;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--body-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  animation: badge-pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badge-pop {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .cart-trigger-icon {
+    width: 42px;
+    height: 42px;
+  }
+}

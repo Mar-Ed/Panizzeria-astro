@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import OrderModal from "./OrderModal";
 import "../../css/Menu.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { addProductToCart, $isCartOpen } from "../../store/cartStore";
 
 // Import local data
 import pizzasData from "../../data/pizzas.json";
@@ -15,8 +15,6 @@ if (typeof window !== "undefined") {
 export default function Menu() {
   const [bebidas] = useState(bebidasData);
   const [pizzas] = useState(pizzasData);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [activeSection, setActiveSection] = useState("Personal");
   const menuRef = useRef(null);
   
@@ -50,11 +48,6 @@ export default function Menu() {
 
     return filtered;
   }, [pizzas, activeSection, searchTerm, sortOrder, maxPrice]);
-
-  // Reset pagination when filters change
-  useEffect(() => {
-    setVisibleItems(12);
-  }, [activeSection, searchTerm, sortOrder, maxPrice]);
 
   // GSAP Animation Logic
   useEffect(() => {
@@ -92,9 +85,43 @@ export default function Menu() {
     return () => ctx.revert();
   }, [processedProducts, visibleItems]);
 
-  const handleAddToOrder = (item) => {
-    setSelectedProduct(item);
-    setModalOpen(true);
+  const handleAddToOrder = (item, e) => {
+    // Flying Pizza Animation
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const card = btn.closest('.slider-plato');
+    const img = card.querySelector('img');
+    const imgRect = img.getBoundingClientRect();
+
+    const flyer = document.createElement('img');
+    flyer.src = item.imagen;
+    flyer.className = 'flying-pizza';
+    flyer.style.left = `${imgRect.left}px`;
+    flyer.style.top = `${imgRect.top}px`;
+    flyer.style.width = `${imgRect.width}px`;
+    flyer.style.height = `${imgRect.height}px`;
+    document.body.appendChild(flyer);
+
+    // Get cart icon position (fallback to top right if not found)
+    const cartIcon = document.querySelector('.cart-trigger-icon') || { getBoundingClientRect: () => ({ right: window.innerWidth - 40, top: 40 }) };
+    const cartRect = cartIcon.getBoundingClientRect();
+
+    gsap.to(flyer, {
+      x: cartRect.left - imgRect.left,
+      y: cartRect.top - imgRect.top,
+      width: 20,
+      height: 20,
+      opacity: 0.5,
+      rotation: 720,
+      duration: 1,
+      ease: "power2.inOut",
+      onComplete: () => {
+        flyer.remove();
+        addProductToCart(item);
+        // Optional: Open cart on first add
+        $isCartOpen.set(true);
+      }
+    });
   };
 
   const renderProductos = () => {
@@ -136,7 +163,7 @@ export default function Menu() {
                 </div>
               </div>
               <div className="button-compra">
-                <button onClick={() => handleAddToOrder(item)}>Agregar al Pedido</button>
+                <button onClick={(e) => handleAddToOrder(item, e)}>Agregar al Pedido</button>
               </div>
             </div>
           ))}
@@ -217,14 +244,9 @@ export default function Menu() {
           </div>
         </div>
       </div>
-
-      <OrderModal
-        isOpen={modalOpen}
-        onClose={() => setModalOpen(false)}
-        product={selectedProduct}
-        bebidas={bebidas}
-      />
     </section>
   );
 }
+
+
 

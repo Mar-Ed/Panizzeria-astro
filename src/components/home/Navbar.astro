@@ -1,6 +1,7 @@
 ---
 import Pizza from "../svg/Pizza.astro";
 import Bar from "../svg/Bar.astro";
+import CartIcon from "../react/CartIcon";
 type Props = {
   type: string;
 };
@@ -28,15 +29,18 @@ const cost: string = "0.00";
       </div>
     </div>
 
-    <div class="container-links">
-      {
-        links.map((link) => (
-          <a href={link.url}>
-            <span>{link.name}</span>
-            <div class="hover-transition" />
-          </a>
-        ))
-      }
+    <div class="container-actions">
+      <div class="container-links">
+        {
+          links.map((link) => (
+            <a href={link.url}>
+              <span>{link.name}</span>
+              <div class="hover-transition" />
+            </a>
+          ))
+        }
+      </div>
+      <CartIcon client:load />
     </div>
 
     <!-- Sidebar Mobile -->
@@ -148,10 +152,16 @@ const cost: string = "0.00";
     color: var(--nav-color);
   }
 
+  .container-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
   .side-bar {
     display: none;
-    width: 100%;
-    justify-content: end;
+    align-items: center;
+    gap: 1rem;
     position: relative;
   }
 
@@ -270,6 +280,9 @@ const cost: string = "0.00";
     }
     .container-links {
       display: none;
+    }
+    .container-actions {
+      gap: 1rem;
     }
     .side-bar {
       display: flex;
