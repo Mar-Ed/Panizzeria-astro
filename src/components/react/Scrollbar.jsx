@@ -113,7 +113,9 @@ export default function ScrollBar() {
                 <div className="card-info">
                   <h2 className="slider-title">{pizza.name}</h2>
                   <p className="slider-desc">{pizza.desc}</p>
-                  <button className="order-btn-mini">Ver Más</button>
+                  <a href="/Menu">
+                    <button className="order-btn-mini">Ver Más</button>
+                  </a>
                 </div>
               </div>
             </SwiperSlide>
@@ -177,6 +179,9 @@ export default function ScrollBar() {
           line-height: 1.4;
           margin-bottom: 1.5rem;
           max-width: 200px;
+        }
+        .card-info a {
+          text-decoration: none;
         }
         .order-btn-mini {
           margin-top: 1.5rem;
