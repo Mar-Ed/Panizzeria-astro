@@ -49,7 +49,30 @@ export default function Menu() {
     return filtered;
   }, [pizzas, activeSection, searchTerm, sortOrder, maxPrice]);
 
-  // GSAP Animation Logic
+  // Initial Header Animation
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline();
+
+      tl.from(".button-tab", {
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "back.out(1.7)"
+      })
+      .from(".filters-bar", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        ease: "expo.out"
+      }, "-=0.4");
+    }, menuRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  // GSAP Animation Logic for Cards
   useEffect(() => {
     if (processedProducts.length === 0) return;
 
