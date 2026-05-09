@@ -45,46 +45,27 @@ const cost: string = "0.00";
       <CartIcon client:load />
     </div>
 
-    <!-- Sidebar Mobile -->
+    <!-- Sidebar Mobile Trigger -->
     <div class="side-bar" id="menu-btn">
       <div class="bar-sidebar">
         <Bar />
       </div>
-      <div class="links-sidebar" id="mobile-menu">
-        {
-          links.map((link) => (
-            <a href={link.url}>
-              <span>{link.name}</span>
-              <div class="hover-transition" />
-            </a>
-          ))
-        }
-      </div>
-      <div class="overlay" id="overlay"></div>
     </div>
+
+    <!-- Sidebar Mobile Content (Outside trigger to avoid bubbling) -->
+    <div class="links-sidebar" id="mobile-menu">
+      {
+        links.map((link) => (
+          <a href={link.url}>
+            <span>{link.name}</span>
+            <div class="hover-transition" />
+          </a>
+        ))
+      }
+    </div>
+    <div class="overlay" id="overlay"></div>
   </nav>
 </header>
-<script is:inline>
-  const menuBtn = document.getElementById("menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-  if (menuBtn && mobileMenu) {
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("active");
-    });
-
-    document.addEventListener("click", (e) => {
-      if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove("active");
-      }
-    });
-
-    mobileMenu.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("active");
-      });
-    });
-  }
-</script>
 <script>
   const header = document.querySelector(".navbar");
   window.addEventListener("scroll", () => {
@@ -143,7 +124,9 @@ const cost: string = "0.00";
   .navbar {
     display: flex;
     position: fixed;
-    z-index: 1000;
+    top: 0;
+    left: 0;
+    z-index: 4000;
     width: 100%;
     height: 100px;
     justify-content: center;
@@ -191,16 +174,16 @@ const cost: string = "0.00";
     position: fixed;
     top: 0;
     right: -100%;
-    width: 280px;
+    width: 300px;
     height: 100vh;
-    background-color: var(--body-color);
-    padding: 4rem 2rem;
+    background-color: white; /* Clean white background */
+    padding: 6rem 2.5rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    z-index: 1001;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    gap: 2.5rem;
+    z-index: 6000;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -15px 0 45px rgba(0, 0, 0, 0.1);
   }
 
   .links-sidebar.active {
@@ -213,12 +196,12 @@ const cost: string = "0.00";
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
-    z-index: 999;
+    background-color: rgba(18, 12, 10, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 5000;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    transition: all 0.5s ease;
   }
 
   .overlay.active {
