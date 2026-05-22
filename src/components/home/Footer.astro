@@ -12,6 +12,11 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
   .footer-sponsor-input {
     border: none;
     background: transparent;
+    flex: 1;
+    width: 100%;
+    color: var(--first-color-dark);
+    font-weight: 500;
+    padding: 0.5rem 0;
   }
 
   .footer-sponsor-input:focus {
@@ -19,21 +24,33 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
   }
 
   .footer-sponsor-input::placeholder {
-    font-weight: bold;
+    font-weight: 600;
+    color: var(--text-color-light);
+    opacity: 0.6;
   }
+
   .input-container {
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 0.3rem 0.3rem 0.3rem 1.2rem;
     background-color: var(--container-color);
     border-radius: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 10px rgba(62, 39, 35, 0.1);
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid rgba(217, 34, 49, 0.12);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .input-container:focus-within {
+    box-shadow: 0 4px 15px rgba(217, 34, 49, 0.2);
+    border-color: var(--first-color);
   }
 
   .btn-input {
     background-color: var(--first-color);
     border: none;
-    padding: 0.7rem 1rem;
+    padding: 0.7rem 1.5rem;
     border-radius: 2rem;
     color: var(--white-color);
     font-weight: bold;
@@ -50,11 +67,6 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
 
   .btn-input:active {
     transform: scale(0.98);
-  }
-
-  .btn-input a {
-    text-decoration: none;
-    color: var(--white-color);
   }
 </style>
 <footer>
@@ -79,6 +91,7 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
             class="footer-social-link"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visitar el Facebook oficial de La Panizzería de José"
           >
             <div class="svg-container-social">
               <FacebookIcon />
@@ -89,6 +102,7 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
             class="footer-social-link"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visitar el Instagram oficial de La Panizzería de José"
           >
             <div class="svg-container-social">
               <InstagramIcon />
@@ -99,6 +113,7 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
             class="footer-social-link"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Contactar por WhatsApp con La Panizzería"
           >
             <div class="svg-container-social">
               <WhatsappIcon />
@@ -108,20 +123,23 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
       </div>
       <div class="footer-sponsor-container">
         <h2 class="footer-menu-title">Subscribirse</h2>
-        <div class="footer-sponsor-text">
-          <span>Recibe las últimas novedades y ofertas</span>
-          <span>en tu correo electrónico</span>
-        </div>
-        <div class="input-container">
+        <p class="footer-sponsor-description">
+          Recibe las últimas novedades y ofertas en tu correo electrónico.
+        </p>
+        <form class="input-container" action="#" method="POST" aria-label="Formulario de suscripción al boletín">
           <input
             type="email"
-            placeholder="Email"
+            id="footer-email"
+            placeholder="Tu correo electrónico"
             class="footer-sponsor-input"
+            required
+            aria-required="true"
+            aria-label="Correo electrónico para suscribirse"
           />
-          <button class="btn-input">
-            <a href="#" class="footer-sponsor-btn">Suscribirse</a>
+          <button type="submit" class="btn-input" aria-label="Suscribirse al boletín de novedades">
+            Suscribirse
           </button>
-        </div>
+        </form>
       </div>
       <div class="footer-column-section">
         <h2 class="footer-menu-title">Métodos de Pago</h2>
@@ -273,7 +291,8 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    width: 50%;
+    width: 100%;
+    max-width: 420px;
   }
 
   .footer-social-text {
@@ -281,22 +300,14 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     color: var(--first-color);
   }
 
-  .footer-sponsor-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--first-color-dark);
-  }
-
-  .footer-sponsor-text span:nth-child(1) {
-    font-weight: bold;
+  .footer-sponsor-description {
+    font-weight: 600;
     font-size: 0.9rem;
-  }
-
-  .footer-sponsor-text span:nth-child(2) {
-    font-weight: bold;
-    font-size: 0.8rem;
+    color: var(--first-color-dark);
+    text-align: center;
+    line-height: 1.5;
+    max-width: 340px;
+    margin-bottom: 0.2rem;
   }
 
   .footer-copyright {
@@ -319,10 +330,12 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     .footer-menu {
       flex-direction: column;
       align-items: center;
-      gap: 2rem;
+      gap: 2.5rem;
     }
-    .footer-sponsor-text {
-      text-align: center;
+    .footer-sponsor-container {
+      width: 100%;
+      max-width: 450px;
+      padding: 0 1.5rem;
     }
   }
 </style>
