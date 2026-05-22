@@ -39,6 +39,17 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     font-weight: bold;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(217, 34, 49, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-input:hover {
+    background-color: var(--first-color-alt);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(217, 34, 49, 0.6);
+  }
+
+  .btn-input:active {
+    transform: scale(0.98);
   }
 
   .btn-input a {
@@ -223,10 +234,24 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
     height: 50px;
   }
 
+  .footer-social-link {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .footer-social-link:hover {
+    transform: translateY(-5px);
+  }
+
   .svg-container-social {
     width: 30px;
     height: 30px;
     fill: var(--first-color);
+    transition: fill 0.3s ease;
+  }
+
+  .footer-social-link:hover .svg-container-social {
+    fill: var(--first-color-alt);
   }
 
   .footer-column-section {
@@ -289,7 +314,7 @@ import WhatsappIcon from "../svg/WhatsappIcon.astro";
 
   @media screen and (max-width: 816px) {
     footer {
-      padding-top: 24rem;
+      padding-top: 3rem;
     }
     .footer-menu {
       flex-direction: column;
